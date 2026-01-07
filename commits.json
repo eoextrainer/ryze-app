@@ -1,5 +1,11 @@
 [
   {
+    "hash": "c2a68fc1135511999024b7ee3faccac43d523875",
+    "short": "c2a68fc",
+    "message": "docs: add render hosting guide and config",
+    "date": "2026-01-07T22:51:54+01:00"
+  },
+  {
     "hash": "e000befa0bc07dc90e85d64e531dcea4383c1a48",
     "short": "e000bef",
     "message": "version v1.0.0-beta RYZE APP core",
@@ -52,11 +58,5 @@
     "short": "80d170c",
     "message": "fix: ensure 4-column experience grid and stable video embeds",
     "date": "2026-01-07T22:35:24+01:00"
-  },
-  {
-    "hash": "2eacca3916aefd7f8490479834a3b4d7c8f17efa",
-    "short": "2eacca3",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:32:22+01:00"
   }
 ]
