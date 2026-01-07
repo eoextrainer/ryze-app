@@ -1,5 +1,17 @@
 [
   {
+    "hash": "46908baf54ee079636526c85c470b94bbaba5ecf",
+    "short": "46908ba",
+    "message": "chore: update dashboard heading and tile copy",
+    "date": "2026-01-07T16:04:19+01:00"
+  },
+  {
+    "hash": "aade18c6c76d585d50f1cc8c46469f7520729601",
+    "short": "aade18c",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:02:28+01:00"
+  },
+  {
     "hash": "7dee6d9886fbac8b8d760d2884897ca7caa06373",
     "short": "7dee6d9",
     "message": "chore: center dashboard tiles with extra descriptions",
@@ -46,17 +58,5 @@
     "short": "37cb1b8",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:42:18+01:00"
-  },
-  {
-    "hash": "e4741d92d7eda040efac86b99b11e2308ef3ac55",
-    "short": "e4741d9",
-    "message": "feat: sync news carousels and refine layout",
-    "date": "2026-01-07T15:42:04+01:00"
-  },
-  {
-    "hash": "293ca96f0ef18721b8a12fb8e78feccb88b13130",
-    "short": "293ca96",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:36:23+01:00"
   }
 ]
