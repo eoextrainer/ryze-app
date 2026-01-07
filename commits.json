@@ -1,5 +1,17 @@
 [
   {
+    "hash": "9b0cd3b5a1c2596125c388af4f6e3ee559841196",
+    "short": "9b0cd3b",
+    "message": "feat: add start-here CTA and overlay placeholders",
+    "date": "2026-01-07T16:36:23+01:00"
+  },
+  {
+    "hash": "022af7a7f09e4f343fa52821f9425e807f8b7098",
+    "short": "022af7a",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:28:54+01:00"
+  },
+  {
     "hash": "dd308c8f0bd74518190b2ceaa4868f7fc7bb44db",
     "short": "dd308c8",
     "message": "chore: increase spacing in dashboard tiles",
@@ -46,17 +58,5 @@
     "short": "4847d3e",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:10:35+01:00"
-  },
-  {
-    "hash": "d89b2cbcb81f569b8fe6d4a3a66d959bd4e2e5b3",
-    "short": "d89b2cb",
-    "message": "feat: ceo dashboard module set",
-    "date": "2026-01-07T16:10:15+01:00"
-  },
-  {
-    "hash": "e8247911d9c70270a2b91565f297e8657981d93b",
-    "short": "e824791",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:07:06+01:00"
   }
 ]
