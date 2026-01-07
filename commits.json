@@ -1,5 +1,17 @@
 [
   {
+    "hash": "485b693d551d50c9c9a4a3a8d7c1372e0bf45915",
+    "short": "485b693",
+    "message": "chore: left-align tile copy",
+    "date": "2026-01-07T16:25:53+01:00"
+  },
+  {
+    "hash": "18dfd2eed1261df703f5f29990cfa23feb78eb0c",
+    "short": "18dfd2e",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:24:46+01:00"
+  },
+  {
     "hash": "e7929ef756b5cdd080a05a683521c6d3ddc879c7",
     "short": "e7929ef",
     "message": "chore: add breathing room between tile headings and copy",
@@ -46,17 +58,5 @@
     "short": "29ec426",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:04:36+01:00"
-  },
-  {
-    "hash": "46908baf54ee079636526c85c470b94bbaba5ecf",
-    "short": "46908ba",
-    "message": "chore: update dashboard heading and tile copy",
-    "date": "2026-01-07T16:04:19+01:00"
-  },
-  {
-    "hash": "aade18c6c76d585d50f1cc8c46469f7520729601",
-    "short": "aade18c",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:02:28+01:00"
   }
 ]
