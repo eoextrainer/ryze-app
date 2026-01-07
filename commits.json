@@ -1,5 +1,17 @@
 [
   {
+    "hash": "a25003ba9306a938e48b251339fceafcb78c3acb",
+    "short": "a25003b",
+    "message": "chore: simplify copy and branding",
+    "date": "2026-01-07T08:02:04+01:00"
+  },
+  {
+    "hash": "db3beabbf4bae13a36ac7f0e01e392c38e3c248d",
+    "short": "db3beab",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T07:50:14+01:00"
+  },
+  {
     "hash": "242aa0b4875443e11cc270457d122e06e43e9dc3",
     "short": "242aa0b",
     "message": "fix: restore login button wiring",
