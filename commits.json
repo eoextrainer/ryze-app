@@ -1,5 +1,17 @@
 [
   {
+    "hash": "c022c75f6123db58306775479596825f18de83af",
+    "short": "c022c75",
+    "message": "chore: reduce store items to six",
+    "date": "2026-01-07T21:48:10+01:00"
+  },
+  {
+    "hash": "29132543cf861075a2e95ee804b92d32375e67d8",
+    "short": "2913254",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T21:43:50+01:00"
+  },
+  {
     "hash": "b61d431c7ad5de95b89b4f03ee195de20c068742",
     "short": "b61d431",
     "message": "chore: trim store carousels to seven items",
@@ -46,17 +58,5 @@
     "short": "2689ced",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:49:58+01:00"
-  },
-  {
-    "hash": "dcd91c2ca1dcb9022503c10d0b83f7c9b5170300",
-    "short": "dcd91c2",
-    "message": "feat: fix experience overlays and add play-style store",
-    "date": "2026-01-07T16:49:39+01:00"
-  },
-  {
-    "hash": "f3d256759217a5205284fe714a3c9c7fbf65e7aa",
-    "short": "f3d2567",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:42:43+01:00"
   }
 ]
