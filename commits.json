@@ -1,5 +1,17 @@
 [
   {
+    "hash": "fc385a6710569ae920774ef8ac55d07897f72b2f",
+    "short": "fc385a6",
+    "message": "style: apply gold branding to logo and ctas",
+    "date": "2026-01-07T22:19:32+01:00"
+  },
+  {
+    "hash": "81511022f795e9fbe5c4f2cf071c5d175afc2407",
+    "short": "8151102",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:14:21+01:00"
+  },
+  {
     "hash": "0f1f46094c0e6266fe9fc768f0edf73c93c3071e",
     "short": "0f1f460",
     "message": "feat: reinforce experience overlays and add dunes palette",
@@ -46,17 +58,5 @@
     "short": "4ea88ea",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T21:54:55+01:00"
-  },
-  {
-    "hash": "ea9be113ee78099441f5dbf1333457735d3d25f1",
-    "short": "ea9be11",
-    "message": "chore: show five store items at once",
-    "date": "2026-01-07T21:54:47+01:00"
-  },
-  {
-    "hash": "b706f6f24e1252eb02c404e1746ce4d98bbde574",
-    "short": "b706f6f",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T21:51:57+01:00"
   }
 ]
