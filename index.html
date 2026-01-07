@@ -1509,6 +1509,65 @@
       logger: 'Centralized logger with live tail view.'
     };
 
+    const experienceDetails = {
+      tutorial: {
+        summary: 'Guided tours with highlight reels to get you oriented fast.',
+        bullets: ['Video walkthroughs by role', 'Progress saves per user', 'Overlay steps with tooltips']
+      },
+      settings: {
+        summary: 'Personalize themes, notifications, and accessibility per account.',
+        bullets: ['Time-of-day theming', 'Per-user preferences', 'Keyboard and screen reader support']
+      },
+      performance: {
+        summary: 'Spot trends with charts and KPIs tuned for your role.',
+        bullets: ['Live metrics from sessions', 'Role-aware dashboards', 'Export-ready views']
+      },
+      resume: {
+        summary: 'Securely manage documents and keep scouts up to date.',
+        bullets: ['Upload and version files', 'Share highlights privately', 'Track reviewer opens']
+      },
+      medical: {
+        summary: 'Confidential medical snapshots with restricted overlays.',
+        bullets: ['Access controls baked in', 'Activity audit trail', 'Placeholder for EHR links']
+      },
+      training: {
+        summary: 'Plan, assign, and review training blocks with media embeds.',
+        bullets: ['Drill library ready', 'Coach feedback loop', 'Attach clips to sessions']
+      },
+      practice: {
+        summary: 'Track practice reps, attendance, and micro-improvements.',
+        bullets: ['Session roll calls', 'Clip tagging per drill', 'Auto-sync to performance']
+      },
+      games: {
+        summary: 'Archive and replay games with timelines and tags.',
+        bullets: ['Jump-to-moment tagging', 'Shareable cutups', 'Integrate tracking data']
+      },
+      social: {
+        summary: 'Showcase moments and connect with the Ryze community.',
+        bullets: ['Highlight reels', 'Role-gated threads', 'Safe reporting tools']
+      },
+      agents: {
+        summary: 'Find and vet agents tailored to your journey.',
+        bullets: ['Filters by region and specialty', 'Verified profiles', 'Contact overlays']
+      },
+      scouts: {
+        summary: 'Scout discovery grid with verified reports.',
+        bullets: ['Combine stats + film', 'Shortlist candidates', 'Assign follow-ups']
+      },
+      clubs: {
+        summary: 'Club profiles with needs, history, and contacts.',
+        bullets: ['Depth charts', 'Needs by position', 'Warm intros']
+      },
+      players: {
+        summary: 'Player cards with performance, fit, and readiness.',
+        bullets: ['Compare prospects', 'Track trajectory', 'Save to boards']
+      },
+      store: {
+        summary: 'Licenses, resources, and upgrades live here.',
+        bullets: ['Role-based offers', 'Secure checkout placeholder', 'Cross-link to dashboards']
+      }
+    };
+
     const moduleDetails = {
       tutorial: ['Step-by-step clips', 'Mark as completed'],
       performance: ['Charts ready', 'KPIs streaming placeholder'],
@@ -2071,11 +2130,18 @@
       if (!overlayEl || !overlayBodyEl || !overlayTitleEl || !overlaySubtitleEl) return;
       overlayTitleEl.textContent = exp.title;
       overlaySubtitleEl.textContent = `Dashboard · ${exp.id || exp.title}`;
+      const detail = experienceDetails[exp.id] || {
+        summary: overlayDescriptions[exp.id] || 'This module is ready for richer widgets and data.',
+        bullets: ['Connect live data sources', 'Animate transitions', 'Secure per role']
+      };
       overlayBodyEl.innerHTML = `
         <div class="tile" style="min-height:180px;">
           <div class="pill">${exp.title}</div>
           <p style="text-align:left; margin:16px 0 8px; line-height:1.6;">${exp.copy}</p>
-          <p style="text-align:left; margin:0; color:#e2e4e8; font-size:13px; line-height:1.5;">This overlay will host rich widgets for ${exp.title.toLowerCase()}.</p>
+          <p style="text-align:left; margin:0 0 10px; color:#e2e4e8; font-size:13px; line-height:1.5;">${detail.summary}</p>
+          <ul style="margin:0; padding-left:18px; color:#cfd3da; line-height:1.5;">
+            ${detail.bullets.map((b) => `<li>${b}</li>`).join('')}
+          </ul>
         </div>
         <p style="margin:10px 0 12px; color:#cfd3da;">Below are placeholder tiles you can replace with live modules.</p>
         <div id="overlay-tiles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;"></div>
