@@ -1,5 +1,17 @@
 [
   {
+    "hash": "acac724d3c101c68c10c0e15e34ca318e5a62d85",
+    "short": "acac724",
+    "message": "style: enforce 4-column experiences grid",
+    "date": "2026-01-07T22:29:50+01:00"
+  },
+  {
+    "hash": "591d4bf9d4cbac7ed7e644ba5f5ac1a515616665",
+    "short": "591d4bf",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:28:25+01:00"
+  },
+  {
     "hash": "39fcbd4c39223ef3f70b5156782f42098cc55839",
     "short": "39fcbd4",
     "message": "style: even spacing for experiences grid",
@@ -46,17 +58,5 @@
     "short": "8151102",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:14:21+01:00"
-  },
-  {
-    "hash": "0f1f46094c0e6266fe9fc768f0edf73c93c3071e",
-    "short": "0f1f460",
-    "message": "feat: reinforce experience overlays and add dunes palette",
-    "date": "2026-01-07T22:14:06+01:00"
-  },
-  {
-    "hash": "9eaf5ae11c2ed43415fe37bc614b5b1d366ebd6f",
-    "short": "9eaf5ae",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:07:07+01:00"
   }
 ]
