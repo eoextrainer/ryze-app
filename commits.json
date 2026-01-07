@@ -1,5 +1,17 @@
 [
   {
+    "hash": "ab6776250ec0f198a3c837feea65b03838f17c69",
+    "short": "ab67762",
+    "message": "feat: admin and ceo tailored dashboards",
+    "date": "2026-01-07T16:16:14+01:00"
+  },
+  {
+    "hash": "4847d3e0a98c51611a4e7612aa14b587f1019fdf",
+    "short": "4847d3e",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:10:35+01:00"
+  },
+  {
     "hash": "d89b2cbcb81f569b8fe6d4a3a66d959bd4e2e5b3",
     "short": "d89b2cb",
     "message": "feat: ceo dashboard module set",
@@ -46,17 +58,5 @@
     "short": "519282b",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:59:31+01:00"
-  },
-  {
-    "hash": "4ea904bf814dd27ac64ecb5d0b41aeadd44acf99",
-    "short": "4ea904b",
-    "message": "feat: scout dashboard modules and cleaner tiles",
-    "date": "2026-01-07T15:59:16+01:00"
-  },
-  {
-    "hash": "eff30afbab536f20c5b721e94a2015514a24f76a",
-    "short": "eff30af",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:54:23+01:00"
   }
 ]
