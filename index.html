@@ -1605,8 +1605,13 @@
         tile.innerHTML = `
           <div class="pill">${exp.title}</div>
           <p style="text-align:left; margin:16px 0 12px; line-height:1.6;">${exp.copy}</p>
-          <p style="text-align:left; margin:0 0 4px; color:#e2e4e8; font-size:13px; line-height:1.5;">Explore the ${exp.title.toLowerCase()} space with rich details.</p>
         `;
+        const cta = document.createElement('button');
+        cta.className = 'btn primary';
+        cta.textContent = 'Start Here';
+        cta.style.marginTop = '6px';
+        cta.addEventListener('click', () => openExperienceOverlay(exp));
+        tile.appendChild(cta);
         tileGridEl.appendChild(tile);
       });
     }
@@ -1832,6 +1837,28 @@
       logEvent('overlay-open', module.id);
       overlayPrimaryEl.onclick = () => alert(`${module.label} overlay opened.`);
       overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${module.label}.`);
+      overlayEl.classList.add('active');
+    }
+
+    function openExperienceOverlay(exp) {
+      overlayTitleEl.textContent = exp.title;
+      overlaySubtitleEl.textContent = `Dashboard · ${exp.id || exp.title}`;
+      overlayBodyEl.innerHTML = `
+        <p style="margin:0; color:#e2e4e8;">${exp.copy}</p>
+        <p style="margin:6px 0 12px; color:#cfd3da;">Explore placeholder modules below.</p>
+        <div id="overlay-tiles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:12px;"></div>
+      `;
+      const grid = overlayBodyEl.querySelector('#overlay-tiles');
+      const placeholders = Array.from({ length: 6 }, (_, i) => `Placeholder ${i + 1}`);
+      placeholders.forEach((label) => {
+        const t = document.createElement('div');
+        t.className = 'tile';
+        t.style.minHeight = '120px';
+        t.innerHTML = `<div class="pill">${label}</div><p style="text-align:left; margin:12px 0 6px; line-height:1.5;">Future content for ${exp.title}.</p>`;
+        grid.appendChild(t);
+      });
+      overlayPrimaryEl.onclick = () => alert(`${exp.title} overlay opened.`);
+      overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${exp.title}.`);
       overlayEl.classList.add('active');
     }
 
