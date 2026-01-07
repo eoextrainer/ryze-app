@@ -1,4 +1,21 @@
 services:
+  # Backend service (uncomment and point to your backend app when ready)
+  # - type: web
+  #   name: ryze-api
+  #   env: node
+  #   plan: starter
+  #   region: oregon
+  #   buildCommand: "npm install"
+  #   startCommand: "npm run start"
+  #   envVars:
+  #     - key: DATABASE_URL
+  #       fromDatabase:
+  #         name: ryze-db
+  #         property: connectionString
+  #     - key: NODE_ENV
+  #       value: production
+  #   autoDeploy: true
+
   - type: static_site
     name: ryze-app-static
     env: static
@@ -13,3 +30,11 @@ services:
       - path: "/*"
         name: "Cache-Control"
         value: "public, max-age=600"
+    envVars:
+      - key: API_BASE_URL
+        value: ""  # fill with your Render backend URL when enabled
+
+databases:
+  - name: ryze-db
+    databaseName: ryze
+    plan: free
