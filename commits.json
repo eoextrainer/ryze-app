@@ -1,5 +1,17 @@
 [
   {
+    "hash": "ad9b9dd0c7bd735735ae47d58369f270062b7051",
+    "short": "ad9b9dd",
+    "message": "style: let experiences grid span full width",
+    "date": "2026-01-07T22:41:23+01:00"
+  },
+  {
+    "hash": "c259d4664c76b78b600f7a1d9acea8793f9b4464",
+    "short": "c259d46",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:39:02+01:00"
+  },
+  {
     "hash": "fc194027f14a2c524ff7d5ccde10720b056b1440",
     "short": "fc19402",
     "message": "style: adjust experience card sizing for fuller rows",
@@ -46,17 +58,5 @@
     "short": "591d4bf",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:28:25+01:00"
-  },
-  {
-    "hash": "39fcbd4c39223ef3f70b5156782f42098cc55839",
-    "short": "39fcbd4",
-    "message": "style: even spacing for experiences grid",
-    "date": "2026-01-07T22:28:10+01:00"
-  },
-  {
-    "hash": "02a1b5b7ae4536f9f1f8be1470fbd6051b873c38",
-    "short": "02a1b5b",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:25:20+01:00"
   }
 ]
