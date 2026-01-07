@@ -1,5 +1,17 @@
 [
   {
+    "hash": "d0c1db4aedeb353cff45af7f964b292d7e99ed09",
+    "short": "d0c1db4",
+    "message": "chore: polish store sliders for non-admin users",
+    "date": "2026-01-07T21:39:54+01:00"
+  },
+  {
+    "hash": "dee0bb168dd45abab86bbf1b3bdbf1acf49321b3",
+    "short": "dee0bb1",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T21:37:35+01:00"
+  },
+  {
     "hash": "38689c8ff2336881a6839094fa338b2413c021f0",
     "short": "38689c8",
     "message": "chore: hide admin store and polish store carousels",
@@ -46,17 +58,5 @@
     "short": "9d6f09f",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:36:45+01:00"
-  },
-  {
-    "hash": "9b0cd3b5a1c2596125c388af4f6e3ee559841196",
-    "short": "9b0cd3b",
-    "message": "feat: add start-here CTA and overlay placeholders",
-    "date": "2026-01-07T16:36:23+01:00"
-  },
-  {
-    "hash": "022af7a7f09e4f343fa52821f9425e807f8b7098",
-    "short": "022af7a",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:28:54+01:00"
   }
 ]
