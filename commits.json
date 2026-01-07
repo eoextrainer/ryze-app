@@ -1,5 +1,17 @@
 [
   {
+    "hash": "592df43a91c9b14ab1726f22da87c6faa96043cc",
+    "short": "592df43",
+    "message": "fix: keep store carousels fully in frame",
+    "date": "2026-01-07T22:02:42+01:00"
+  },
+  {
+    "hash": "647de374fe0ec2a411914e842ab4396e6e758cef",
+    "short": "647de37",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:00:23+01:00"
+  },
+  {
     "hash": "c71a80d298eb5c2a770943a2a0663089a04848df",
     "short": "c71a80d",
     "message": "fix: enforce five-wide store carousel",
@@ -46,17 +58,5 @@
     "short": "2913254",
     "message": "chore: update commit log",
     "date": "2026-01-07T21:43:50+01:00"
-  },
-  {
-    "hash": "b61d431c7ad5de95b89b4f03ee195de20c068742",
-    "short": "b61d431",
-    "message": "chore: trim store carousels to seven items",
-    "date": "2026-01-07T21:43:30+01:00"
-  },
-  {
-    "hash": "1134f0cf383eeeba89fc6bdb38406e6c40f895db",
-    "short": "1134f0c",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T21:40:17+01:00"
   }
 ]
