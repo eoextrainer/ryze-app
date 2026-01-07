@@ -1,5 +1,17 @@
 [
   {
+    "hash": "aeabf1f0b04cbe21a02c5e17933ed8a714d4ade0",
+    "short": "aeabf1f",
+    "message": "feat: enrich experience overlays on CTA click",
+    "date": "2026-01-07T22:06:55+01:00"
+  },
+  {
+    "hash": "50099e2d993987ffdf3fad057a88dc32296cb8db",
+    "short": "50099e2",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:02:51+01:00"
+  },
+  {
     "hash": "592df43a91c9b14ab1726f22da87c6faa96043cc",
     "short": "592df43",
     "message": "fix: keep store carousels fully in frame",
@@ -46,17 +58,5 @@
     "short": "da615fa",
     "message": "chore: update commit log",
     "date": "2026-01-07T21:48:19+01:00"
-  },
-  {
-    "hash": "c022c75f6123db58306775479596825f18de83af",
-    "short": "c022c75",
-    "message": "chore: reduce store items to six",
-    "date": "2026-01-07T21:48:10+01:00"
-  },
-  {
-    "hash": "29132543cf861075a2e95ee804b92d32375e67d8",
-    "short": "2913254",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T21:43:50+01:00"
   }
 ]
