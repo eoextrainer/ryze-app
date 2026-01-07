@@ -653,8 +653,11 @@
       grid-auto-columns: minmax(220px, 260px);
       gap: 12px;
       overflow-x: auto;
-      padding-bottom: 6px;
+      padding: 10px 4px 14px;
       scrollbar-width: thin;
+      scroll-snap-type: x mandatory;
+      background: linear-gradient(135deg, rgba(0, 194, 255, 0.08), rgba(255, 255, 255, 0.06));
+      border-radius: 14px;
     }
 
     .product-card {
@@ -667,6 +670,7 @@
       color: #e6e9ef;
       box-shadow: var(--shadow);
       min-height: 220px;
+      scroll-snap-align: start;
     }
 
     .product-image {
@@ -700,8 +704,8 @@
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.18);
-      background: linear-gradient(135deg, #00c2ff, #41a9ff);
-      color: #000;
+      background: linear-gradient(135deg, #6ee7b7, #22c55e);
+      color: #0b140c;
       font-weight: 700;
       cursor: pointer;
     }
@@ -1117,7 +1121,6 @@
       <section class="store-section" id="store-section">
         <div class="store-header">
           <div class="store-title">Ryze Store</div>
-          <span class="label-chip">Google Play inspired</span>
         </div>
         <div class="store-rail" id="store-rail"></div>
       </section>
@@ -2082,7 +2085,6 @@
         cat.innerHTML = `
           <div class="category-header">
             <div class="category-title">${category.name}</div>
-            <span class="label-chip">Top picks</span>
           </div>
         `;
         const carousel = document.createElement('div');
