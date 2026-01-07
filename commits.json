@@ -1,5 +1,17 @@
 [
   {
+    "hash": "ea9be113ee78099441f5dbf1333457735d3d25f1",
+    "short": "ea9be11",
+    "message": "chore: show five store items at once",
+    "date": "2026-01-07T21:54:47+01:00"
+  },
+  {
+    "hash": "b706f6f24e1252eb02c404e1746ce4d98bbde574",
+    "short": "b706f6f",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T21:51:57+01:00"
+  },
+  {
     "hash": "d8eaa6387ebf4de2dd623a32930faa85d61889f2",
     "short": "d8eaa63",
     "message": "chore: expand store carousels to twelve items",
@@ -46,17 +58,5 @@
     "short": "dee0bb1",
     "message": "chore: update commit log",
     "date": "2026-01-07T21:37:35+01:00"
-  },
-  {
-    "hash": "38689c8ff2336881a6839094fa338b2413c021f0",
-    "short": "38689c8",
-    "message": "chore: hide admin store and polish store carousels",
-    "date": "2026-01-07T21:37:14+01:00"
-  },
-  {
-    "hash": "e91004116d2fc11a4896512097dfe1e39120003e",
-    "short": "e910041",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:54:37+01:00"
   }
 ]
