@@ -1,5 +1,17 @@
 [
   {
+    "hash": "c71a80d298eb5c2a770943a2a0663089a04848df",
+    "short": "c71a80d",
+    "message": "fix: enforce five-wide store carousel",
+    "date": "2026-01-07T22:00:17+01:00"
+  },
+  {
+    "hash": "4ea88eaa49cf4e9075c1a8621404758a94a2c998",
+    "short": "4ea88ea",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T21:54:55+01:00"
+  },
+  {
     "hash": "ea9be113ee78099441f5dbf1333457735d3d25f1",
     "short": "ea9be11",
     "message": "chore: show five store items at once",
@@ -46,17 +58,5 @@
     "short": "1134f0c",
     "message": "chore: update commit log",
     "date": "2026-01-07T21:40:17+01:00"
-  },
-  {
-    "hash": "d0c1db4aedeb353cff45af7f964b292d7e99ed09",
-    "short": "d0c1db4",
-    "message": "chore: polish store sliders for non-admin users",
-    "date": "2026-01-07T21:39:54+01:00"
-  },
-  {
-    "hash": "dee0bb168dd45abab86bbf1b3bdbf1acf49321b3",
-    "short": "dee0bb1",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T21:37:35+01:00"
   }
 ]
