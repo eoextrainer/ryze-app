@@ -1,5 +1,17 @@
 [
   {
+    "hash": "4ea904bf814dd27ac64ecb5d0b41aeadd44acf99",
+    "short": "4ea904b",
+    "message": "feat: scout dashboard modules and cleaner tiles",
+    "date": "2026-01-07T15:59:16+01:00"
+  },
+  {
+    "hash": "eff30afbab536f20c5b721e94a2015514a24f76a",
+    "short": "eff30af",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:54:23+01:00"
+  },
+  {
     "hash": "0a98ae6fe47a18b140ef03e7a103c5f9c57ff719",
     "short": "0a98ae6",
     "message": "feat: player dashboard shows curated modules",
@@ -46,17 +58,5 @@
     "short": "783b81e",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:24:37+01:00"
-  },
-  {
-    "hash": "f76d8859cf96b9abaacaa4c47877c04c52c620dd",
-    "short": "f76d885",
-    "message": "feat: refine home layout and news video carousel",
-    "date": "2026-01-07T15:24:24+01:00"
-  },
-  {
-    "hash": "52111b22542b21a83f320769d1f467a894f6bfe7",
-    "short": "52111b2",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T08:05:55+01:00"
   }
 ]
