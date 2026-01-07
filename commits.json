@@ -1,5 +1,17 @@
 [
   {
+    "hash": "e4741d92d7eda040efac86b99b11e2308ef3ac55",
+    "short": "e4741d9",
+    "message": "feat: sync news carousels and refine layout",
+    "date": "2026-01-07T15:42:04+01:00"
+  },
+  {
+    "hash": "293ca96f0ef18721b8a12fb8e78feccb88b13130",
+    "short": "293ca96",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:36:23+01:00"
+  },
+  {
     "hash": "e73bfed18f0f8ea6f61389dd978b3b8bada9ba4c",
     "short": "e73bfed",
     "message": "feat: sync news carousels and update home layout",
@@ -46,17 +58,5 @@
     "short": "4d1e4d3",
     "message": "chore: update commit log",
     "date": "2026-01-07T08:02:18+01:00"
-  },
-  {
-    "hash": "a25003ba9306a938e48b251339fceafcb78c3acb",
-    "short": "a25003b",
-    "message": "chore: simplify copy and branding",
-    "date": "2026-01-07T08:02:04+01:00"
-  },
-  {
-    "hash": "db3beabbf4bae13a36ac7f0e01e392c38e3c248d",
-    "short": "db3beab",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T07:50:14+01:00"
   }
 ]
