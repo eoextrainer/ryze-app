@@ -1,5 +1,17 @@
 [
   {
+    "hash": "b61d431c7ad5de95b89b4f03ee195de20c068742",
+    "short": "b61d431",
+    "message": "chore: trim store carousels to seven items",
+    "date": "2026-01-07T21:43:30+01:00"
+  },
+  {
+    "hash": "1134f0cf383eeeba89fc6bdb38406e6c40f895db",
+    "short": "1134f0c",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T21:40:17+01:00"
+  },
+  {
     "hash": "d0c1db4aedeb353cff45af7f964b292d7e99ed09",
     "short": "d0c1db4",
     "message": "chore: polish store sliders for non-admin users",
@@ -46,17 +58,5 @@
     "short": "f3d2567",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:42:43+01:00"
-  },
-  {
-    "hash": "567670dc17faa58195cc2602b09fe648a9c3a241",
-    "short": "567670d",
-    "message": "feat: enrich experience overlay placeholders",
-    "date": "2026-01-07T16:42:26+01:00"
-  },
-  {
-    "hash": "9d6f09f9cb95d54d7069cb67e6d2c5bb8ed7d06a",
-    "short": "9d6f09f",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:36:45+01:00"
   }
 ]
