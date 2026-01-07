@@ -1529,19 +1529,31 @@
         { id: 'social', title: 'SOCIAL', copy: 'Stay connected with teammates and fans.' },
         { id: 'store', title: 'STORE', copy: 'Gear up with merch and essentials.' }
       ];
+      const scoutModules = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Guides for spotting talent and building reports.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Adjust notifications and preferences.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Maintain your scout profile and credentials.' },
+        { id: 'resume', title: 'RESUME', copy: 'Keep your scouting history and milestones updated.' },
+        { id: 'players', title: 'PLAYERS', copy: 'Search and track player prospects.' },
+        { id: 'clubs', title: 'CLUBS', copy: 'Monitor club needs and fits.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Game schedules, assignments, and recaps.' },
+        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Performance dashboards for targets.' },
+        { id: 'store', title: 'STORE', copy: 'Access gear and scouting essentials.' }
+      ];
       const experiences = [
         { id: 'experience', title: 'Experiences', copy: 'Curated journeys that connect training, scouting, and signing into one seamless path.' },
         { id: 'games', title: 'Games', copy: 'Cinematic highlights and film rooms to relive every clutch moment.' },
         { id: 'practice', title: 'Practice', copy: 'Training blueprints with drills, feedback loops, and daily focus.' },
         { id: 'community', title: 'Community', copy: 'Social hubs that keep players, agents, scouts, and clubs in constant sync.' }
       ];
-      const tiles = currentRole === 'player' ? playerModules : experiences;
+      let tiles = experiences;
+      if (currentRole === 'player') tiles = playerModules;
+      if (currentRole === 'scout') tiles = scoutModules;
       tiles.forEach((exp) => {
         const tile = document.createElement('div');
         tile.className = 'tile';
         tile.innerHTML = `
           <div class="pill">${exp.title}</div>
-          <h3>${exp.title}</h3>
           <p>${exp.copy}</p>
         `;
         tileGridEl.appendChild(tile);
