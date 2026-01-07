@@ -1604,8 +1604,8 @@
         tile.className = 'tile';
         tile.innerHTML = `
           <div class="pill">${exp.title}</div>
-          <p style="text-align:center; margin:12px 0 6px;">${exp.copy}</p>
-          <p style="text-align:center; margin:0; color:#e2e4e8; font-size:13px;">Explore the ${exp.title.toLowerCase()} space with rich details.</p>
+          <p style="text-align:left; margin:12px 0 6px; justify-content:center;">${exp.copy}</p>
+          <p style="text-align:left; margin:0; color:#e2e4e8; font-size:13px; justify-content:center;">Explore the ${exp.title.toLowerCase()} space with rich details.</p>
         `;
         tileGridEl.appendChild(tile);
       });
