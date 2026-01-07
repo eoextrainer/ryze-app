@@ -46,6 +46,8 @@
         radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 32%),
         radial-gradient(circle at 60% 90%, color-mix(in srgb, var(--accent-3) 20%, transparent), transparent 35%),
         var(--bg-main);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease-in-out infinite;
       color: var(--text-strong);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       min-height: 100vh;
@@ -83,7 +85,7 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr auto auto;
       align-items: center;
       gap: var(--spacing-md);
     }
@@ -137,6 +139,12 @@
       gap: var(--spacing-xs);
       justify-content: flex-end;
       align-items: center;
+    }
+
+    .nav-separator {
+      color: var(--gray-400);
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
     .btn {
@@ -289,6 +297,12 @@
       color: var(--text-strong);
       font-weight: 600;
       letter-spacing: 0.04em;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero {
@@ -943,6 +957,7 @@
         <div class="brand-sub">From Home to Hope</div>
       </div>
       <nav class="main-nav" id="main-nav"></nav>
+      <div class="nav-separator">|</div>
       <div class="header-actions">
         <span class="label-chip" id="user-pill" style="display:none;"></span>
         <button class="btn primary" id="auth-btn">Login</button>
@@ -964,46 +979,18 @@
               <input id="password" name="password" type="password" placeholder="••••••" autocomplete="current-password" />
             </div>
             <button class="btn primary" type="submit">Sign in</button>
-            <div id="login-error" style="color:#ffbdbd; font-size:13px; display:none;">Invalid credentials. Use a demo account below.</div>
+            <div id="login-error" style="color:#ffbdbd; font-size:13px; display:none;">Invalid credentials.</div>
           </form>
-        </div>
-        <div class="login-card">
-          <h3>Test Credentials</h3>
-          <p style="margin:0; color: var(--text-muted);">Use these demo accounts to explore role-based views.</p>
-          <div class="credentials-list" id="credentials-list"></div>
-        </div>
-        <div class="login-card">
-          <h3>Theme Selector</h3>
-          <p style="margin:0; color: var(--text-muted);" id="theme-status">Auto themes rotate every 60s based on time of day.</p>
-          <div class="theme-selector">
-            <select class="theme-select" id="theme-select"></select>
-          </div>
         </div>
       </section>
 
       <section class="hero section" id="home">
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1>Ryze</h1>
-            <p class="lead">Adaptive UI built for players, agents, scouts, clubs, CEOs, and admins. Role-aware menus, hero video surfaces, live news, and dashboard overlays ready for handoff to Next.js.</p>
-        <div class="hero-actions">
-          <button class="btn primary" id="cta-dashboard">Open dashboard</button>
-          <button class="btn secondary" id="cta-store">Visit store</button>
-        </div>
-            <div class="role-switch" id="role-switch"></div>
-            <div class="stats">
-              <div class="stat-card">
-                <div class="stat-label">Active roles</div>
-                <div class="stat-value" id="stat-roles">6</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-label">Modules</div>
-                <div class="stat-value" id="stat-modules">12</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-label">News refresh</div>
-                <div class="stat-value">4s</div>
-              </div>
+            <h1>RYZE</h1>
+            <p class="lead">From Home to Hope: a journey lifting players from backyard hoops in the USA to the bright lights of the big league in France. Training, scouting, signing, and believing—the journey begins here.</p>
+            <div class="hero-actions">
+              <div class="role-switch" id="role-switch"></div>
             </div>
           </div>
           <div class="hero-panel">
@@ -1024,15 +1011,9 @@
           <div class="news-feed">
             <div class="news-track" id="news-track"></div>
           </div>
-          <div class="store-card">
-            <span class="eyebrow">Hybrid SPA layout</span>
-            <h3>Context providers</h3>
-            <p>Auth, Theme, Overlay, and UI state providers wrap the experience. Each tile below triggers overlays to simulate the Framer Motion layer.</p>
-            <div class="hero-labels" style="margin-top: 10px;">
-              <span class="label-chip">Context</span>
-              <span class="label-chip">Animation</span>
-              <span class="label-chip">Role aware</span>
-            </div>
+          <div class="store-card" id="news-video-card">
+            <h3>Latest highlight</h3>
+            <div class="hero-carousel" id="news-video"></div>
           </div>
         </div>
       </section>
@@ -1076,16 +1057,6 @@
         <div class="log-stack" id="log-stack"></div>
       </section>
 
-      <section class="section store" id="store">
-        <div class="store-hero">
-          <div>
-            <h3>RYZE Store</h3>
-            <p>Curated gear across hoops, street fashion, tech gadgets, and jewelry.</p>
-            <div class="prime-tag" style="margin-top:10px;">Featured</div>
-          </div>
-        </div>
-        <div class="store-grid" id="store-grid"></div>
-      </section>
     </main>
 
     <div class="overlay" id="overlay">
@@ -1102,7 +1073,17 @@
     </div>
 
     <footer class="footer">
-      RYZE
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <span>FAQ</span>
+        <span>Investor Relations</span>
+        <span>Corporate Information</span>
+        <span>Legal Matters</span>
+        <span>Terms of Use</span>
+        <span>Contact Us</span>
+        <span>Referral Program</span>
+        <span>Social Media</span>
+        <span>RYZE Store</span>
+      </div>
     </footer>
   </div>
 
@@ -1110,8 +1091,7 @@
     const defaultMenu = [
       { id: 'home', label: 'Home', section: 'home' },
       { id: 'news', label: 'News', section: 'news' },
-      { id: 'dashboard', label: 'Dashboard', section: 'dashboard' },
-      { id: 'store', label: 'Store', section: 'store' }
+      { id: 'dashboard', label: 'Dashboard', section: 'dashboard' }
     ];
 
     const roleConfig = {
@@ -1216,11 +1196,18 @@
       { id: 'wIolDNVfcTg', title: 'NBA Highlights 4' }
     ];
 
+    const newsVideos = [
+      { id: 'Wcr2euakxc4', title: 'News Highlight 1' },
+      { id: 'MOGEbEN21ck', title: 'News Highlight 2' },
+      { id: '7PjDYQC8DQ8', title: 'News Highlight 3' },
+      { id: 'ZJ0WFaUY33g', title: 'News Highlight 4' }
+    ];
+
     const newsItems = [
-      { title: 'Ryze rolls out hybrid SPA shell with role-aware nav', tag: 'Release', meta: 'Now shipping · Next.js ready' },
-      { title: 'Performance overlay pairs with Recharts for live analytics', tag: 'Performance', meta: 'Framer Motion transitions' },
-      { title: 'Agent & scout hero rails tuned for discovery carousels', tag: 'Discovery', meta: 'Hero video carousel wiring' },
-      { title: 'Admin logger & feature flags available in glass UI', tag: 'Admin', meta: 'Observability · Audit trail' }
+      { title: 'Rookie leaves home for Paris showcase', tag: 'Players', meta: 'Late-night training turns into a 28pt debut overseas.' },
+      { title: 'Scouts swarm Lyon invitational', tag: 'Scouts', meta: 'Three EU clubs signal interest after wingspan drills.' },
+      { title: 'Agent locks first French deal', tag: 'Agents', meta: 'Two-year contract with playoff incentives finalized.' },
+      { title: 'Club adds stateside sharpshooter', tag: 'Clubs', meta: 'New guard stretches the floor with 45% from deep.' }
     ];
 
     const changeLog = [];
@@ -1343,6 +1330,19 @@
       logger: ['Live tail area', 'Filters']
     };
 
+    function shadeColor(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const r = (num >> 16) & 0xff;
+      const g = (num >> 8) & 0xff;
+      const b = num & 0xff;
+      const t = percent < 0 ? 0 : 255;
+      const p = Math.abs(percent);
+      const R = Math.round((t - r) * p) + r;
+      const G = Math.round((t - g) * p) + g;
+      const B = Math.round((t - b) * p) + b;
+      return `#${(0x1000000 + (R << 16) + (G << 8) + B).toString(16).slice(1)}`;
+    }
+
     let currentRole = 'player';
     let currentUser = null;
     let isLoggedIn = false;
@@ -1353,6 +1353,7 @@
     let newsIndex = 0;
     let heroTimer;
     let newsTimer;
+    let gradientTimer = null;
 
     const navEl = document.getElementById('main-nav');
     const roleSwitchEl = document.getElementById('role-switch');
@@ -1360,6 +1361,7 @@
     const heroLabelsEl = document.getElementById('hero-labels');
     const newsTrackEl = document.getElementById('news-track');
     const newsDotsEl = document.getElementById('news-dots');
+    const newsVideoEl = document.getElementById('news-video');
     const tileGridEl = document.getElementById('tile-grid');
     const dashTagsEl = document.getElementById('dashboard-tags');
     const overlayEl = document.getElementById('overlay');
@@ -1372,12 +1374,9 @@
     const auditBodyEl = document.getElementById('audit-body');
     const logStackEl = document.getElementById('log-stack');
     const userPillEl = document.getElementById('user-pill');
-    const themeSelectEl = document.getElementById('theme-select');
-    const themeStatusEl = document.getElementById('theme-status');
+    const newsVideoEl = document.getElementById('news-video');
     const loginFormEl = document.getElementById('login-form');
     const loginErrorEl = document.getElementById('login-error');
-    const credentialsListEl = document.getElementById('credentials-list');
-    const storeGridEl = document.getElementById('store-grid');
     const authBtn = document.getElementById('auth-btn');
 
     function renderMenu() {
@@ -1433,7 +1432,7 @@
       const slideEl = document.createElement('div');
       slideEl.className = 'hero-slide';
       slideEl.style.padding = '0';
-      slideEl.style.minHeight = '260px';
+      slideEl.style.minHeight = '420px';
       slideEl.innerHTML = `
         <div style="position:relative; padding-top:56.25%; width:100%;">
           <iframe
@@ -1462,8 +1461,27 @@
         const chip = document.createElement('div');
         chip.className = 'label-chip';
         chip.textContent = label;
+        chip.style.cursor = 'pointer';
+        chip.addEventListener('click', () => {
+          setHeroByLabel(label);
+        });
         heroLabelsEl.appendChild(chip);
       });
+    }
+
+    function setHeroByLabel(label) {
+      const map = {
+        agents: 0,
+        scouts: 1,
+        clubs: 2,
+        players: 3
+      };
+      const key = label.toLowerCase();
+      const idx = map[key];
+      if (idx !== undefined) {
+        heroIndex = idx % heroVideos.length;
+        renderHero();
+      }
     }
 
     function renderNews() {
@@ -1488,9 +1506,26 @@
           newsIndex = index;
           renderNews();
           restartNewsTimer();
+          updateNewsVideo();
         });
         newsDotsEl.appendChild(dot);
       });
+      updateNewsVideo();
+    }
+
+    function updateNewsVideo() {
+      if (!newsVideoEl) return;
+      const video = newsVideos[newsIndex % newsVideos.length];
+      newsVideoEl.innerHTML = `
+        <div style="position:relative; padding-top:56.25%; width:100%;">
+          <iframe
+            src="https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}"
+            style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
+      `;
     }
 
     function renderDashboard() {
@@ -1548,10 +1583,7 @@
       if (persist && currentUser) {
         localStorage.setItem(`ryze-theme-${currentUser.username}`, theme.name);
       }
-      renderThemeOptions();
-      if (themeStatusEl) {
-        themeStatusEl.textContent = `Theme: ${theme.name} · auto-rotating every 60s (${getTimeSlot()} mood)`;
-      }
+      applyDynamicGradient();
     }
 
     function getThemeByName(name) {
@@ -1584,6 +1616,18 @@
       return pool[Math.floor(Math.random() * pool.length)];
     }
 
+    function applyDynamicGradient() {
+      const hour = new Date().getHours();
+      const factor = hour < 12 ? 0.2 : hour < 18 ? 0 : -0.2;
+      const bg = shadeColor(getComputedStyle(document.documentElement).getPropertyValue('--bg-main').trim() || '#141414', factor);
+      document.body.style.background = `
+        radial-gradient(circle at 12% 20%, color-mix(in srgb, var(--accent-1) 20%, transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 32%),
+        radial-gradient(circle at 60% 90%, color-mix(in srgb, var(--accent-3) 20%, transparent), transparent 35%),
+        ${bg}
+      `;
+    }
+
     function startThemeTimer() {
       if (themeTimer) clearInterval(themeTimer);
       themeTimer = setInterval(() => {
@@ -1596,18 +1640,6 @@
       }, 60000);
     }
 
-    function renderThemeOptions() {
-      if (!themeSelectEl) return;
-      themeSelectEl.innerHTML = '';
-      themes.forEach((theme) => {
-        const opt = document.createElement('option');
-        opt.value = theme.name;
-        opt.textContent = theme.name;
-        if (theme.name === activeThemeName) opt.selected = true;
-        themeSelectEl.appendChild(opt);
-      });
-    }
-
     function loadUserTheme() {
       if (!currentUser) return;
       const stored = localStorage.getItem(`ryze-theme-${currentUser.username}`);
@@ -1615,51 +1647,10 @@
       applyTheme(theme || getDefaultThemeForTime(), { persist: true });
     }
 
-    function renderStore() {
-      if (!storeGridEl) return;
-      storeGridEl.innerHTML = '';
-      storeCategories.forEach((category) => {
-        const card = document.createElement('div');
-        card.className = 'store-card';
-        card.innerHTML = `
-          <div class="category-header">
-            <h3>${category.name}</h3>
-            <span class="prime-tag">Featured</span>
-          </div>
-        `;
-        const productsEl = document.createElement('div');
-        productsEl.className = 'category-products';
-        category.products.forEach((product) => {
-          const prodEl = document.createElement('div');
-          prodEl.className = 'product-card';
-          prodEl.innerHTML = `
-            <div class="product-title">${product.title}</div>
-            <div class="product-meta">${product.meta}</div>
-            ${product.prime ? '<div class="prime-tag">Prime</div>' : '<div class="product-meta">Ships standard</div>'}
-          `;
-          productsEl.appendChild(prodEl);
-        });
-        card.appendChild(productsEl);
-        storeGridEl.appendChild(card);
-      });
-    }
-
     function setFeaturedFooter() {
-      const footer = document.querySelector('.footer');
-      if (!footer) return;
       const existing = document.getElementById('footer-featured');
       if (existing) existing.remove();
-      if (!isLoggedIn) return;
-      const featured = document.createElement('div');
-      featured.id = 'footer-featured';
-      featured.style.marginTop = '20px';
-      featured.innerHTML = ``;
-      const rail = document.createElement('div');
-      rail.style.display = 'grid';
-      rail.style.gridTemplateColumns = 'repeat(auto-fit, minmax(220px, 1fr))';
-      rail.style.gap = '12px';
-      featured.appendChild(rail);
-      footer.appendChild(featured);
+      // intentionally no featured products shown
     }
 
     async function fetchCommits() {
@@ -1751,17 +1742,6 @@
       }
     }
 
-    function renderCredentials() {
-      if (!credentialsListEl) return;
-      credentialsListEl.innerHTML = '';
-      demoUsers.forEach((user) => {
-        const row = document.createElement('div');
-        row.className = 'cred-row';
-        row.innerHTML = `<strong>${user.role}</strong><span>${user.username} / ${user.password}</span>`;
-        credentialsListEl.appendChild(row);
-      });
-    }
-
     function handleLogin(e) {
       e?.preventDefault();
       if (!loginFormEl) return;
@@ -1832,6 +1812,7 @@
     function cycleNews() {
       newsIndex = (newsIndex + 1) % newsItems.length;
       renderNews();
+      updateNewsVideo();
     }
 
     function restartHeroTimer() {
@@ -1846,7 +1827,6 @@
 
     function wireCTAs() {
       const dashboardBtn = document.getElementById('cta-dashboard');
-      const storeBtn = document.getElementById('cta-store');
       dashboardBtn?.addEventListener('click', () => {
         if (!isLoggedIn) {
           document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
@@ -1854,7 +1834,6 @@
         }
         document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
       });
-      storeBtn?.addEventListener('click', () => document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' }));
     }
 
     function init() {
@@ -1865,10 +1844,10 @@
       toggleDashboardVisibility();
       renderDashboard();
       toggleAdminPanel();
-      renderCredentials();
-      renderThemeOptions();
       applyTheme(getDefaultThemeForTime(), { persist: false });
       startThemeTimer();
+      applyDynamicGradient();
+      gradientTimer = setInterval(applyDynamicGradient, 60000);
       logEvent('boot', 'ui-ready');
       wireCTAs();
       updateUserPill();
@@ -1887,23 +1866,13 @@
         }
         document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
       });
-      themeSelectEl?.addEventListener('change', (e) => {
-        const val = e.target.value;
-        const theme = getThemeByName(val);
-        if (theme) {
-          applyTheme(theme, { persist: true });
-          logEvent('theme-select', theme.name);
-        }
-      });
       loginFormEl?.addEventListener('submit', handleLogin);
-      document.getElementById('store-hero-btn')?.addEventListener('click', () => document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' }));
       restartHeroTimer();
       restartNewsTimer();
       document.getElementById('overlay-close').addEventListener('click', closeOverlay);
       overlayEl.addEventListener('click', (e) => {
         if (e.target === overlayEl) closeOverlay();
       });
-      renderStore();
       setFeaturedFooter();
       fetchCommits();
     }
