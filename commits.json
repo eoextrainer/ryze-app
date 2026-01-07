@@ -1,5 +1,17 @@
 [
   {
+    "hash": "dd308c8f0bd74518190b2ceaa4868f7fc7bb44db",
+    "short": "dd308c8",
+    "message": "chore: increase spacing in dashboard tiles",
+    "date": "2026-01-07T16:28:10+01:00"
+  },
+  {
+    "hash": "791be0d599e547476eca60952f868853708cbba7",
+    "short": "791be0d",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:26:08+01:00"
+  },
+  {
     "hash": "485b693d551d50c9c9a4a3a8d7c1372e0bf45915",
     "short": "485b693",
     "message": "chore: left-align tile copy",
@@ -46,17 +58,5 @@
     "short": "e824791",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:07:06+01:00"
-  },
-  {
-    "hash": "d9e6eb463c179ef289081f0fbccb9f45f6cf8253",
-    "short": "d9e6eb4",
-    "message": "feat: agent and club specific dashboards",
-    "date": "2026-01-07T16:06:49+01:00"
-  },
-  {
-    "hash": "29ec42687fdddfbde331a4ee905f7c2160d7d649",
-    "short": "29ec426",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:04:36+01:00"
   }
 ]
