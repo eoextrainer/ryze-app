@@ -1,5 +1,17 @@
 [
   {
+    "hash": "fc194027f14a2c524ff7d5ccde10720b056b1440",
+    "short": "fc19402",
+    "message": "style: adjust experience card sizing for fuller rows",
+    "date": "2026-01-07T22:38:47+01:00"
+  },
+  {
+    "hash": "d5d3f38855f191c0771c42b266964247a2caa9be",
+    "short": "d5d3f38",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:35:39+01:00"
+  },
+  {
     "hash": "80d170c5756c26e63e997779675e7c5f6cebd9d5",
     "short": "80d170c",
     "message": "fix: ensure 4-column experience grid and stable video embeds",
@@ -46,17 +58,5 @@
     "short": "02a1b5b",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:25:20+01:00"
-  },
-  {
-    "hash": "6c6e45da0ee36668407d3c8fd93d0e769e5619ec",
-    "short": "6c6e45d",
-    "message": "style: simplify experiences grid title and layout",
-    "date": "2026-01-07T22:25:06+01:00"
-  },
-  {
-    "hash": "4c1ce204523659927e1706b007c113545244c582",
-    "short": "4c1ce20",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:22:24+01:00"
   }
 ]
