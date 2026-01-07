@@ -1,5 +1,17 @@
 [
   {
+    "hash": "4479ede3eec08472c98a91b5e073ab51cae386ce",
+    "short": "4479ede",
+    "message": "chore: hide role chips and linkify footer",
+    "date": "2026-01-07T15:45:45+01:00"
+  },
+  {
+    "hash": "37cb1b82b3c3c1b32b5d068d6d50796131aa507c",
+    "short": "37cb1b8",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:42:18+01:00"
+  },
+  {
     "hash": "e4741d92d7eda040efac86b99b11e2308ef3ac55",
     "short": "e4741d9",
     "message": "feat: sync news carousels and refine layout",
@@ -46,17 +58,5 @@
     "short": "3082e44",
     "message": "chore: update commit log",
     "date": "2026-01-07T08:03:09+01:00"
-  },
-  {
-    "hash": "387f200ac0dcfb6476781255e9913435808afde3",
-    "short": "387f200",
-    "message": "chore: remove hybrid frontend wording",
-    "date": "2026-01-07T08:02:59+01:00"
-  },
-  {
-    "hash": "4d1e4d35f9856b59d5126e83c7cbbce7a7b71463",
-    "short": "4d1e4d3",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T08:02:18+01:00"
   }
 ]
