@@ -1844,12 +1844,16 @@
       overlayTitleEl.textContent = exp.title;
       overlaySubtitleEl.textContent = `Dashboard · ${exp.id || exp.title}`;
       overlayBodyEl.innerHTML = `
-        <p style="margin:0; color:#e2e4e8;">${exp.copy}</p>
-        <p style="margin:6px 0 12px; color:#cfd3da;">Explore placeholder modules below.</p>
-        <div id="overlay-tiles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:12px;"></div>
+        <div class="tile" style="min-height:180px;">
+          <div class="pill">${exp.title}</div>
+          <p style="text-align:left; margin:16px 0 8px; line-height:1.6;">${exp.copy}</p>
+          <p style="text-align:left; margin:0; color:#e2e4e8; font-size:13px; line-height:1.5;">This overlay will host rich widgets for ${exp.title.toLowerCase()}.</p>
+        </div>
+        <p style="margin:10px 0 12px; color:#cfd3da;">Below are placeholder tiles you can replace with live modules.</p>
+        <div id="overlay-tiles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;"></div>
       `;
       const grid = overlayBodyEl.querySelector('#overlay-tiles');
-      const placeholders = Array.from({ length: 6 }, (_, i) => `Placeholder ${i + 1}`);
+      const placeholders = Array.from({ length: 8 }, (_, i) => `Placeholder ${i + 1}`);
       placeholders.forEach((label) => {
         const t = document.createElement('div');
         t.className = 'tile';
