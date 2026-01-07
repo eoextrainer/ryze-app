@@ -796,6 +796,58 @@
       transition: opacity 0.25s ease;
     }
 
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .experience-card {
+      position: relative;
+      padding: var(--spacing-md);
+      border-radius: 16px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      gap: 12px;
+      min-height: 180px;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .experience-card .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--ryze-gold) 22%, #ffffff 6%);
+      color: #0c0c0c;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .experience-card h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'Oswald', 'Poppins', sans-serif;
+    }
+
+    .experience-card p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     .tile:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
@@ -962,7 +1014,7 @@
     }
 
     .overlay-panel {
-      width: min(640px, 100%);
+      width: min(840px, 96%);
       background: #0b0d13;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 18px;
@@ -1812,109 +1864,118 @@
       `;
     }
 
+    function getExperienceModules(role) {
+      const player = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Guided clips to onboard fast.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Tune notifications and accessibility.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Keep your profile and docs updated.' },
+        { id: 'resume', title: 'RESUME', copy: 'Upload highlights and history.' },
+        { id: 'medical', title: 'MEDICAL', copy: 'Track notes and clearances.' },
+        { id: 'training', title: 'TRAINING', copy: 'Daily plans and drills.' },
+        { id: 'practice', title: 'PRACTICE', copy: 'Sessions, attendance, film.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Schedules and scouting.' },
+        { id: 'performance', title: 'PERFORMANCE', copy: 'KPIs, charts, check-ins.' },
+        { id: 'social', title: 'SOCIAL', copy: 'Connect with teammates and fans.' },
+        { id: 'store', title: 'STORE', copy: 'Gear up with essentials.' }
+      ];
+      const scout = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Spot talent and build reports.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Notifications and preferences.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Scout profile and credentials.' },
+        { id: 'resume', title: 'RESUME', copy: 'Scouting history and milestones.' },
+        { id: 'players', title: 'PLAYERS', copy: 'Search and track prospects.' },
+        { id: 'clubs', title: 'CLUBS', copy: 'Monitor needs and fits.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Assignments and recaps.' },
+        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Dashboards for targets.' },
+        { id: 'store', title: 'STORE', copy: 'Gear and scouting essentials.' }
+      ];
+      const agent = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Manage signings and outreach.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Adjust notifications.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Agent profile and records.' },
+        { id: 'resume', title: 'RESUME', copy: 'Deals and partnerships.' },
+        { id: 'players', title: 'PLAYERS', copy: 'Track player portfolios.' },
+        { id: 'clubs', title: 'CLUBS', copy: 'Openings and needs.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Schedules and windows.' },
+        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Client performance dashboards.' },
+        { id: 'store', title: 'STORE', copy: 'Agency workflow essentials.' }
+      ];
+      const club = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Club onboarding and playbooks.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Preferences, alerts, access.' },
+        { id: 'club-info', title: 'CLUB INFO', copy: 'Details and contacts.' },
+        { id: 'club-history', title: 'CLUB HISTORY', copy: 'Records and milestones.' },
+        { id: 'current-team', title: 'CURRENT TEAM', copy: 'Roster and depth charts.' },
+        { id: 'ryze-player-selector', title: 'RYZE PLAYER SELECTOR', copy: 'Pick and shortlist talent.' },
+        { id: 'league-insights', title: 'LEAGUE INSIGHTS', copy: 'Standings and trends.' },
+        { id: 'game-tactic-generator', title: 'GAME TACTIC GENERATOR', copy: 'Tactics for fixtures.' },
+        { id: 'last-game-highlights', title: 'LAST GAME HIGHLIGHTS', copy: 'Review last match film.' },
+        { id: 'season-highlights', title: 'SEASON HIGHLIGHTS', copy: 'Best season moments.' },
+        { id: 'store', title: 'STORE', copy: 'Club gear and resources.' }
+      ];
+      const ceo = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Orientation for the suite.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Executive preferences.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'CEO profile and credentials.' },
+        { id: 'ryze-info', title: 'RYZE INFO', copy: 'Platform health snapshot.' },
+        { id: 'user-switcher', title: 'USER SWITCHER', copy: 'Move between roles.' },
+        { id: 'ryze-crm', title: 'RYZE CRM', copy: 'Pipelines and renewals.' },
+        { id: 'ryze-erp', title: 'RYZE ERP', copy: 'Operations view.' },
+        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Media creation oversight.' },
+        { id: 'store', title: 'STORE', copy: 'Resources and licensing.' }
+      ];
+      const admin = [
+        { id: 'ryze-logger', title: 'RYZE LOGGER', copy: 'Centralized logging.' },
+        { id: 'feature-manager', title: 'FEATURE MANAGER', copy: 'Manage rollouts.' },
+        { id: 'app-performance', title: 'APP PERFORMANCE', copy: 'Monitor KPIs.' },
+        { id: 'user-switcher', title: 'USER SWITCHER', copy: 'Switch roles for checks.' },
+        { id: 'ryze-app', title: 'RYZE APP', copy: 'Core controls.' },
+        { id: 'ryze-crm', title: 'RYZE CRM', copy: 'CRM pipelines.' },
+        { id: 'ryze-erp', title: 'RYZE ERP', copy: 'ERP operations.' },
+        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Media management.' }
+      ];
+      const base = [
+        { id: 'experience', title: 'EXPERIENCES', copy: 'Curated journeys that blend training, scouting, and signing.' },
+        { id: 'games', title: 'GAMES', copy: 'Cinematic highlights and film rooms.' },
+        { id: 'practice', title: 'PRACTICE', copy: 'Blueprints with drills and feedback.' },
+        { id: 'community', title: 'COMMUNITY', copy: 'Hubs that keep everyone in sync.' }
+      ];
+      const map = { player, scout, agent, club, ceo, admin };
+      return map[role] || base;
+    }
+
     function renderDashboard() {
       tileGridEl.innerHTML = '';
       if (!isLoggedIn) {
         tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to explore experiences.</p>';
         return;
       }
-      const playerModules = [
-        { id: 'tutorial', title: 'TUTORIAL', copy: 'Start with guided clips and onboarding steps.' },
-        { id: 'settings', title: 'SETTINGS', copy: 'Tune notifications, themes, and accessibility.' },
-        { id: 'personal', title: 'PERSONAL INFO', copy: 'Keep your player profile and docs up to date.' },
-        { id: 'resume', title: 'RESUME', copy: 'Upload highlights and career history.' },
-        { id: 'medical', title: 'MEDICAL', copy: 'Track medical notes and clearances.' },
-        { id: 'training', title: 'TRAINING', copy: 'Daily plans, drills, and feedback loops.' },
-        { id: 'practice', title: 'PRACTICE', copy: 'Sessions, attendance, and film reviews.' },
-        { id: 'matches', title: 'MATCHES', copy: 'Game schedules, scouting, and highlight recaps.' },
-        { id: 'performance', title: 'PERFORMANCE', copy: 'KPIs, charts, and progress check-ins.' },
-        { id: 'social', title: 'SOCIAL', copy: 'Stay connected with teammates and fans.' },
-        { id: 'store', title: 'STORE', copy: 'Gear up with merch and essentials.' }
-      ];
-      const scoutModules = [
-        { id: 'tutorial', title: 'TUTORIAL', copy: 'Guides for spotting talent and building reports.' },
-        { id: 'settings', title: 'SETTINGS', copy: 'Adjust notifications and preferences.' },
-        { id: 'personal', title: 'PERSONAL INFO', copy: 'Maintain your scout profile and credentials.' },
-        { id: 'resume', title: 'RESUME', copy: 'Keep your scouting history and milestones updated.' },
-        { id: 'players', title: 'PLAYERS', copy: 'Search and track player prospects.' },
-        { id: 'clubs', title: 'CLUBS', copy: 'Monitor club needs and fits.' },
-        { id: 'matches', title: 'MATCHES', copy: 'Game schedules, assignments, and recaps.' },
-        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Performance dashboards for targets.' },
-        { id: 'store', title: 'STORE', copy: 'Access gear and scouting essentials.' }
-      ];
-      const agentModules = [
-        { id: 'tutorial', title: 'TUTORIAL', copy: 'Guides for managing signings and outreach.' },
-        { id: 'settings', title: 'SETTINGS', copy: 'Adjust notifications and preferences.' },
-        { id: 'personal', title: 'PERSONAL INFO', copy: 'Manage your agent profile and records.' },
-        { id: 'resume', title: 'RESUME', copy: 'Showcase your deals and partnerships.' },
-        { id: 'players', title: 'PLAYERS', copy: 'Track and represent player portfolios.' },
-        { id: 'clubs', title: 'CLUBS', copy: 'Monitor club needs and openings.' },
-        { id: 'matches', title: 'MATCHES', copy: 'Game schedules and negotiation windows.' },
-        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Performance dashboards for your clients.' },
-        { id: 'store', title: 'STORE', copy: 'Essentials to run your agency workflow.' }
-      ];
-      const clubModules = [
-        { id: 'tutorial', title: 'TUTORIAL', copy: 'Start with club onboarding and playbooks.' },
-        { id: 'settings', title: 'SETTINGS', copy: 'Club preferences, alerts, and access.' },
-        { id: 'club-info', title: 'CLUB INFO', copy: 'Snapshot of club details and contacts.' },
-        { id: 'club-history', title: 'CLUB HISTORY', copy: 'Legacy wins, records, and milestones.' },
-        { id: 'current-team', title: 'CURRENT TEAM', copy: 'Roster overview and depth charts.' },
-        { id: 'ryze-player-selector', title: 'RYZE PLAYER SELECTOR', copy: 'Pick and shortlist talent with filters.' },
-        { id: 'league-insights', title: 'LEAGUE INSIGHTS', copy: 'Standings, trends, and opponent reads.' },
-        { id: 'game-tactic-generator', title: 'GAME TACTIC GENERATOR', copy: 'Build tactics for upcoming fixtures.' },
-        { id: 'last-game-highlights', title: 'LAST GAME HIGHLIGHTS', copy: 'Review previous match film quickly.' },
-        { id: 'season-highlights', title: 'SEASON HIGHLIGHTS', copy: 'Best moments across the season.' },
-        { id: 'store', title: 'STORE', copy: 'Club gear and resources.' }
-      ];
-      const experiences = [
-        { id: 'experience', title: 'Experiences', copy: 'Curated journeys that connect training, scouting, and signing into one seamless path.' },
-        { id: 'games', title: 'Games', copy: 'Cinematic highlights and film rooms to relive every clutch moment.' },
-        { id: 'practice', title: 'Practice', copy: 'Training blueprints with drills, feedback loops, and daily focus.' },
-        { id: 'community', title: 'Community', copy: 'Social hubs that keep players, agents, scouts, and clubs in constant sync.' }
-      ];
-      const ceoModules = [
-        { id: 'tutorial', title: 'TUTORIAL', copy: 'Orientation for overseeing the entire Ryze suite.' },
-        { id: 'settings', title: 'SETTINGS', copy: 'Executive preferences, alerts, and access.' },
-        { id: 'personal', title: 'PERSONAL INFO', copy: 'Maintain CEO profile and credentials.' },
-        { id: 'ryze-info', title: 'RYZE INFO', copy: 'Snapshot of platform health and stats.' },
-        { id: 'user-switcher', title: 'USER SWITCHER', copy: 'Hop between user roles for oversight.' },
-        { id: 'ryze-crm', title: 'RYZE CRM', copy: 'Oversee deal pipelines and renewals.' },
-        { id: 'ryze-erp', title: 'RYZE ERP', copy: 'Operations view across the organization.' },
-        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Media creation and content oversight.' },
-        { id: 'store', title: 'STORE', copy: 'Access platform resources and licensing.' }
-      ];
-      const adminModules = [
-        { id: 'ryze-logger', title: 'RYZE LOGGER', copy: 'Centralized logging and tracing.' },
-        { id: 'feature-manager', title: 'FEATURE MANAGER', copy: 'Manage flags and feature rollouts.' },
-        { id: 'app-performance', title: 'APP PERFORMANCE', copy: 'Monitor KPIs and runtime health.' },
-        { id: 'user-switcher', title: 'USER SWITCHER', copy: 'Switch roles for verification.' },
-        { id: 'ryze-app', title: 'RYZE APP', copy: 'Core application controls.' },
-        { id: 'ryze-crm', title: 'RYZE CRM', copy: 'CRM controls and pipelines.' },
-        { id: 'ryze-erp', title: 'RYZE ERP', copy: 'ERP modules for operations.' },
-        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Studio for media management.' }
-      ];
-      let tiles = experiences;
-      if (currentRole === 'player') tiles = playerModules;
-      if (currentRole === 'scout') tiles = scoutModules;
-      if (currentRole === 'agent') tiles = agentModules;
-      if (currentRole === 'club') tiles = clubModules;
-      if (currentRole === 'ceo') tiles = ceoModules;
-      if (currentRole === 'admin') tiles = adminModules;
+      const tiles = getExperienceModules(currentRole);
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = `
+        <div class="section-title" style="margin-bottom: var(--spacing-sm);">
+          <span class="eyebrow">Experiences</span>
+          <h2>Experiences Dashboard</h2>
+        </div>
+        <div class="experience-grid" id="experience-grid"></div>
+      `;
+      tileGridEl.appendChild(wrapper);
+      const grid = wrapper.querySelector('#experience-grid');
       tiles.forEach((exp) => {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.innerHTML = `
+        const card = document.createElement('div');
+        card.className = 'experience-card';
+        card.innerHTML = `
           <div class="pill">${exp.title}</div>
-          <p style="text-align:left; margin:16px 0 12px; line-height:1.6;">${exp.copy}</p>
+          <h3>${exp.title}</h3>
+          <p>${exp.copy}</p>
         `;
         const cta = document.createElement('button');
         cta.className = 'btn primary';
-        cta.textContent = 'Start Here';
         cta.type = 'button';
-        cta.style.marginTop = '6px';
+        cta.textContent = 'Start Here';
         cta.addEventListener('click', () => openExperienceOverlay(exp));
-        tile.appendChild(cta);
-        tileGridEl.appendChild(tile);
+        card.appendChild(cta);
+        grid.appendChild(card);
       });
     }
 
@@ -2171,6 +2232,7 @@
     }
 
     function getOverlayRefs() {
+      ensureOverlayExists();
       overlayEl = overlayEl || document.getElementById('overlay');
       overlayTitleEl = overlayTitleEl || document.getElementById('overlay-title');
       overlaySubtitleEl = overlaySubtitleEl || document.getElementById('overlay-subtitle');
@@ -2188,7 +2250,39 @@
       return true;
     }
 
+    function ensureOverlayExists() {
+      if (document.getElementById('overlay')) return;
+      const shell = document.querySelector('.app-shell') || document.body;
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = `
+        <div class="overlay" id="overlay">
+          <div class="overlay-panel">
+            <button class="overlay-close" id="overlay-close">×</button>
+            <div class="subtitle" id="overlay-subtitle"></div>
+            <h3 id="overlay-title"></h3>
+            <div class="overlay-body" id="overlay-body"></div>
+            <div class="hero-actions" style="margin-top: var(--spacing-sm);">
+              <button class="btn primary" id="overlay-primary">Open module</button>
+              <button class="btn ghost" id="overlay-secondary">Schedule</button>
+            </div>
+          </div>
+        </div>
+      `;
+      shell.appendChild(wrapper.firstElementChild);
+      overlayEl = document.getElementById('overlay');
+      overlayTitleEl = document.getElementById('overlay-title');
+      overlaySubtitleEl = document.getElementById('overlay-subtitle');
+      overlayBodyEl = document.getElementById('overlay-body');
+      overlayPrimaryEl = document.getElementById('overlay-primary');
+      overlaySecondaryEl = document.getElementById('overlay-secondary');
+      document.getElementById('overlay-close')?.addEventListener('click', closeOverlay);
+      overlayEl?.addEventListener('click', (e) => {
+        if (e.target === overlayEl) closeOverlay();
+      });
+    }
+
     function openExperienceOverlay(exp) {
+      ensureOverlayExists();
       const { overlayEl: ov, overlayTitleEl: ot, overlaySubtitleEl: os, overlayBodyEl: ob, overlayPrimaryEl: op, overlaySecondaryEl: os2 } = getOverlayRefs();
       if (!ov || !ob || !ot || !os) {
         console.warn('Overlay missing, rebuilding.');
