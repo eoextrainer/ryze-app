@@ -1,5 +1,17 @@
 [
   {
+    "hash": "0f1f46094c0e6266fe9fc768f0edf73c93c3071e",
+    "short": "0f1f460",
+    "message": "feat: reinforce experience overlays and add dunes palette",
+    "date": "2026-01-07T22:14:06+01:00"
+  },
+  {
+    "hash": "9eaf5ae11c2ed43415fe37bc614b5b1d366ebd6f",
+    "short": "9eaf5ae",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:07:07+01:00"
+  },
+  {
     "hash": "aeabf1f0b04cbe21a02c5e17933ed8a714d4ade0",
     "short": "aeabf1f",
     "message": "feat: enrich experience overlays on CTA click",
@@ -46,17 +58,5 @@
     "short": "b706f6f",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T21:51:57+01:00"
-  },
-  {
-    "hash": "d8eaa6387ebf4de2dd623a32930faa85d61889f2",
-    "short": "d8eaa63",
-    "message": "chore: expand store carousels to twelve items",
-    "date": "2026-01-07T21:51:51+01:00"
-  },
-  {
-    "hash": "da615fab25c00e4850be53a2e7147c7151d45a4e",
-    "short": "da615fa",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T21:48:19+01:00"
   }
 ]
