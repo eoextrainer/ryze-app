@@ -1,5 +1,17 @@
 [
   {
+    "hash": "387f200ac0dcfb6476781255e9913435808afde3",
+    "short": "387f200",
+    "message": "chore: remove hybrid frontend wording",
+    "date": "2026-01-07T08:02:59+01:00"
+  },
+  {
+    "hash": "4d1e4d35f9856b59d5126e83c7cbbce7a7b71463",
+    "short": "4d1e4d3",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T08:02:18+01:00"
+  },
+  {
     "hash": "a25003ba9306a938e48b251339fceafcb78c3acb",
     "short": "a25003b",
     "message": "chore: simplify copy and branding",
