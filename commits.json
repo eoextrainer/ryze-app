@@ -1,5 +1,17 @@
 [
   {
+    "hash": "0a98ae6fe47a18b140ef03e7a103c5f9c57ff719",
+    "short": "0a98ae6",
+    "message": "feat: player dashboard shows curated modules",
+    "date": "2026-01-07T15:53:59+01:00"
+  },
+  {
+    "hash": "7c8d1ab5542c660a30b3340d17e2199115088d62",
+    "short": "7c8d1ab",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:46:04+01:00"
+  },
+  {
     "hash": "4479ede3eec08472c98a91b5e073ab51cae386ce",
     "short": "4479ede",
     "message": "chore: hide role chips and linkify footer",
@@ -46,17 +58,5 @@
     "short": "52111b2",
     "message": "chore: update commit log",
     "date": "2026-01-07T08:05:55+01:00"
-  },
-  {
-    "hash": "4bae33d23aee17ef5fa863e413fca154521e3eec",
-    "short": "4bae33d",
-    "message": "chore: remove featured footer and store CTAs",
-    "date": "2026-01-07T08:05:45+01:00"
-  },
-  {
-    "hash": "3082e44c675801abb63fc8b3da3a995d074fdd8e",
-    "short": "3082e44",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T08:03:09+01:00"
   }
 ]
