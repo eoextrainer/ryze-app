@@ -660,6 +660,31 @@
       border-radius: 14px;
     }
 
+    .carousel-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .arrow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
     .product-card {
       background: #0f1118;
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1748,8 +1773,7 @@
         { id: 'ryze-app', title: 'RYZE APP', copy: 'Core application controls.' },
         { id: 'ryze-crm', title: 'RYZE CRM', copy: 'CRM controls and pipelines.' },
         { id: 'ryze-erp', title: 'RYZE ERP', copy: 'ERP modules for operations.' },
-        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Studio for media management.' },
-        { id: 'store', title: 'STORE', copy: 'Platform resources and add-ons.' }
+        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Studio for media management.' }
       ];
       let tiles = experiences;
       if (currentRole === 'player') tiles = playerModules;
@@ -1930,7 +1954,8 @@
         dashboardSection.style.display = isLoggedIn ? 'block' : 'none';
       }
       if (storeSectionEl) {
-        storeSectionEl.style.display = isLoggedIn ? 'block' : 'none';
+        const showStore = isLoggedIn && currentRole !== 'admin';
+        storeSectionEl.style.display = showStore ? 'block' : 'none';
       }
       toggleAdminPanel();
     }
@@ -2078,6 +2103,10 @@
 
     function renderStoreSection() {
       if (!storeRailEl || !storeSectionEl) return;
+      if (currentRole === 'admin') {
+        storeSectionEl.style.display = 'none';
+        return;
+      }
       storeRailEl.innerHTML = '';
       storeCatalog.forEach((category) => {
         const cat = document.createElement('div');
@@ -2087,6 +2116,16 @@
             <div class="category-title">${category.name}</div>
           </div>
         `;
+        const controls = document.createElement('div');
+        controls.className = 'carousel-controls';
+        const prev = document.createElement('button');
+        prev.className = 'arrow-btn';
+        prev.textContent = '‹';
+        const next = document.createElement('button');
+        next.className = 'arrow-btn';
+        next.textContent = '›';
+        controls.appendChild(prev);
+        controls.appendChild(next);
         const carousel = document.createElement('div');
         carousel.className = 'product-carousel';
         category.products.forEach((product, idx) => {
@@ -2101,6 +2140,13 @@
           `;
           carousel.appendChild(card);
         });
+        prev.addEventListener('click', () => {
+          carousel.scrollBy({ left: -260, behavior: 'smooth' });
+        });
+        next.addEventListener('click', () => {
+          carousel.scrollBy({ left: 260, behavior: 'smooth' });
+        });
+        cat.appendChild(controls);
         cat.appendChild(carousel);
         storeRailEl.appendChild(cat);
       });
