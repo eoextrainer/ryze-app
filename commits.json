@@ -1,5 +1,17 @@
 [
   {
+    "hash": "d9e6eb463c179ef289081f0fbccb9f45f6cf8253",
+    "short": "d9e6eb4",
+    "message": "feat: agent and club specific dashboards",
+    "date": "2026-01-07T16:06:49+01:00"
+  },
+  {
+    "hash": "29ec42687fdddfbde331a4ee905f7c2160d7d649",
+    "short": "29ec426",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:04:36+01:00"
+  },
+  {
     "hash": "46908baf54ee079636526c85c470b94bbaba5ecf",
     "short": "46908ba",
     "message": "chore: update dashboard heading and tile copy",
@@ -46,17 +58,5 @@
     "short": "7c8d1ab",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:46:04+01:00"
-  },
-  {
-    "hash": "4479ede3eec08472c98a91b5e073ab51cae386ce",
-    "short": "4479ede",
-    "message": "chore: hide role chips and linkify footer",
-    "date": "2026-01-07T15:45:45+01:00"
-  },
-  {
-    "hash": "37cb1b82b3c3c1b32b5d068d6d50796131aa507c",
-    "short": "37cb1b8",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:42:18+01:00"
   }
 ]
