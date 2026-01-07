@@ -1,5 +1,17 @@
 [
   {
+    "hash": "4bae33d23aee17ef5fa863e413fca154521e3eec",
+    "short": "4bae33d",
+    "message": "chore: remove featured footer and store CTAs",
+    "date": "2026-01-07T08:05:45+01:00"
+  },
+  {
+    "hash": "3082e44c675801abb63fc8b3da3a995d074fdd8e",
+    "short": "3082e44",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T08:03:09+01:00"
+  },
+  {
     "hash": "387f200ac0dcfb6476781255e9913435808afde3",
     "short": "387f200",
     "message": "chore: remove hybrid frontend wording",
@@ -46,11 +58,5 @@
     "short": "d6324bf",
     "message": "chore: snapshot commit log",
     "date": "2026-01-07T07:46:12+01:00"
-  },
-  {
-    "hash": "b4421d1b8e1ebdf3421e28ea5d05af640278ce18",
-    "short": "b4421d1",
-    "message": "feat: dynamic theming, hero videos, amazon store",
-    "date": "2026-01-07T07:45:44+01:00"
   }
 ]
