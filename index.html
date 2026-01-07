@@ -1516,13 +1516,27 @@
         tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to explore experiences.</p>';
         return;
       }
+      const playerModules = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Start with guided clips and onboarding steps.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Tune notifications, themes, and accessibility.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Keep your player profile and docs up to date.' },
+        { id: 'resume', title: 'RESUME', copy: 'Upload highlights and career history.' },
+        { id: 'medical', title: 'MEDICAL', copy: 'Track medical notes and clearances.' },
+        { id: 'training', title: 'TRAINING', copy: 'Daily plans, drills, and feedback loops.' },
+        { id: 'practice', title: 'PRACTICE', copy: 'Sessions, attendance, and film reviews.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Game schedules, scouting, and highlight recaps.' },
+        { id: 'performance', title: 'PERFORMANCE', copy: 'KPIs, charts, and progress check-ins.' },
+        { id: 'social', title: 'SOCIAL', copy: 'Stay connected with teammates and fans.' },
+        { id: 'store', title: 'STORE', copy: 'Gear up with merch and essentials.' }
+      ];
       const experiences = [
         { id: 'experience', title: 'Experiences', copy: 'Curated journeys that connect training, scouting, and signing into one seamless path.' },
         { id: 'games', title: 'Games', copy: 'Cinematic highlights and film rooms to relive every clutch moment.' },
         { id: 'practice', title: 'Practice', copy: 'Training blueprints with drills, feedback loops, and daily focus.' },
         { id: 'community', title: 'Community', copy: 'Social hubs that keep players, agents, scouts, and clubs in constant sync.' }
       ];
-      experiences.forEach((exp) => {
+      const tiles = currentRole === 'player' ? playerModules : experiences;
+      tiles.forEach((exp) => {
         const tile = document.createElement('div');
         tile.className = 'tile';
         tile.innerHTML = `
