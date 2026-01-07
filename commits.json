@@ -1,5 +1,17 @@
 [
   {
+    "hash": "e7929ef756b5cdd080a05a683521c6d3ddc879c7",
+    "short": "e7929ef",
+    "message": "chore: add breathing room between tile headings and copy",
+    "date": "2026-01-07T16:24:26+01:00"
+  },
+  {
+    "hash": "8ede5e3e27380dfc3209f262cc884ae515d8a2a7",
+    "short": "8ede5e3",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:16:31+01:00"
+  },
+  {
     "hash": "ab6776250ec0f198a3c837feea65b03838f17c69",
     "short": "ab67762",
     "message": "feat: admin and ceo tailored dashboards",
@@ -46,17 +58,5 @@
     "short": "aade18c",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:02:28+01:00"
-  },
-  {
-    "hash": "7dee6d9886fbac8b8d760d2884897ca7caa06373",
-    "short": "7dee6d9",
-    "message": "chore: center dashboard tiles with extra descriptions",
-    "date": "2026-01-07T16:02:11+01:00"
-  },
-  {
-    "hash": "519282b8cc1d114f1d80572a178ac64f05c069bd",
-    "short": "519282b",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:59:31+01:00"
   }
 ]
