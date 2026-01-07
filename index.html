@@ -1772,10 +1772,10 @@
       if (currentUser) {
         userPillEl.style.display = 'inline-flex';
         userPillEl.textContent = `${currentUser.username} (${currentUser.role})`;
-        if (loginBtn) loginBtn.textContent = 'Switch user';
+        if (authBtn) authBtn.textContent = 'Logout';
       } else {
         userPillEl.style.display = 'none';
-        if (loginBtn) loginBtn.textContent = 'Login';
+        if (authBtn) authBtn.textContent = 'Login';
       }
     }
 
