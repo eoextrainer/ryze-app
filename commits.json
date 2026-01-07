@@ -1,5 +1,17 @@
 [
   {
+    "hash": "a0667a71c2b436ace18bec867c4914ef23ca7e9b",
+    "short": "a0667a7",
+    "message": "style: lock experiences grid to four columns",
+    "date": "2026-01-07T22:32:10+01:00"
+  },
+  {
+    "hash": "8a2f2dd3ff37994c2faa9eebeadacb1d16447961",
+    "short": "8a2f2dd",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:30:06+01:00"
+  },
+  {
     "hash": "acac724d3c101c68c10c0e15e34ca318e5a62d85",
     "short": "acac724",
     "message": "style: enforce 4-column experiences grid",
@@ -46,17 +58,5 @@
     "short": "9cd2cb0",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:19:43+01:00"
-  },
-  {
-    "hash": "fc385a6710569ae920774ef8ac55d07897f72b2f",
-    "short": "fc385a6",
-    "message": "style: apply gold branding to logo and ctas",
-    "date": "2026-01-07T22:19:32+01:00"
-  },
-  {
-    "hash": "81511022f795e9fbe5c4f2cf071c5d175afc2407",
-    "short": "8151102",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:14:21+01:00"
   }
 ]
