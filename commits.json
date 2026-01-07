@@ -1,5 +1,17 @@
 [
   {
+    "hash": "e000befa0bc07dc90e85d64e531dcea4383c1a48",
+    "short": "e000bef",
+    "message": "version v1.0.0-beta RYZE APP core",
+    "date": "2026-01-07T22:50:54+01:00"
+  },
+  {
+    "hash": "e6c6eb07f391974f93d783d089c810eb64bedb73",
+    "short": "e6c6eb0",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:44:59+01:00"
+  },
+  {
     "hash": "76fc6afc9fdfdaea6867247721b022bf7f9e0dca",
     "short": "76fc6af",
     "message": "style: make experiences grid fully responsive",
@@ -46,17 +58,5 @@
     "short": "2eacca3",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:32:22+01:00"
-  },
-  {
-    "hash": "a0667a71c2b436ace18bec867c4914ef23ca7e9b",
-    "short": "a0667a7",
-    "message": "style: lock experiences grid to four columns",
-    "date": "2026-01-07T22:32:10+01:00"
-  },
-  {
-    "hash": "8a2f2dd3ff37994c2faa9eebeadacb1d16447961",
-    "short": "8a2f2dd",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:30:06+01:00"
   }
 ]

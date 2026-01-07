@@ -1,0 +1,15 @@
+services:
+  - type: static_site
+    name: ryze-app-static
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
+    routes:
+      - type: redirect
+        source: /index.html
+        destination: /
+    headers:
+      - path: "/*"
+        name: "Cache-Control"
+        value: "public, max-age=600"
