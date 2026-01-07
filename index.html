@@ -599,6 +599,113 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
+    .store-section {
+      display: none;
+      padding: var(--spacing-xl) var(--spacing-lg);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+    }
+
+    .store-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .store-title {
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+    }
+
+    .store-rail {
+      display: grid;
+      gap: var(--spacing-md);
+    }
+
+    .store-category {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: var(--spacing-md);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .product-carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 260px);
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .product-card {
+      background: #0f1118;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      color: #e6e9ef;
+      box-shadow: var(--shadow);
+      min-height: 220px;
+    }
+
+    .product-image {
+      border-radius: 10px;
+      height: 110px;
+      background: linear-gradient(135deg, rgba(0, 114, 206, 0.24), rgba(229, 9, 20, 0.24));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .product-title {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .product-meta {
+      font-size: 13px;
+      color: #c7ccd4;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: #00c2ff;
+    }
+
+    .product-cta {
+      justify-self: start;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(135deg, #00c2ff, #41a9ff);
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .tile::after {
       content: '';
       position: absolute;
@@ -1007,6 +1114,14 @@
         <div class="tile-grid" id="tile-grid"></div>
       </section>
 
+      <section class="store-section" id="store-section">
+        <div class="store-header">
+          <div class="store-title">Ryze Store</div>
+          <span class="label-chip">Google Play inspired</span>
+        </div>
+        <div class="store-rail" id="store-rail"></div>
+      </section>
+
       <section class="section admin-panel" id="admin-audit" style="display:none;">
         <div class="section-header">
           <div class="section-title">
@@ -1187,6 +1302,45 @@
       { id: 'ZJ0WFaUY33g', title: 'News Highlight 4' }
     ];
 
+    const storeCatalog = [
+      {
+        name: 'Basketball merchandise and apparel',
+        products: Array.from({ length: 10 }, (_, i) => ({
+          title: `Pro Court Gear ${i + 1}`,
+          meta: 'Performance fabric, game-ready fit.',
+          price: `$${49 + i}`,
+          tag: 'Add to cart'
+        }))
+      },
+      {
+        name: 'Fashion apparel',
+        products: Array.from({ length: 10 }, (_, i) => ({
+          title: `Street Layer ${i + 1}`,
+          meta: 'Modern cut, premium cotton blend.',
+          price: `$${59 + i}`,
+          tag: 'Add to cart'
+        }))
+      },
+      {
+        name: 'Jewellry and accessories',
+        products: Array.from({ length: 10 }, (_, i) => ({
+          title: `Signature Accessory ${i + 1}`,
+          meta: 'Bold, minimal, game-day ready.',
+          price: `$${79 + i}`,
+          tag: 'Add to cart'
+        }))
+      },
+      {
+        name: 'Tech gadgets',
+        products: Array.from({ length: 10 }, (_, i) => ({
+          title: `Tech Pulse ${i + 1}`,
+          meta: 'Smart tracking and entertainment.',
+          price: `$${99 + i}`,
+          tag: 'Add to cart'
+        }))
+      }
+    ];
+
     const newsItems = [
       { title: 'Rookie leaves home for Paris showcase', tag: 'Players', meta: 'Late-night training turns into a 28pt debut overseas.' },
       { title: 'Scouts swarm Lyon invitational', tag: 'Scouts', meta: 'Three EU clubs signal interest after wingspan drills.' },
@@ -1347,6 +1501,8 @@
     const newsDotsEl = document.getElementById('news-dots');
     const newsVideoEl = document.getElementById('news-video');
     const tileGridEl = document.getElementById('tile-grid');
+    const storeSectionEl = document.getElementById('store-section');
+    const storeRailEl = document.getElementById('store-rail');
     const overlayEl = document.getElementById('overlay');
     const overlayTitleEl = document.getElementById('overlay-title');
     const overlaySubtitleEl = document.getElementById('overlay-subtitle');
@@ -1770,6 +1926,9 @@
       if (dashboardSection) {
         dashboardSection.style.display = isLoggedIn ? 'block' : 'none';
       }
+      if (storeSectionEl) {
+        storeSectionEl.style.display = isLoggedIn ? 'block' : 'none';
+      }
       toggleAdminPanel();
     }
 
@@ -1841,6 +2000,7 @@
     }
 
     function openExperienceOverlay(exp) {
+      if (!overlayEl || !overlayBodyEl || !overlayTitleEl || !overlaySubtitleEl) return;
       overlayTitleEl.textContent = exp.title;
       overlaySubtitleEl.textContent = `Dashboard · ${exp.id || exp.title}`;
       overlayBodyEl.innerHTML = `
@@ -1861,8 +2021,8 @@
         t.innerHTML = `<div class="pill">${label}</div><p style="text-align:left; margin:12px 0 6px; line-height:1.5;">Future content for ${exp.title}.</p>`;
         grid.appendChild(t);
       });
-      overlayPrimaryEl.onclick = () => alert(`${exp.title} overlay opened.`);
-      overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${exp.title}.`);
+      if (overlayPrimaryEl) overlayPrimaryEl.onclick = () => alert(`${exp.title} overlay opened.`);
+      if (overlaySecondaryEl) overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${exp.title}.`);
       overlayEl.classList.add('active');
     }
 
@@ -1913,6 +2073,37 @@
       });
     }
 
+    function renderStoreSection() {
+      if (!storeRailEl || !storeSectionEl) return;
+      storeRailEl.innerHTML = '';
+      storeCatalog.forEach((category) => {
+        const cat = document.createElement('div');
+        cat.className = 'store-category';
+        cat.innerHTML = `
+          <div class="category-header">
+            <div class="category-title">${category.name}</div>
+            <span class="label-chip">Top picks</span>
+          </div>
+        `;
+        const carousel = document.createElement('div');
+        carousel.className = 'product-carousel';
+        category.products.forEach((product, idx) => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <div class="product-image">Img ${idx + 1}</div>
+            <div class="product-title">${product.title}</div>
+            <div class="product-meta">${product.meta}</div>
+            <div class="product-price">${product.price}</div>
+            <button class="product-cta">${product.tag}</button>
+          `;
+          carousel.appendChild(card);
+        });
+        cat.appendChild(carousel);
+        storeRailEl.appendChild(cat);
+      });
+    }
+
     function init() {
       renderMenu();
       renderRoleSwitch();
@@ -1920,6 +2111,7 @@
       renderNews();
       toggleDashboardVisibility();
       renderDashboard();
+      renderStoreSection();
       toggleAdminPanel();
       applyTheme(getDefaultThemeForTime(), { persist: false });
       startThemeTimer();
@@ -1936,6 +2128,7 @@
           updateUserPill();
           toggleDashboardVisibility();
           renderDashboard();
+          renderStoreSection();
           logEvent('logout', 'user');
           authBtn.textContent = 'Login';
           document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
