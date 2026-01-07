@@ -648,10 +648,15 @@
     }
 
     .product-carousel {
+      --store-visible: 5;
+      --store-gap: 12px;
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: minmax(220px, 260px);
-      gap: 12px;
+      grid-auto-columns: minmax(
+        180px,
+        calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible))
+      );
+      gap: var(--store-gap);
       overflow-x: auto;
       padding: 10px 4px 14px;
       scrollbar-width: thin;
@@ -667,6 +672,18 @@
     .product-carousel::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.18);
       border-radius: 999px;
+    }
+
+    @media (max-width: 1024px) {
+      .product-carousel {
+        --store-visible: 3;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .product-carousel {
+        --store-visible: 2;
+      }
     }
 
     .carousel-controls {
@@ -2149,11 +2166,21 @@
           `;
           carousel.appendChild(card);
         });
+        const computeScrollAmount = () => {
+          const firstCard = carousel.querySelector('.product-card');
+          const styles = getComputedStyle(carousel);
+          const gap = parseFloat(styles.columnGap || styles.gap || '12');
+          if (firstCard) {
+            const rect = firstCard.getBoundingClientRect();
+            return rect.width + gap;
+          }
+          return 260;
+        };
         prev.addEventListener('click', () => {
-          carousel.scrollBy({ left: -260, behavior: 'smooth' });
+          carousel.scrollBy({ left: -computeScrollAmount(), behavior: 'smooth' });
         });
         next.addEventListener('click', () => {
-          carousel.scrollBy({ left: 260, behavior: 'smooth' });
+          carousel.scrollBy({ left: computeScrollAmount(), behavior: 'smooth' });
         });
         cat.appendChild(controls);
         cat.appendChild(carousel);
