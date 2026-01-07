@@ -1,5 +1,17 @@
 [
   {
+    "hash": "e73bfed18f0f8ea6f61389dd978b3b8bada9ba4c",
+    "short": "e73bfed",
+    "message": "feat: sync news carousels and update home layout",
+    "date": "2026-01-07T15:36:02+01:00"
+  },
+  {
+    "hash": "783b81edc151c27b1d47bdb2d68cdaa59a7568bd",
+    "short": "783b81e",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:24:37+01:00"
+  },
+  {
     "hash": "f76d8859cf96b9abaacaa4c47877c04c52c620dd",
     "short": "f76d885",
     "message": "feat: refine home layout and news video carousel",
@@ -46,17 +58,5 @@
     "short": "db3beab",
     "message": "chore: update commit log",
     "date": "2026-01-07T07:50:14+01:00"
-  },
-  {
-    "hash": "242aa0b4875443e11cc270457d122e06e43e9dc3",
-    "short": "242aa0b",
-    "message": "fix: restore login button wiring",
-    "date": "2026-01-07T07:49:50+01:00"
-  },
-  {
-    "hash": "778d0df070e9e295e662f6172d62bee9ab7ba0ed",
-    "short": "778d0df",
-    "message": "chore: structure commit log json",
-    "date": "2026-01-07T07:47:11+01:00"
   }
 ]
