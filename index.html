@@ -798,7 +798,7 @@
 
     .experience-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: var(--spacing-md);
       margin-top: var(--spacing-md);
     }
@@ -1953,10 +1953,6 @@
       const tiles = getExperienceModules(currentRole);
       const wrapper = document.createElement('div');
       wrapper.innerHTML = `
-        <div class="section-title" style="margin-bottom: var(--spacing-sm);">
-          <span class="eyebrow">Experiences</span>
-          <h2>Experiences Dashboard</h2>
-        </div>
         <div class="experience-grid" id="experience-grid"></div>
       `;
       tileGridEl.appendChild(wrapper);
