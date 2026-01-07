@@ -1,5 +1,17 @@
 [
   {
+    "hash": "dcd91c2ca1dcb9022503c10d0b83f7c9b5170300",
+    "short": "dcd91c2",
+    "message": "feat: fix experience overlays and add play-style store",
+    "date": "2026-01-07T16:49:39+01:00"
+  },
+  {
+    "hash": "f3d256759217a5205284fe714a3c9c7fbf65e7aa",
+    "short": "f3d2567",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:42:43+01:00"
+  },
+  {
     "hash": "567670dc17faa58195cc2602b09fe648a9c3a241",
     "short": "567670d",
     "message": "feat: enrich experience overlay placeholders",
@@ -46,17 +58,5 @@
     "short": "18dfd2e",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:24:46+01:00"
-  },
-  {
-    "hash": "e7929ef756b5cdd080a05a683521c6d3ddc879c7",
-    "short": "e7929ef",
-    "message": "chore: add breathing room between tile headings and copy",
-    "date": "2026-01-07T16:24:26+01:00"
-  },
-  {
-    "hash": "8ede5e3e27380dfc3209f262cc884ae515d8a2a7",
-    "short": "8ede5e3",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:16:31+01:00"
   }
 ]
