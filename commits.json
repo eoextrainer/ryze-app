@@ -1,5 +1,17 @@
 [
   {
+    "hash": "ba76643f16ad74080a27ced60be38ab4ef6466e6",
+    "short": "ba76643",
+    "message": "docs: expand render deploy to backend and postgres",
+    "date": "2026-01-07T23:03:41+01:00"
+  },
+  {
+    "hash": "e9258d224d93a31c4bf873045f40911ce5a18c16",
+    "short": "e9258d2",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:52:14+01:00"
+  },
+  {
     "hash": "c2a68fc1135511999024b7ee3faccac43d523875",
     "short": "c2a68fc",
     "message": "docs: add render hosting guide and config",
@@ -46,17 +58,5 @@
     "short": "fc19402",
     "message": "style: adjust experience card sizing for fuller rows",
     "date": "2026-01-07T22:38:47+01:00"
-  },
-  {
-    "hash": "d5d3f38855f191c0771c42b266964247a2caa9be",
-    "short": "d5d3f38",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:35:39+01:00"
-  },
-  {
-    "hash": "80d170c5756c26e63e997779675e7c5f6cebd9d5",
-    "short": "80d170c",
-    "message": "fix: ensure 4-column experience grid and stable video embeds",
-    "date": "2026-01-07T22:35:24+01:00"
   }
 ]
