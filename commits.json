@@ -1,5 +1,17 @@
 [
   {
+    "hash": "f76d8859cf96b9abaacaa4c47877c04c52c620dd",
+    "short": "f76d885",
+    "message": "feat: refine home layout and news video carousel",
+    "date": "2026-01-07T15:24:24+01:00"
+  },
+  {
+    "hash": "52111b22542b21a83f320769d1f467a894f6bfe7",
+    "short": "52111b2",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T08:05:55+01:00"
+  },
+  {
     "hash": "4bae33d23aee17ef5fa863e413fca154521e3eec",
     "short": "4bae33d",
     "message": "chore: remove featured footer and store CTAs",
@@ -46,17 +58,5 @@
     "short": "778d0df",
     "message": "chore: structure commit log json",
     "date": "2026-01-07T07:47:11+01:00"
-  },
-  {
-    "hash": "88546e15d91d468b0be8291e9f6285e0bfa79d02",
-    "short": "88546e1",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T07:46:23+01:00"
-  },
-  {
-    "hash": "d6324bfab675a6716e181a507f027244dcc0c57f",
-    "short": "d6324bf",
-    "message": "chore: snapshot commit log",
-    "date": "2026-01-07T07:46:12+01:00"
   }
 ]
