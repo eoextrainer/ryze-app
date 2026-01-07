@@ -1,5 +1,17 @@
 [
   {
+    "hash": "38689c8ff2336881a6839094fa338b2413c021f0",
+    "short": "38689c8",
+    "message": "chore: hide admin store and polish store carousels",
+    "date": "2026-01-07T21:37:14+01:00"
+  },
+  {
+    "hash": "e91004116d2fc11a4896512097dfe1e39120003e",
+    "short": "e910041",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:54:37+01:00"
+  },
+  {
     "hash": "5c3faccd06ed7640f5c5c0c02b89a0a5edb12939",
     "short": "5c3facc",
     "message": "chore: polish store carousel and CTA styling",
@@ -46,17 +58,5 @@
     "short": "022af7a",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:28:54+01:00"
-  },
-  {
-    "hash": "dd308c8f0bd74518190b2ceaa4868f7fc7bb44db",
-    "short": "dd308c8",
-    "message": "chore: increase spacing in dashboard tiles",
-    "date": "2026-01-07T16:28:10+01:00"
-  },
-  {
-    "hash": "791be0d599e547476eca60952f868853708cbba7",
-    "short": "791be0d",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:26:08+01:00"
   }
 ]
