@@ -1,5 +1,17 @@
 [
   {
+    "hash": "d89b2cbcb81f569b8fe6d4a3a66d959bd4e2e5b3",
+    "short": "d89b2cb",
+    "message": "feat: ceo dashboard module set",
+    "date": "2026-01-07T16:10:15+01:00"
+  },
+  {
+    "hash": "e8247911d9c70270a2b91565f297e8657981d93b",
+    "short": "e824791",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:07:06+01:00"
+  },
+  {
     "hash": "d9e6eb463c179ef289081f0fbccb9f45f6cf8253",
     "short": "d9e6eb4",
     "message": "feat: agent and club specific dashboards",
@@ -46,17 +58,5 @@
     "short": "eff30af",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:54:23+01:00"
-  },
-  {
-    "hash": "0a98ae6fe47a18b140ef03e7a103c5f9c57ff719",
-    "short": "0a98ae6",
-    "message": "feat: player dashboard shows curated modules",
-    "date": "2026-01-07T15:53:59+01:00"
-  },
-  {
-    "hash": "7c8d1ab5542c660a30b3340d17e2199115088d62",
-    "short": "7c8d1ab",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:46:04+01:00"
   }
 ]
