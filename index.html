@@ -650,12 +650,8 @@
     .product-carousel {
       --store-visible: 5;
       --store-gap: 12px;
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(
-        180px,
-        calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible))
-      );
+      display: flex;
+      flex-flow: row nowrap;
       gap: var(--store-gap);
       overflow-x: auto;
       padding: 10px 4px 14px;
@@ -678,11 +674,19 @@
       .product-carousel {
         --store-visible: 3;
       }
+      .product-card {
+        flex-basis: calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
+        max-width: calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
+      }
     }
 
     @media (max-width: 720px) {
       .product-carousel {
         --store-visible: 2;
+      }
+      .product-card {
+        flex-basis: calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
+        max-width: calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
       }
     }
 
@@ -722,6 +726,9 @@
       box-shadow: var(--shadow);
       min-height: 220px;
       scroll-snap-align: start;
+      flex: 0 0 calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
+      max-width: calc((100% - (var(--store-gap) * (var(--store-visible) - 1))) / var(--store-visible));
+      min-width: 180px;
     }
 
     .product-image {
@@ -2169,7 +2176,13 @@
         const computeScrollAmount = () => {
           const firstCard = carousel.querySelector('.product-card');
           const styles = getComputedStyle(carousel);
-          const gap = parseFloat(styles.columnGap || styles.gap || '12');
+          const colGap = parseFloat(styles.columnGap);
+          const rowGap = parseFloat(styles.gap);
+          const gap = Number.isFinite(colGap)
+            ? colGap
+            : Number.isFinite(rowGap)
+              ? rowGap
+              : 12;
           if (firstCard) {
             const rect = firstCard.getBoundingClientRect();
             return rect.width + gap;
