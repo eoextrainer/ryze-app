@@ -802,6 +802,7 @@
       gap: var(--spacing-md);
       margin-top: var(--spacing-md);
       align-items: stretch;
+      grid-auto-rows: 1fr;
     }
 
     .experience-card {
@@ -815,7 +816,8 @@
       display: grid;
       grid-template-rows: auto auto 1fr auto;
       gap: 12px;
-      min-height: 190px;
+      min-height: 210px;
+      height: 100%;
     }
 
     .experience-card:hover {
@@ -1774,7 +1776,7 @@
       slideEl.innerHTML = `
         <div style="position:relative; padding-top:56.25%; width:100%;">
           <iframe
-            src="https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}"
+            src="https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}&modestbranding=1"
             style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
             allow="autoplay; encrypted-media"
             allowfullscreen
@@ -1857,7 +1859,7 @@
       newsVideoEl.innerHTML = `
         <div style="position:relative; padding-top:56.25%; width:100%;">
           <iframe
-            src="https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}"
+            src="https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}&modestbranding=1"
             style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
             allow="autoplay; encrypted-media"
             allowfullscreen
