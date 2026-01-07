@@ -1,5 +1,17 @@
 [
   {
+    "hash": "39fcbd4c39223ef3f70b5156782f42098cc55839",
+    "short": "39fcbd4",
+    "message": "style: even spacing for experiences grid",
+    "date": "2026-01-07T22:28:10+01:00"
+  },
+  {
+    "hash": "02a1b5b7ae4536f9f1f8be1470fbd6051b873c38",
+    "short": "02a1b5b",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:25:20+01:00"
+  },
+  {
     "hash": "6c6e45da0ee36668407d3c8fd93d0e769e5619ec",
     "short": "6c6e45d",
     "message": "style: simplify experiences grid title and layout",
@@ -46,17 +58,5 @@
     "short": "9eaf5ae",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:07:07+01:00"
-  },
-  {
-    "hash": "aeabf1f0b04cbe21a02c5e17933ed8a714d4ade0",
-    "short": "aeabf1f",
-    "message": "feat: enrich experience overlays on CTA click",
-    "date": "2026-01-07T22:06:55+01:00"
-  },
-  {
-    "hash": "50099e2d993987ffdf3fad057a88dc32296cb8db",
-    "short": "50099e2",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:02:51+01:00"
   }
 ]
