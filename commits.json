@@ -1,5 +1,17 @@
 [
   {
+    "hash": "7dee6d9886fbac8b8d760d2884897ca7caa06373",
+    "short": "7dee6d9",
+    "message": "chore: center dashboard tiles with extra descriptions",
+    "date": "2026-01-07T16:02:11+01:00"
+  },
+  {
+    "hash": "519282b8cc1d114f1d80572a178ac64f05c069bd",
+    "short": "519282b",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T15:59:31+01:00"
+  },
+  {
     "hash": "4ea904bf814dd27ac64ecb5d0b41aeadd44acf99",
     "short": "4ea904b",
     "message": "feat: scout dashboard modules and cleaner tiles",
@@ -46,17 +58,5 @@
     "short": "293ca96",
     "message": "chore: update commit log",
     "date": "2026-01-07T15:36:23+01:00"
-  },
-  {
-    "hash": "e73bfed18f0f8ea6f61389dd978b3b8bada9ba4c",
-    "short": "e73bfed",
-    "message": "feat: sync news carousels and update home layout",
-    "date": "2026-01-07T15:36:02+01:00"
-  },
-  {
-    "hash": "783b81edc151c27b1d47bdb2d68cdaa59a7568bd",
-    "short": "783b81e",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T15:24:37+01:00"
   }
 ]
