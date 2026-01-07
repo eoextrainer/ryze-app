@@ -1540,6 +1540,30 @@
         { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Performance dashboards for targets.' },
         { id: 'store', title: 'STORE', copy: 'Access gear and scouting essentials.' }
       ];
+      const agentModules = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Guides for managing signings and outreach.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Adjust notifications and preferences.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Manage your agent profile and records.' },
+        { id: 'resume', title: 'RESUME', copy: 'Showcase your deals and partnerships.' },
+        { id: 'players', title: 'PLAYERS', copy: 'Track and represent player portfolios.' },
+        { id: 'clubs', title: 'CLUBS', copy: 'Monitor club needs and openings.' },
+        { id: 'matches', title: 'MATCHES', copy: 'Game schedules and negotiation windows.' },
+        { id: 'player-performance', title: 'PLAYER PERFORMANCE', copy: 'Performance dashboards for your clients.' },
+        { id: 'store', title: 'STORE', copy: 'Essentials to run your agency workflow.' }
+      ];
+      const clubModules = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Start with club onboarding and playbooks.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Club preferences, alerts, and access.' },
+        { id: 'club-info', title: 'CLUB INFO', copy: 'Snapshot of club details and contacts.' },
+        { id: 'club-history', title: 'CLUB HISTORY', copy: 'Legacy wins, records, and milestones.' },
+        { id: 'current-team', title: 'CURRENT TEAM', copy: 'Roster overview and depth charts.' },
+        { id: 'ryze-player-selector', title: 'RYZE PLAYER SELECTOR', copy: 'Pick and shortlist talent with filters.' },
+        { id: 'league-insights', title: 'LEAGUE INSIGHTS', copy: 'Standings, trends, and opponent reads.' },
+        { id: 'game-tactic-generator', title: 'GAME TACTIC GENERATOR', copy: 'Build tactics for upcoming fixtures.' },
+        { id: 'last-game-highlights', title: 'LAST GAME HIGHLIGHTS', copy: 'Review previous match film quickly.' },
+        { id: 'season-highlights', title: 'SEASON HIGHLIGHTS', copy: 'Best moments across the season.' },
+        { id: 'store', title: 'STORE', copy: 'Club gear and resources.' }
+      ];
       const experiences = [
         { id: 'experience', title: 'Experiences', copy: 'Curated journeys that connect training, scouting, and signing into one seamless path.' },
         { id: 'games', title: 'Games', copy: 'Cinematic highlights and film rooms to relive every clutch moment.' },
@@ -1549,6 +1573,8 @@
       let tiles = experiences;
       if (currentRole === 'player') tiles = playerModules;
       if (currentRole === 'scout') tiles = scoutModules;
+      if (currentRole === 'agent') tiles = agentModules;
+      if (currentRole === 'club') tiles = clubModules;
       tiles.forEach((exp) => {
         const tile = document.createElement('div');
         tile.className = 'tile';
