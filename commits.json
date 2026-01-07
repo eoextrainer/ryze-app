@@ -1,5 +1,17 @@
 [
   {
+    "hash": "242aa0b4875443e11cc270457d122e06e43e9dc3",
+    "short": "242aa0b",
+    "message": "fix: restore login button wiring",
+    "date": "2026-01-07T07:49:50+01:00"
+  },
+  {
+    "hash": "778d0df070e9e295e662f6172d62bee9ab7ba0ed",
+    "short": "778d0df",
+    "message": "chore: structure commit log json",
+    "date": "2026-01-07T07:47:11+01:00"
+  },
+  {
     "hash": "88546e15d91d468b0be8291e9f6285e0bfa79d02",
     "short": "88546e1",
     "message": "chore: refresh commit log",
