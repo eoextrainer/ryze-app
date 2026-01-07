@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYZE | Hybrid Frontend</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --netflix-black: #141414;
+      --netflix-red: #e50914;
+      --nba-blue: #0072ce;
+      --court-orange: #fdb927;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-400: #6d6d6d;
+      --gray-700: #2f2f2f;
+      --glass: rgba(255, 255, 255, 0.06);
+      --panel: rgba(255, 255, 255, 0.04);
+      --card: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.6);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 72px;
+      --radius: 14px;
+      --bg-main: #141414;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-strong: rgba(255, 255, 255, 0.08);
+      --text-strong: #ffffff;
+      --text-muted: #c7c9cf;
+      --accent-1: #e50914;
+      --accent-2: #0072ce;
+      --accent-3: #fdb927;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 12% 20%, color-mix(in srgb, var(--accent-1) 20%, transparent), transparent 32%),
+        radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 32%),
+        radial-gradient(circle at 60% 90%, color-mix(in srgb, var(--accent-3) 20%, transparent), transparent 35%),
+        var(--bg-main);
+      color: var(--text-strong);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header.ryze-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: var(--spacing-sm) var(--spacing-lg);
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .brand-mark {
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.14em;
+      color: var(--netflix-red);
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      letter-spacing: 0.12em;
+    }
+
+    nav.main-nav {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav.main-nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gray-100);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    nav.main-nav a:hover,
+    nav.main-nav a.active {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: var(--spacing-xs);
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 12px 18px;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--netflix-red), #ff5f6d);
+      box-shadow: var(--shadow);
+    }
+
+    .btn.secondary {
+      background: linear-gradient(135deg, var(--nba-blue), #41a9ff);
+      box-shadow: var(--shadow);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--gray-100);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .section {
+      padding: var(--spacing-xl) var(--spacing-lg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .section-title {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+    }
+
+    .section-title .eyebrow {
+      color: var(--gray-400);
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .login-section {
+      padding: var(--spacing-lg) var(--spacing-lg);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-lg);
+      align-items: start;
+    }
+
+    .login-card {
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: var(--spacing-md);
+      box-shadow: var(--shadow);
+    }
+
+    .login-card h3 {
+      margin: 0 0 8px;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .login-form label {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text-strong);
+    }
+
+    .credentials-list {
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .cred-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .cred-row strong {
+      color: var(--text-strong);
+      letter-spacing: 0.06em;
+    }
+
+    .theme-selector {
+      display: grid;
+      gap: 12px;
+    }
+
+    .theme-select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--text-strong);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .hero {
+      padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 10%, rgba(229, 9, 20, 0.18), transparent 38%),
+        radial-gradient(circle at 80% 20%, rgba(0, 114, 206, 0.14), transparent 34%),
+        radial-gradient(circle at 50% 90%, rgba(253, 185, 39, 0.16), transparent 36%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-lg);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy .eyebrow {
+      color: var(--nba-blue);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .hero-copy h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+    }
+
+    .hero-copy p.lead {
+      margin: 0 0 var(--spacing-md);
+      color: #d7d7d7;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    .role-switch {
+      margin-top: var(--spacing-md);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+    }
+
+    .role-pill {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--gray-100);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
+    }
+
+    .role-pill.active {
+      border-color: rgba(229, 9, 20, 0.6);
+      background: rgba(229, 9, 20, 0.16);
+      color: var(--white);
+      box-shadow: inset 0 0 0 1px rgba(229, 9, 20, 0.4);
+    }
+
+    .hero-panel {
+      position: relative;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: var(--spacing-md);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .hero-panel::before,
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 40%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-panel::after {
+      background: radial-gradient(circle at 80% 80%, rgba(229, 9, 20, 0.14), transparent 50%);
+    }
+
+    .hero-carousel {
+      display: grid;
+      gap: var(--spacing-sm);
+    }
+
+    .hero-slide {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 220px;
+      display: grid;
+      align-items: flex-end;
+      padding: var(--spacing-md);
+      color: var(--white);
+      isolation: isolate;
+      box-shadow: var(--shadow);
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+      z-index: 0;
+    }
+
+    .hero-slide:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-slide .meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .hero-slide h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+    }
+
+    .hero-labels {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .label-chip {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: var(--spacing-sm);
+      display: grid;
+      gap: 4px;
+    }
+
+    .stat-label {
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .news-feed {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: var(--spacing-md);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .news-track {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .news-item {
+      position: absolute;
+      inset: 0;
+      padding: var(--spacing-md);
+      border-radius: 12px;
+      display: grid;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .news-item.active {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 1;
+    }
+
+    .news-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      letter-spacing: 0.05em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+    }
+
+    .news-desc {
+      margin: 0;
+      color: #cfd1d4;
+    }
+
+    .news-meta {
+      color: var(--gray-400);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 10px;
+      margin-top: var(--spacing-sm);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dot.active {
+      background: var(--netflix-red);
+      box-shadow: 0 0 0 6px rgba(229, 9, 20, 0.25);
+    }
+
+    .dashboard {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.85) 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .tile {
+      position: relative;
+      padding: var(--spacing-md);
+      background: linear-gradient(160deg, color-mix(in srgb, var(--accent-1) 12%, transparent), color-mix(in srgb, #ffffff 6%, transparent));
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      overflow: hidden;
+      min-height: 140px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tile:hover::after {
+      opacity: 1;
+    }
+
+    .tile h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+      color: #ffffff;
+    }
+
+    .tile .icon {
+      font-size: 22px;
+    }
+
+    .tile p {
+      margin: 4px 0 0;
+      color: #d0d3d7;
+      font-size: 14px;
+    }
+
+    .tile .pill {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--gray-100);
+    }
+
+    .store {
+      background: linear-gradient(160deg, rgba(0, 114, 206, 0.18), rgba(229, 9, 20, 0.14));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #0f1111;
+      font-family: 'Amazon Ember', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .store-hero {
+      background: linear-gradient(90deg, #febd69 0%, #f3a847 60%, #f08804 100%);
+      border-radius: 14px;
+      padding: var(--spacing-md);
+      color: #111;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-md);
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .store-hero h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+    }
+
+    .store-hero p {
+      margin: 6px 0 0;
+      max-width: 520px;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .store-card {
+      background: #fff;
+      border: 1px solid #d5d9d9;
+      border-radius: 12px;
+      padding: var(--spacing-md);
+      display: grid;
+      gap: var(--spacing-sm);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      color: #0f1111;
+    }
+
+    .store-card h3 {
+      margin: 0;
+      letter-spacing: 0.02em;
+      font-size: 18px;
+    }
+
+    .store-card p {
+      margin: 0;
+      color: #565959;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .product-card {
+      border: 1px solid #d5d9d9;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      display: grid;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .product-title {
+      font-weight: 700;
+      color: #0f1111;
+    }
+
+    .product-meta {
+      font-size: 13px;
+      color: #565959;
+    }
+
+    .prime-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #232f3e;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+      padding: var(--spacing-lg);
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .overlay-panel {
+      width: min(640px, 100%);
+      background: #0b0d13;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .overlay-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      color: var(--white);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .overlay h3 {
+      margin: 0 0 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+      font-size: 24px;
+    }
+
+    .overlay .subtitle {
+      color: var(--gray-400);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .overlay .overlay-body {
+      display: grid;
+      gap: 12px;
+      color: #e2e3e6;
+    }
+
+    .admin-panel {
+      background: linear-gradient(160deg, rgba(20, 20, 20, 0.8), rgba(0, 0, 0, 0.9));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--spacing-sm);
+    }
+
+    .audit-table th,
+    .audit-table td {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .audit-table th {
+      background: rgba(255, 255, 255, 0.06);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+    }
+
+    .badge-admin {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(229, 9, 20, 0.15);
+      border: 1px solid rgba(229, 9, 20, 0.4);
+      color: var(--white);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .log-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: var(--spacing-md);
+    }
+
+    .log-item {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: #dfe1e5;
+    }
+
+    .footer {
+      padding: var(--spacing-lg);
+      color: var(--gray-400);
+      letter-spacing: 0.04em;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      header.ryze-header {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .section {
+        padding: var(--spacing-lg);
+      }
+
+      .tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav.main-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      nav.main-nav a {
+        white-space: nowrap;
+      }
+
+      .hero-panel {
+        padding: var(--spacing-sm);
+      }
+
+      .tile {
+        min-height: 120px;
+      }
+
+      .tile-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="bg-grid"></div>
+
+    <header class="ryze-header" id="top">
+      <div class="brand">
+        <div class="brand-mark">RYZE</div>
+        <div class="brand-sub">Hybrid SPA · Role smart</div>
+      </div>
+      <nav class="main-nav" id="main-nav"></nav>
+      <div class="header-actions">
+        <span class="label-chip" id="user-pill" style="display:none;"></span>
+        <button class="btn primary" id="auth-btn">Login</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="login-section" id="login">
+        <div class="login-card">
+          <h3>Login to Ryze</h3>
+          <p style="margin:0; color: var(--text-muted);">Sign in to unlock the dashboard and store. Themes save per user.</p>
+          <form class="login-form" id="login-form">
+            <div>
+              <label for="username">Username</label>
+              <input id="username" name="username" placeholder="admin" autocomplete="username" />
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" placeholder="••••••" autocomplete="current-password" />
+            </div>
+            <button class="btn primary" type="submit">Sign in</button>
+            <div id="login-error" style="color:#ffbdbd; font-size:13px; display:none;">Invalid credentials. Use a demo account below.</div>
+          </form>
+        </div>
+        <div class="login-card">
+          <h3>Test Credentials</h3>
+          <p style="margin:0; color: var(--text-muted);">Use these demo accounts to explore role-based views.</p>
+          <div class="credentials-list" id="credentials-list"></div>
+        </div>
+        <div class="login-card">
+          <h3>Theme Selector</h3>
+          <p style="margin:0; color: var(--text-muted);" id="theme-status">Auto themes rotate every 60s based on time of day.</p>
+          <div class="theme-selector">
+            <select class="theme-select" id="theme-select"></select>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero section" id="home">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Netflix-grade experience</div>
+            <h1>Ryze Hybrid Frontend</h1>
+            <p class="lead">Adaptive UI built for players, agents, scouts, clubs, CEOs, and admins. Role-aware menus, hero video surfaces, live news, and dashboard overlays ready for handoff to Next.js.</p>
+            <div class="hero-actions">
+              <button class="btn primary" id="cta-dashboard">Open dashboard</button>
+              <button class="btn secondary" id="cta-store">Visit store</button>
+            </div>
+            <div class="role-switch" id="role-switch"></div>
+            <div class="stats">
+              <div class="stat-card">
+                <div class="stat-label">Active roles</div>
+                <div class="stat-value" id="stat-roles">6</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Modules</div>
+                <div class="stat-value" id="stat-modules">12</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">News refresh</div>
+                <div class="stat-value">4s</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel">
+            <div class="hero-carousel" id="hero-carousel"></div>
+            <div class="hero-labels" id="hero-labels"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="news">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="eyebrow">Signal pulse</span>
+            <h2>Latest news</h2>
+          </div>
+          <div class="carousel-dots" id="news-dots"></div>
+        </div>
+        <div class="news-grid">
+          <div class="news-feed">
+            <div class="news-track" id="news-track"></div>
+          </div>
+          <div class="store-card">
+            <span class="eyebrow">Hybrid SPA layout</span>
+            <h3>Context providers</h3>
+            <p>Auth, Theme, Overlay, and UI state providers wrap the experience. Each tile below triggers overlays to simulate the Framer Motion layer.</p>
+            <div class="hero-labels" style="margin-top: 10px;">
+              <span class="label-chip">Context</span>
+              <span class="label-chip">Animation</span>
+              <span class="label-chip">Role aware</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dashboard" id="dashboard">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="eyebrow">Interactive</span>
+            <h2>Dashboard grid</h2>
+          </div>
+          <div class="hero-labels" id="dashboard-tags"></div>
+        </div>
+        <div class="tile-grid" id="tile-grid"></div>
+      </section>
+
+      <section class="section admin-panel" id="admin-audit" style="display:none;">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="eyebrow">Admin only</span>
+            <h2>Audit trail</h2>
+          </div>
+          <span class="badge-admin">restricted</span>
+        </div>
+        <p style="color:#c7c9cf; max-width: 720px;">Commits captured by the auto workflow are shown below with rollback pointers. In production, hydrate this table from Postgres (`change_iterations`) and gate it by real auth.</p>
+        <table class="audit-table">
+          <thead>
+            <tr>
+              <th>Commit</th>
+              <th>Message</th>
+              <th>Reason</th>
+              <th>Rollback</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="audit-body"></tbody>
+        </table>
+        <div class="section-title" style="margin-top: var(--spacing-md);">
+          <span class="eyebrow">System log</span>
+          <h2>Runtime events</h2>
+        </div>
+        <div class="log-stack" id="log-stack"></div>
+      </section>
+
+      <section class="section store" id="store">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="eyebrow">Commerce ready</span>
+            <h2>Store & add-ons</h2>
+          </div>
+          <button class="btn ghost" id="cta-store-secondary">Open store</button>
+        </div>
+        <div class="store-hero">
+          <div>
+            <h3>RYZE Store — Inspired by Amazon</h3>
+            <p>Browse curated gear across hoops, street fashion, tech gadgets, and jewelry. Built with an Amazon-style layout, category rails, and fast “prime” badges.</p>
+            <div class="prime-tag" style="margin-top:10px;">Prime Style</div>
+          </div>
+          <button class="btn primary" id="store-hero-btn">Shop now</button>
+        </div>
+        <div class="store-grid" id="store-grid"></div>
+      </section>
+    </main>
+
+    <div class="overlay" id="overlay">
+      <div class="overlay-panel">
+        <button class="overlay-close" id="overlay-close">×</button>
+        <div class="subtitle" id="overlay-subtitle"></div>
+        <h3 id="overlay-title"></h3>
+        <div class="overlay-body" id="overlay-body"></div>
+        <div class="hero-actions" style="margin-top: var(--spacing-sm);">
+          <button class="btn primary" id="overlay-primary">Open module</button>
+          <button class="btn ghost" id="overlay-secondary">Schedule</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      RYZE · Hybrid SPA frontend · Netflix-grade motion · Built for multi-role journeys
+    </footer>
+  </div>
+
+  <script>
+    const defaultMenu = [
+      { id: 'home', label: 'Home', section: 'home' },
+      { id: 'news', label: 'News', section: 'news' },
+      { id: 'dashboard', label: 'Dashboard', section: 'dashboard' },
+      { id: 'store', label: 'Store', section: 'store' }
+    ];
+
+    const roleConfig = {
+      player: {
+        menuItems: defaultMenu,
+        dashboardModules: [
+          { id: 'tutorial', label: 'Tutorial', icon: '🎬' },
+          { id: 'settings', label: 'Settings', icon: '⚙️' },
+          { id: 'personal', label: 'Personal Info', icon: '👤' },
+          { id: 'resume', label: 'Resume', icon: '📄' },
+          { id: 'medical', label: 'Medical', icon: '🏥' },
+          { id: 'training', label: 'Training', icon: '💪' },
+          { id: 'practice', label: 'Practice', icon: '🏀' },
+          { id: 'games', label: 'Games', icon: '📹' },
+          { id: 'performance', label: 'Performance', icon: '📊' },
+          { id: 'social', label: 'Social', icon: '📱' },
+          { id: 'agents', label: 'Agents', icon: '🤝' },
+          { id: 'scouts', label: 'Scouts', icon: '🔍' },
+          { id: 'clubs', label: 'Clubs', icon: '🏢' }
+        ],
+        heroLabels: ['Agents', 'Scouts', 'Clubs']
+      },
+      scout: {
+        menuItems: defaultMenu,
+        dashboardModules: [
+          { id: 'players', label: 'Players', icon: '🧭' },
+          { id: 'clubs', label: 'Clubs', icon: '🏢' },
+          { id: 'reports', label: 'Reports', icon: '📝' },
+          { id: 'games', label: 'Games', icon: '📹' },
+          { id: 'performance', label: 'Performance', icon: '📊' },
+          { id: 'social', label: 'Social', icon: '📱' },
+          { id: 'agents', label: 'Agents', icon: '🤝' }
+        ],
+        heroLabels: ['Players', 'Clubs', 'Performance']
+      },
+      agent: {
+        menuItems: defaultMenu,
+        dashboardModules: [
+          { id: 'players', label: 'Players', icon: '🎯' },
+          { id: 'contracts', label: 'Contracts', icon: '🧾' },
+          { id: 'crm', label: 'CRM', icon: '📈' },
+          { id: 'games', label: 'Games', icon: '📹' },
+          { id: 'highlights', label: 'Highlights', icon: '⭐' },
+          { id: 'news', label: 'News', icon: '📰' }
+        ],
+        heroLabels: ['Players', 'Contracts', 'Highlights']
+      },
+      club: {
+        menuItems: defaultMenu,
+        dashboardModules: [
+          { id: 'roster', label: 'Roster', icon: '📋' },
+          { id: 'performance', label: 'Performance', icon: '📊' },
+          { id: 'recruiting', label: 'Recruiting', icon: '🔭' },
+          { id: 'games', label: 'Games', icon: '📹' },
+          { id: 'medical', label: 'Medical', icon: '🏥' }
+        ],
+        heroLabels: ['Roster', 'Performance', 'Recruiting']
+      },
+      ceo: {
+        menuItems: defaultMenu,
+        dashboardModules: [
+          { id: 'ryze-app', label: 'Ryze App', icon: '👑' },
+          { id: 'ryze-crm', label: 'Ryze CRM', icon: '📈' },
+          { id: 'ryze-erp', label: 'Ryze ERP', icon: '🏢' },
+          { id: 'ryze-studio', label: 'Ryze Studio', icon: '🎥' },
+          { id: 'performance', label: 'Performance', icon: '📊' },
+          { id: 'teams', label: 'Teams', icon: '🤝' },
+          { id: 'news', label: 'News', icon: '📰' }
+        ],
+        heroLabels: ['Ryze Suite', 'Performance', 'Studios']
+      },
+      admin: {
+        menuItems: [
+          { id: 'home', label: 'Home', section: 'home' },
+          { id: 'logger', label: 'Logger', section: 'dashboard' },
+          { id: 'features', label: 'Features', section: 'dashboard' },
+          { id: 'dashboard', label: 'Dashboard', section: 'dashboard' }
+        ],
+        dashboardModules: [
+          { id: 'logger', label: 'Logger', icon: '🛰️' },
+          { id: 'feature-flags', label: 'Feature Flags', icon: '🚩' },
+          { id: 'audits', label: 'Audits', icon: '🔒' },
+          { id: 'performance', label: 'Performance', icon: '📊' }
+        ],
+        heroLabels: ['Logger', 'Feature Flags', 'Performance']
+      }
+    };
+
+    const demoUsers = [
+      { username: 'admin', password: 'admin123', role: 'admin' },
+      { username: 'ceo', password: 'ceo123', role: 'ceo' },
+      { username: 'scout', password: 'scout123', role: 'scout' },
+      { username: 'agent', password: 'agent123', role: 'agent' },
+      { username: 'club', password: 'club123', role: 'club' },
+      { username: 'player', password: 'player123', role: 'player' }
+    ];
+
+    const heroVideos = [
+      { id: 'N4Ie61Buku0', title: 'NBA Highlights 1' },
+      { id: 'iUK9tEdh0d0', title: 'NBA Highlights 2' },
+      { id: 'yaCK4VU7OYI', title: 'NBA Highlights 3' },
+      { id: 'wIolDNVfcTg', title: 'NBA Highlights 4' }
+    ];
+
+    const newsItems = [
+      { title: 'Ryze rolls out hybrid SPA shell with role-aware nav', tag: 'Release', meta: 'Now shipping · Next.js ready' },
+      { title: 'Performance overlay pairs with Recharts for live analytics', tag: 'Performance', meta: 'Framer Motion transitions' },
+      { title: 'Agent & scout hero rails tuned for discovery carousels', tag: 'Discovery', meta: 'Hero video carousel wiring' },
+      { title: 'Admin logger & feature flags available in glass UI', tag: 'Admin', meta: 'Observability · Audit trail' }
+    ];
+
+    const changeLog = [];
+
+    const appLog = [];
+
+    const themes = [
+      { name: 'Dawn Glow', bg: '#11131a', primary: '#ff6f61', secondary: '#7dd3fc', accent: '#ffe29f', text: '#f8fafc', muted: '#cbd5e1', tone: 0.15 },
+      { name: 'Sunrise Slate', bg: '#1a1c24', primary: '#ff8f70', secondary: '#6dd5ed', accent: '#ffd166', text: '#f8fafc', muted: '#d1d5db', tone: 0.2 },
+      { name: 'Morning Mist', bg: '#202530', primary: '#ff5f6d', secondary: '#00c2ff', accent: '#ffd26f', text: '#f8fafc', muted: '#cfd8e3', tone: 0.25 },
+      { name: 'Noon Clear', bg: '#1c1f2a', primary: '#ff3b30', secondary: '#3db1ff', accent: '#f6c343', text: '#f9fafb', muted: '#d9e2ec', tone: 0.3 },
+      { name: 'Matinee', bg: '#161922', primary: '#e50914', secondary: '#00b2ff', accent: '#ffd166', text: '#ffffff', muted: '#d3d6dc', tone: 0.35 },
+      { name: 'Play Store Pop', bg: '#0f1118', primary: '#0f9d58', secondary: '#4285f4', accent: '#ffb703', text: '#f8fafc', muted: '#cfd8dc', tone: 0.4 },
+      { name: 'Apple Arcade', bg: '#0c0d12', primary: '#ff2d55', secondary: '#5ac8fa', accent: '#ffd479', text: '#f8f9fb', muted: '#d1d5db', tone: 0.45 },
+      { name: 'Vibrant Neon', bg: '#0b0d14', primary: '#ff0055', secondary: '#00c2ff', accent: '#ffdd57', text: '#f8fafc', muted: '#cfd8e3', tone: 0.5 },
+      { name: 'Prime Pulse', bg: '#0f1115', primary: '#00a8e1', secondary: '#232f3e', accent: '#ff9900', text: '#f7fbff', muted: '#d8e1ec', tone: 0.52 },
+      { name: 'Court Lights', bg: '#0f1018', primary: '#e50914', secondary: '#ffb703', accent: '#f8c471', text: '#f7fafc', muted: '#d1d5db', tone: 0.54 },
+      { name: 'Evening Noir', bg: '#0b0c14', primary: '#ff4d4f', secondary: '#2f80ed', accent: '#fcbf49', text: '#f2f4f8', muted: '#cdd2d9', tone: 0.6 },
+      { name: 'Twilight Grid', bg: '#080a12', primary: '#e50914', secondary: '#5ac8fa', accent: '#f4a261', text: '#f3f4f6', muted: '#cbd5e1', tone: 0.65 },
+      { name: 'Night Drive', bg: '#06070d', primary: '#ff3b30', secondary: '#4f46e5', accent: '#f59e0b', text: '#f2f3f7', muted: '#c7cdd6', tone: 0.7 },
+      { name: 'Midnight Club', bg: '#05060c', primary: '#ff5f6d', secondary: '#00c2ff', accent: '#ffd166', text: '#f1f5f9', muted: '#cbd5e1', tone: 0.75 },
+      { name: 'After Hours', bg: '#04050a', primary: '#ff1e56', secondary: '#5d5fef', accent: '#f9a826', text: '#f0f4f8', muted: '#cbd5e1', tone: 0.8 },
+      { name: 'Neon Night', bg: '#03040a', primary: '#ff2d55', secondary: '#00f0ff', accent: '#ffcf56', text: '#eef2f7', muted: '#c7ced8', tone: 0.82 },
+      { name: 'Lunar Red', bg: '#02030a', primary: '#ff3b30', secondary: '#00a8e1', accent: '#ffb703', text: '#ecf0f4', muted: '#c7ced8', tone: 0.86 },
+      { name: 'Deep Space', bg: '#01020a', primary: '#ff0055', secondary: '#0077ff', accent: '#ffb347', text: '#e8ecf1', muted: '#c4ccd6', tone: 0.9 },
+      { name: 'Obsydian', bg: '#000107', primary: '#e50914', secondary: '#0096ff', accent: '#fbbf24', text: '#e5e9f0', muted: '#c0c7d0', tone: 0.93 },
+      { name: 'Nocturne', bg: '#000000', primary: '#ff2d55', secondary: '#00a8e1', accent: '#f59e0b', text: '#e2e8f0', muted: '#bcc5d1', tone: 0.96 }
+    ];
+
+    const storeCategories = [
+      {
+        name: 'Basketball merchandise and apparel',
+        products: [
+          { title: 'Pro Series Jersey', meta: 'Breathable mesh, customizable number', prime: true },
+          { title: 'Elite Shooting Sleeve', meta: 'Compression fit, moisture wicking', prime: true },
+          { title: 'High-Traction Kicks', meta: 'Indoor/outdoor outsole, ankle support', prime: false },
+          { title: 'Courtside Duffel', meta: 'Water resistant, ventilated shoe pocket', prime: true }
+        ]
+      },
+      {
+        name: 'Street fashion merchandise and apparel',
+        products: [
+          { title: 'Urban Tech Hoodie', meta: 'Reflective piping, hidden pockets', prime: true },
+          { title: 'Drop-Cut Tee Pack', meta: 'Soft tri-blend, extended hem', prime: true },
+          { title: 'Layered Bomber', meta: 'Reversible, matte black hardware', prime: false },
+          { title: 'City Joggers', meta: 'Tapered fit, stretch waistband', prime: true }
+        ]
+      },
+      {
+        name: 'Tech gadgets',
+        products: [
+          { title: 'Smart Performance Tracker', meta: 'GPS + heart rate, syncs to app', prime: true },
+          { title: 'Noise Canceling Headset', meta: 'Immersive courtside audio', prime: true },
+          { title: '4K Action Cam', meta: 'Gimbal-stable highlight capture', prime: false },
+          { title: 'Portable Mini Projector', meta: 'Film review anywhere', prime: true }
+        ]
+      },
+      {
+        name: 'Jewelry',
+        products: [
+          { title: 'Minimal Signet Ring', meta: 'Stainless, brushed finish', prime: true },
+          { title: 'Cuban Link Chain', meta: '18k plated, secure clasp', prime: false },
+          { title: 'Hoop Earrings Set', meta: 'Hypoallergenic, three sizes', prime: true },
+          { title: 'Statement Bracelet', meta: 'Matte black, magnetic lock', prime: true }
+        ]
+      }
+    ];
+
+    const overlayDescriptions = {
+      tutorial: 'Tutorial overlay wraps Video.js or hosted MP4 to onboard players with cinematic motion.',
+      performance: 'Performance modal with KPIs, ready to hydrate with Recharts and live tracking.',
+      settings: 'Role-aware settings with theme toggles, notifications, and accessibility controls.',
+      resume: 'Secure doc viewer with CTA to upload updated player resumes.',
+      medical: 'HIPAA-conscious placeholder for medical summaries with restricted overlays.',
+      training: 'Training planner with tasks, clips, and feedback loops.',
+      practice: 'Practice sessions with attendance, film, and drills.',
+      games: 'Game archive and highlights with hero video carousel hooks.',
+      social: 'Social timeline and shareable highlight reels.',
+      agents: 'Agent marketplace with contact overlays.',
+      scouts: 'Scout discovery grid and verified reports.',
+      clubs: 'Club directory with store tie-ins.',
+      players: 'Player search and shortlist builder.',
+      contracts: 'Contract status with sign-off overlays.',
+      crm: 'Pipeline view for agent or CEO workflows.',
+      roster: 'Roster composition and depth chart.',
+      recruiting: 'Recruiting radar with filters.',
+      'ryze-app': 'Executive rollup across all Ryze services.',
+      'ryze-crm': 'CRM module for deal flow and renewals.',
+      'ryze-erp': 'ERP dashboard for operations.',
+      'ryze-studio': 'Studio launcher to manage media assets.',
+      'feature-flags': 'Feature flag control center for experiments.',
+      audits: 'Audit trail and compliance snapshots.',
+      logger: 'Centralized logger with live tail view.'
+    };
+
+    const moduleDetails = {
+      tutorial: ['Step-by-step clips', 'Mark as completed'],
+      performance: ['Charts ready', 'KPIs streaming placeholder'],
+      settings: ['Theme + notifications', 'Role aware'],
+      resume: ['Upload PDF', 'Secure preview'],
+      medical: ['HIPAA-safe placeholder', 'Restricted view'],
+      training: ['Plan builder', 'Coach feedback'],
+      practice: ['Drills list', 'Attendance stub'],
+      games: ['Video archive', 'Highlight tagging'],
+      social: ['Timeline cards', 'Share reels'],
+      agents: ['Contact overlay', 'Marketplace grid'],
+      scouts: ['Report builder', 'Verification toggle'],
+      clubs: ['Directory entries', 'Filters ready'],
+      players: ['Search + shortlist', 'Profiles'],
+      contracts: ['Status + sign-off', 'Document links'],
+      crm: ['Pipeline lanes', 'Notes'],
+      roster: ['Depth chart', 'Positions'],
+      recruiting: ['Radar filters', 'Priority'],
+      'ryze-app': ['Exec rollup', 'Health checks'],
+      'ryze-crm': ['Deals view', 'Renewals'],
+      'ryze-erp': ['Ops dashboard', 'Inventory stub'],
+      'ryze-studio': ['Media slots', 'Upload CTA'],
+      'feature-flags': ['Flag list', 'Kill switch'],
+      audits: ['Compliance feed', 'Downloads'],
+      logger: ['Live tail area', 'Filters']
+    };
+
+    let currentRole = 'player';
+    let currentUser = null;
+    let isLoggedIn = false;
+    let themeIndex = 0;
+    let themeTimer = null;
+    let commitsData = [];
+    let heroIndex = 0;
+    let newsIndex = 0;
+    let heroTimer;
+    let newsTimer;
+
+    const navEl = document.getElementById('main-nav');
+    const roleSwitchEl = document.getElementById('role-switch');
+    const heroCarouselEl = document.getElementById('hero-carousel');
+    const heroLabelsEl = document.getElementById('hero-labels');
+    const newsTrackEl = document.getElementById('news-track');
+    const newsDotsEl = document.getElementById('news-dots');
+    const tileGridEl = document.getElementById('tile-grid');
+    const dashTagsEl = document.getElementById('dashboard-tags');
+    const overlayEl = document.getElementById('overlay');
+    const overlayTitleEl = document.getElementById('overlay-title');
+    const overlaySubtitleEl = document.getElementById('overlay-subtitle');
+    const overlayBodyEl = document.getElementById('overlay-body');
+    const overlayPrimaryEl = document.getElementById('overlay-primary');
+    const overlaySecondaryEl = document.getElementById('overlay-secondary');
+    const adminAuditSection = document.getElementById('admin-audit');
+    const auditBodyEl = document.getElementById('audit-body');
+    const logStackEl = document.getElementById('log-stack');
+    const userPillEl = document.getElementById('user-pill');
+    const themeSelectEl = document.getElementById('theme-select');
+    const themeStatusEl = document.getElementById('theme-status');
+    const loginFormEl = document.getElementById('login-form');
+    const loginErrorEl = document.getElementById('login-error');
+    const credentialsListEl = document.getElementById('credentials-list');
+    const storeGridEl = document.getElementById('store-grid');
+    const authBtn = document.getElementById('auth-btn');
+
+    function renderMenu() {
+      navEl.innerHTML = '';
+      const items = roleConfig[currentRole]?.menuItems || defaultMenu;
+      items.forEach((item) => {
+        const link = document.createElement('a');
+        link.href = `#${item.section}`;
+        link.textContent = item.label;
+        link.dataset.section = item.section;
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (item.section === 'dashboard' && !isLoggedIn) {
+            document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
+            logEvent('blocked', 'dashboard-guest');
+            return;
+          }
+          document.getElementById(item.section)?.scrollIntoView({ behavior: 'smooth' });
+          setActiveNav(item.section);
+        });
+        navEl.appendChild(link);
+      });
+      setActiveNav('home');
+    }
+
+    function setActiveNav(section) {
+      navEl.querySelectorAll('a').forEach((link) => {
+        link.classList.toggle('active', link.dataset.section === section);
+      });
+    }
+
+    function renderRoleSwitch() {
+      roleSwitchEl.innerHTML = '';
+      Object.keys(roleConfig).forEach((role) => {
+        const pill = document.createElement('button');
+        pill.className = 'role-pill';
+        pill.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+        pill.dataset.role = role;
+        pill.disabled = !isLoggedIn;
+        pill.title = isLoggedIn ? 'Switch role' : 'Login to switch roles';
+        pill.addEventListener('click', () => {
+          if (!isLoggedIn) return;
+          setRole(role);
+        });
+        if (role === currentRole) pill.classList.add('active');
+        roleSwitchEl.appendChild(pill);
+      });
+    }
+
+    function renderHero() {
+      heroCarouselEl.innerHTML = '';
+      const video = heroVideos[heroIndex];
+      const slideEl = document.createElement('div');
+      slideEl.className = 'hero-slide';
+      slideEl.style.padding = '0';
+      slideEl.style.minHeight = '260px';
+      slideEl.innerHTML = `
+        <div style="position:relative; padding-top:56.25%; width:100%;">
+          <iframe
+            src="https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}"
+            style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="meta" style="padding: var(--spacing-sm);">
+          <div>
+            <h3>${video.title}</h3>
+            <div class="label-chip">Auto · Mute</div>
+          </div>
+          <button class="btn ghost" style="padding:10px 14px;" onclick="alert('Playing ${video.title}')">Details</button>
+        </div>
+      `;
+      heroCarouselEl.appendChild(slideEl);
+      renderHeroLabels();
+    }
+
+    function renderHeroLabels() {
+      heroLabelsEl.innerHTML = '';
+      const labels = roleConfig[currentRole]?.heroLabels || ['Home', 'News', 'Dashboard'];
+      labels.forEach((label) => {
+        const chip = document.createElement('div');
+        chip.className = 'label-chip';
+        chip.textContent = label;
+        heroLabelsEl.appendChild(chip);
+      });
+    }
+
+    function renderNews() {
+      newsTrackEl.innerHTML = '';
+      newsDotsEl.innerHTML = '';
+      newsItems.forEach((item, index) => {
+        const newsEl = document.createElement('article');
+        newsEl.className = 'news-item';
+        if (index === newsIndex) newsEl.classList.add('active');
+        newsEl.innerHTML = `
+          <span class="news-tag">${item.tag}</span>
+          <h3 class="news-title">${item.title}</h3>
+          <p class="news-desc">${item.meta}</p>
+          <div class="news-meta">Updated just now</div>
+        `;
+        newsTrackEl.appendChild(newsEl);
+
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        if (index === newsIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          newsIndex = index;
+          renderNews();
+          restartNewsTimer();
+        });
+        newsDotsEl.appendChild(dot);
+      });
+    }
+
+    function renderDashboard() {
+      tileGridEl.innerHTML = '';
+      dashTagsEl.innerHTML = '';
+      if (!isLoggedIn) {
+        tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to see your dashboard modules.</p>';
+        document.getElementById('stat-modules').textContent = 0;
+        document.getElementById('stat-roles').textContent = Object.keys(roleConfig).length;
+        return;
+      }
+      const modules = roleConfig[currentRole]?.dashboardModules || [];
+      document.getElementById('stat-modules').textContent = modules.length;
+      document.getElementById('stat-roles').textContent = Object.keys(roleConfig).length;
+
+      modules.slice(0, 3).forEach((m) => {
+        const chip = document.createElement('div');
+        chip.className = 'label-chip';
+        chip.textContent = m.label;
+        dashTagsEl.appendChild(chip);
+      });
+
+      modules.forEach((module) => {
+        const tile = document.createElement('button');
+        tile.className = 'tile';
+        tile.type = 'button';
+        tile.dataset.id = module.id;
+        tile.innerHTML = `
+          <div class="pill">${module.id}</div>
+          <div class="icon">${module.icon}</div>
+          <h3>${module.label}</h3>
+          <p>${overlayDescriptions[module.id] || 'Launch overlay to explore this module.'}</p>
+          <p style="color:#fefefe; font-size:12px; letter-spacing:0.04em;">Status: Ready</p>
+        `;
+        tile.addEventListener('click', () => openOverlay(module));
+        tileGridEl.appendChild(tile);
+      });
+    }
+
+    let activeThemeName = themes[0].name;
+
+    function applyTheme(theme, { persist = true } = {}) {
+      if (!theme) return;
+      activeThemeName = theme.name;
+      const root = document.documentElement;
+      root.style.setProperty('--netflix-black', theme.bg);
+      root.style.setProperty('--bg-main', theme.bg);
+      root.style.setProperty('--accent-1', theme.primary);
+      root.style.setProperty('--accent-2', theme.secondary);
+      root.style.setProperty('--accent-3', theme.accent);
+      root.style.setProperty('--text-strong', theme.text);
+      root.style.setProperty('--text-muted', theme.muted);
+      root.style.setProperty('--surface', 'rgba(255,255,255,0.06)');
+      root.style.setProperty('--surface-strong', 'rgba(255,255,255,0.12)');
+      if (persist && currentUser) {
+        localStorage.setItem(`ryze-theme-${currentUser.username}`, theme.name);
+      }
+      renderThemeOptions();
+      if (themeStatusEl) {
+        themeStatusEl.textContent = `Theme: ${theme.name} · auto-rotating every 60s (${getTimeSlot()} mood)`;
+      }
+    }
+
+    function getThemeByName(name) {
+      return themes.find((t) => t.name === name);
+    }
+
+    function getTimeSlot() {
+      const hour = new Date().getHours();
+      if (hour >= 5 && hour < 11) return 'morning';
+      if (hour >= 11 && hour < 16) return 'day';
+      if (hour >= 16 && hour < 20) return 'evening';
+      return 'night';
+    }
+
+    function getThemePoolForTime() {
+      const slot = getTimeSlot();
+      const ranges = {
+        morning: [0, 0.4],
+        day: [0.25, 0.6],
+        evening: [0.55, 0.8],
+        night: [0.75, 1]
+      };
+      const [min, max] = ranges[slot];
+      const pool = themes.filter((t) => t.tone >= min && t.tone <= max);
+      return pool.length ? pool : themes;
+    }
+
+    function getDefaultThemeForTime() {
+      const pool = getThemePoolForTime();
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function startThemeTimer() {
+      if (themeTimer) clearInterval(themeTimer);
+      themeTimer = setInterval(() => {
+        const pool = getThemePoolForTime();
+        const idx = pool.findIndex((t) => t.name === activeThemeName);
+        themeIndex = idx >= 0 ? idx : 0;
+        themeIndex = (themeIndex + 1) % pool.length;
+        applyTheme(pool[themeIndex], { persist: true });
+        logEvent('theme-rotate', pool[themeIndex].name);
+      }, 60000);
+    }
+
+    function renderThemeOptions() {
+      if (!themeSelectEl) return;
+      themeSelectEl.innerHTML = '';
+      themes.forEach((theme) => {
+        const opt = document.createElement('option');
+        opt.value = theme.name;
+        opt.textContent = theme.name;
+        if (theme.name === activeThemeName) opt.selected = true;
+        themeSelectEl.appendChild(opt);
+      });
+    }
+
+    function loadUserTheme() {
+      if (!currentUser) return;
+      const stored = localStorage.getItem(`ryze-theme-${currentUser.username}`);
+      const theme = stored ? getThemeByName(stored) : getDefaultThemeForTime();
+      applyTheme(theme || getDefaultThemeForTime(), { persist: true });
+    }
+
+    function renderStore() {
+      if (!storeGridEl) return;
+      storeGridEl.innerHTML = '';
+      storeCategories.forEach((category) => {
+        const card = document.createElement('div');
+        card.className = 'store-card';
+        card.innerHTML = `
+          <div class="category-header">
+            <h3>${category.name}</h3>
+            <span class="prime-tag">Amazon Style</span>
+          </div>
+        `;
+        const productsEl = document.createElement('div');
+        productsEl.className = 'category-products';
+        category.products.forEach((product) => {
+          const prodEl = document.createElement('div');
+          prodEl.className = 'product-card';
+          prodEl.innerHTML = `
+            <div class="product-title">${product.title}</div>
+            <div class="product-meta">${product.meta}</div>
+            ${product.prime ? '<div class="prime-tag">Prime</div>' : '<div class="product-meta">Ships standard</div>'}
+          `;
+          productsEl.appendChild(prodEl);
+        });
+        card.appendChild(productsEl);
+        storeGridEl.appendChild(card);
+      });
+    }
+
+    function setFeaturedFooter() {
+      const footer = document.querySelector('.footer');
+      if (!footer) return;
+      const existing = document.getElementById('footer-featured');
+      if (existing) existing.remove();
+      if (!isLoggedIn) return;
+      const featured = document.createElement('div');
+      featured.id = 'footer-featured';
+      featured.style.marginTop = '20px';
+      featured.innerHTML = `<div style="font-weight:700; margin-bottom:10px; color:#0f1111;">Featured Picks</div>`;
+      const rail = document.createElement('div');
+      rail.style.display = 'grid';
+      rail.style.gridTemplateColumns = 'repeat(auto-fit, minmax(220px, 1fr))';
+      rail.style.gap = '12px';
+      const picks = [];
+      storeCategories.forEach((cat) => {
+        cat.products.slice(0, 1).forEach((p) => picks.push({ ...p, category: cat.name }));
+      });
+      picks.slice(0, 3).forEach((product) => {
+        const card = document.createElement('div');
+        card.style.border = '1px solid #d5d9d9';
+        card.style.borderRadius = '8px';
+        card.style.padding = '10px';
+        card.style.background = '#fff';
+        card.style.color = '#0f1111';
+        card.innerHTML = `
+          <div style="font-weight:700;">${product.title}</div>
+          <div style="color:#565959; font-size:13px;">${product.meta}</div>
+          <div style="font-size:12px; color:#007185;">${product.category}</div>
+        `;
+        rail.appendChild(card);
+      });
+      featured.appendChild(rail);
+      footer.appendChild(featured);
+    }
+
+    async function fetchCommits() {
+      try {
+        const res = await fetch('commits.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        commitsData = data;
+        renderAuditTable();
+      } catch (e) {
+        console.warn('No commit log available', e);
+      }
+    }
+
+    function renderAuditTable() {
+      if (!auditBodyEl) return;
+      auditBodyEl.innerHTML = '';
+      const rows = commitsData.length ? commitsData : changeLog;
+      rows.forEach((entry) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><code>${entry.short || entry.commit}</code></td>
+          <td>${entry.message}</td>
+          <td>${entry.reason || 'commit'}</td>
+          <td><button class="btn ghost" style="padding:8px 10px;" onclick="copyRollback('${entry.hash || entry.commit}')">Rollback</button></td>
+          <td>${new Date(entry.date || entry.timestamp || Date.now()).toLocaleString()}</td>
+        `;
+        auditBodyEl.appendChild(tr);
+      });
+    }
+
+    function renderLog() {
+      if (!logStackEl) return;
+      logStackEl.innerHTML = '';
+      appLog.slice(0, 10).forEach((item) => {
+        const div = document.createElement('div');
+        div.className = 'log-item';
+        div.innerHTML = `
+          <span>${item.ts}</span>
+          <strong>${item.type}</strong>
+          <span>${item.detail}</span>
+        `;
+        logStackEl.appendChild(div);
+      });
+    }
+
+    function logEvent(type, detail) {
+      appLog.unshift({ type, detail, ts: new Date().toISOString() });
+      if (appLog.length > 40) appLog.pop();
+      if (currentRole === 'admin') renderLog();
+    }
+
+    function toggleAdminPanel() {
+      const isAdmin = currentRole === 'admin';
+      if (adminAuditSection) {
+        adminAuditSection.style.display = isAdmin ? 'block' : 'none';
+      }
+      if (isAdmin) {
+        renderAuditTable();
+        renderLog();
+      }
+    }
+
+    function toggleDashboardVisibility() {
+      const dashboardSection = document.getElementById('dashboard');
+      if (dashboardSection) {
+        dashboardSection.style.display = isLoggedIn ? 'block' : 'none';
+      }
+      toggleAdminPanel();
+    }
+
+    function copyRollback(hash) {
+      if (!hash) return;
+      const cmd = `git revert ${hash}`;
+      navigator.clipboard?.writeText(cmd);
+      alert(`Rollback command copied:\n${cmd}`);
+      logEvent('rollback-copy', hash);
+    }
+
+    function updateUserPill() {
+      if (!userPillEl) return;
+      if (currentUser) {
+        userPillEl.style.display = 'inline-flex';
+        userPillEl.textContent = `${currentUser.username} (${currentUser.role})`;
+        if (loginBtn) loginBtn.textContent = 'Switch user';
+      } else {
+        userPillEl.style.display = 'none';
+        if (loginBtn) loginBtn.textContent = 'Login';
+      }
+    }
+
+    function renderCredentials() {
+      if (!credentialsListEl) return;
+      credentialsListEl.innerHTML = '';
+      demoUsers.forEach((user) => {
+        const row = document.createElement('div');
+        row.className = 'cred-row';
+        row.innerHTML = `<strong>${user.role}</strong><span>${user.username} / ${user.password}</span>`;
+        credentialsListEl.appendChild(row);
+      });
+    }
+
+    function handleLogin(e) {
+      e?.preventDefault();
+      if (!loginFormEl) return;
+      const username = (loginFormEl.querySelector('#username')?.value || '').trim();
+      const password = (loginFormEl.querySelector('#password')?.value || '').trim();
+      const user = demoUsers.find((u) => u.username === username && u.password === password);
+      if (user) {
+        currentUser = user;
+        isLoggedIn = true;
+        loginErrorEl.style.display = 'none';
+        setRole(user.role);
+        updateUserPill();
+        toggleDashboardVisibility();
+        renderDashboard();
+        loadUserTheme();
+        startThemeTimer();
+        logEvent('login', username);
+        if (authBtn) authBtn.textContent = 'Logout';
+        alert(`Signed in as ${username} (demo auth)`);
+        setFeaturedFooter();
+      } else {
+        isLoggedIn = false;
+        if (loginErrorEl) loginErrorEl.style.display = 'block';
+        toggleDashboardVisibility();
+        renderDashboard();
+        logEvent('login-failed', username || 'unknown');
+      }
+    }
+
+    function openOverlay(module) {
+      const description = overlayDescriptions[module.id] || 'Module overlay ready to connect to real data.';
+      overlayTitleEl.textContent = module.label;
+      overlaySubtitleEl.textContent = `Module · ${module.id}`;
+      const details = moduleDetails[module.id] || ['Ready to wire', 'Visible to role'];
+      overlayBodyEl.innerHTML = `
+        <p>${description}</p>
+        <ul style="padding-left:18px; margin:6px 0; color:#dce0e6; line-height:1.4;">
+          ${details.map((d) => `<li>${d}</li>`).join('')}
+        </ul>
+        <p style="color: #9ca3af;">Hook this overlay to your data source, Framer Motion transitions, and role-based guards. Use it for tutorials, settings, performance, and more.</p>
+      `;
+      logEvent('overlay-open', module.id);
+      overlayPrimaryEl.onclick = () => alert(`${module.label} overlay opened.`);
+      overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${module.label}.`);
+      overlayEl.classList.add('active');
+    }
+
+    function closeOverlay() {
+      overlayEl.classList.remove('active');
+    }
+
+    function setRole(role) {
+      currentRole = role;
+      renderMenu();
+      renderRoleSwitch();
+      renderHeroLabels();
+      renderDashboard();
+      toggleDashboardVisibility();
+      logEvent('role-switch', role);
+      setFeaturedFooter();
+    }
+
+    function cycleHero() {
+      heroIndex = (heroIndex + 1) % heroVideos.length;
+      renderHero();
+    }
+
+    function cycleNews() {
+      newsIndex = (newsIndex + 1) % newsItems.length;
+      renderNews();
+    }
+
+    function restartHeroTimer() {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(cycleHero, 5000);
+    }
+
+    function restartNewsTimer() {
+      clearInterval(newsTimer);
+      newsTimer = setInterval(cycleNews, 4000);
+    }
+
+    function wireCTAs() {
+      const dashboardBtn = document.getElementById('cta-dashboard');
+      const storeBtn = document.getElementById('cta-store');
+      const storeBtn2 = document.getElementById('cta-store-secondary');
+      dashboardBtn?.addEventListener('click', () => {
+        if (!isLoggedIn) {
+          document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+      });
+      storeBtn?.addEventListener('click', () => document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' }));
+      storeBtn2?.addEventListener('click', () => document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' }));
+    }
+
+    function init() {
+      renderMenu();
+      renderRoleSwitch();
+      renderHero();
+      renderNews();
+      toggleDashboardVisibility();
+      renderDashboard();
+      toggleAdminPanel();
+      renderCredentials();
+      renderThemeOptions();
+      applyTheme(getDefaultThemeForTime(), { persist: false });
+      startThemeTimer();
+      logEvent('boot', 'ui-ready');
+      wireCTAs();
+      updateUserPill();
+      authBtn?.addEventListener('click', () => {
+        if (isLoggedIn) {
+          isLoggedIn = false;
+          currentUser = null;
+          setRole('player');
+          updateUserPill();
+          toggleDashboardVisibility();
+          renderDashboard();
+          logEvent('logout', 'user');
+          authBtn.textContent = 'Login';
+          document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
+      });
+      themeSelectEl?.addEventListener('change', (e) => {
+        const val = e.target.value;
+        const theme = getThemeByName(val);
+        if (theme) {
+          applyTheme(theme, { persist: true });
+          logEvent('theme-select', theme.name);
+        }
+      });
+      loginFormEl?.addEventListener('submit', handleLogin);
+      document.getElementById('store-hero-btn')?.addEventListener('click', () => document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' }));
+      restartHeroTimer();
+      restartNewsTimer();
+      document.getElementById('overlay-close').addEventListener('click', closeOverlay);
+      overlayEl.addEventListener('click', (e) => {
+        if (e.target === overlayEl) closeOverlay();
+      });
+      renderStore();
+      setFeaturedFooter();
+      fetchCommits();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

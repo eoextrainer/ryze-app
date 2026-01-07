@@ -1,0 +1,266 @@
+you are a senior mobile app software developer and you must create a full stack hybrid spa web app called ryze.
+
+start with the basic architecure and design of the front end.
+
+IMPORTANT: you must use the design, layout, theme, colour palette, font from the url: https://www.netflix.com/fr-en/title/70213223?trackId=155573560&fromWatch=true
+
+home screen:
+    - Menu Header: Home | News | Highlights | login
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Highlights scrolls down elegantly to the Highlights section
+        Login links to the login page
+    - Hero Video Caroussel: Players | Agents | Scouts
+        the labels appear above the video Caroussel
+        each label is a url to the login page
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Highlights:
+        inspired from the netflix url above you must copy the design of the Episodes section with elegant tiles that contain a caption image (or can be a autoplay video) and some text copy below
+        the tiles are:
+            Experience: showcasing the ryze experience
+            Games: featuring a game Highlight
+            Training: video reel of a basketball training session
+            Community: off the court social activities between players, agents and clubs
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+Player home screen: (when the user logs in as a player)
+    - Menu Header: Home | News | Dashboard | Store
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Dashboard scrolls down elegantly to the Dashboard section
+        Store links to the Ryze Store page
+    - Hero Video Caroussel: Agents | Scouts | Clubs
+        the labels appear above the video Caroussel
+        each label is a link to the respective module in the Dashboard section
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . Personal information: displays an overlay screen with the player's athlete information
+        . Resume: displays an overlay screen with the player's basketball resume
+        . Medical: displays an overlay screen with the player's complete and detailed medical history
+        . Training: displays an overlay screen with the player's physical training program
+        . Practice: displays an overlay screen with the player's game practice program
+        . Games: displays an overlay screen with the player's game Highlights for the season
+        . Performance: displays an overlay screen with the player's overall performance metrics
+        . Social: displays an overlay screen with the player's instagram contents: stories, posts, reels
+        . Agents: displays an overlay screen with tiles representing all of the agents and with dynamic filters
+        . Scouts: displays an overlay screen with tiles representing all of the scouts and with dynamic filters
+        . Clubs: displays an overlay screen with tiles representing all of the clubs and with dynamic filters
+    - Performance: displays an overlay screen with the player's latest performance
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+
+Scout home screen: (when the user logs in as a scout)
+    - Menu Header: Home | News | Dashboard | Store
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Dashboard scrolls down elegantly to the Dashboard section
+        Store links to the Ryze Store page
+    - Hero Video Caroussel: Players | Clubs
+        the labels appear above the video Caroussel
+        each label is a link to the respective module in the Dashboard section
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . Personal information: displays an overlay screen with the scout's personal information
+        . Resume: displays an overlay screen with the scout's professional basketball resume
+        . Performance: displays an overlay screen with the player's overall performance metrics
+        . Social: displays an overlay screen with the player's instagram contents: stories, posts, reels
+        . Players: displays an overlay screen with tiles representing all of the players and with dynamic filters
+        . Clubs: displays an overlay screen with tiles representing all of the clubs and with dynamic filters
+    - Performance: displays an overlay screen with the player's latest performance
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+
+
+Agent home screen: (when the user logs in as an agent)
+    - Menu Header: Home | News | Dashboard | Store
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Dashboard scrolls down elegantly to the Dashboard section
+        Store links to the Ryze Store page
+    - Hero Video Caroussel: Players | Clubs
+        the labels appear above the video Caroussel
+        each label is a link to the respective module in the Dashboard section
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . Personal information: displays an overlay screen with the agent's personal information
+        . Resume: displays an overlay screen with the player's professional basketball resume
+        . Performance: displays an overlay screen with the player's overall performance metrics
+        . Social: displays an overlay screen with the player's instagram contents: stories, posts, reels
+        . Players: displays an overlay screen with tiles representing all of the players and with dynamic filters
+        . Clubs: displays an overlay screen with tiles representing all of the clubs and with dynamic filters
+    - Performance: displays an overlay screen with the player's latest performance
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+
+Club home screen: (when the user logs in as a club)
+    - Menu Header: Home | News | Dashboard | Store
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Dashboard scrolls down elegantly to the Dashboard section
+        Store links to the Ryze Store page
+    - Hero Video Caroussel: Players | Agents | Scouts
+        the labels appear above the video Caroussel
+        each label is a link to the respective module in the Dashboard section
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . club information: displays an overlay screen with the club's information
+        . History: displays an overlay screen with the club's professional basketball history
+        . Performance: displays an overlay screen with the club's overall performance metrics
+        . Social: displays an overlay screen with the player's instagram contents: stories, posts, reels
+        . Players: displays an overlay screen with tiles representing all of the players and with dynamic filters
+        . Agents: displays an overlay screen with tiles representing all of the agents and with dynamic filters
+        . Scouts: displays an overlay screen with tiles representing all of the scouts and with dynamic filters
+    - Performance: displays an overlay screen with the player's latest performance
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+
+
+CEO home screen: (when the user logs in as a ceo)
+    - Menu Header: Home | News | Dashboard | Store
+        Home links to the home screen
+        News scrolls down elegantly to the Latest News section
+        Dashboard scrolls down elegantly to the Dashboard section
+        Store links to the Ryze Store page
+    - Hero Video Caroussel: Players | Agents | Scouts | Clubs
+        the labels appear above the video Caroussel
+        each label is a link to the respective module in the Dashboard section
+    - Latest News: 5x news feeds with caption image
+        each news feed will be visible for 4 seconds and then will slowly scroll down to reveal the next feed
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . club information: displays an overlay screen with the club's information
+        . History: displays an overlay screen with the club's professional basketball history
+        . Performance: displays an overlay screen with the club's overall performance metrics
+        . Social: displays an overlay screen with the player's instagram contents: stories, posts, reels
+        . Players: displays an overlay screen with tiles representing all of the players and with dynamic filters
+        . Agents: displays an overlay screen with tiles representing all of the agents and with dynamic filters
+        . Scouts: displays an overlay screen with tiles representing all of the scouts and with dynamic filters
+        . Clubs: displays an overlay screen with tiles representing all of the clubs and with dynamic filters
+        . Ryze App: allows ceo to log in as any user (player, agent, scout, club) with full visibility and advanced permissions
+        . Ryze CRM: opens a completely new page to the RYZE CRM
+        . Ryze ERP: opens a completely new page to the RYZE ERP
+        . Ryze STUDIO: opens a completely new page to the RYZE STUDIO
+    - Performance: displays an overlay screen with the player's latest performance
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store
+
+
+
+
+
+Admin home screen: (when the user logs in as an admin)
+    - Menu Header: Home | Logger | Features | Dashboard
+        Home links to the home screen
+        Logger scrolls down to the logger section
+        Features scrolls down to the Features manager section
+        Dashboard scrolls down to the Dashboard section
+    - Logger: complete technical analysis and monitoring of the platform, each feature, any bugs
+    - Dashboard:
+        . tutorial: displays an overlay screen with a short 60 second video tutorial on how to use the Ryze appear
+        . Settings: displays an overlay panel screen with various configuration settings (theme selector | languages | features | support)
+        . Performance: displays an overlay screen with the platform's overall performance metrics
+        . Players: displays an overlay screen with tiles representing all of the players and with dynamic filters
+        . Agents: displays an overlay screen with tiles representing all of the agents and with dynamic filters
+        . Scouts: displays an overlay screen with tiles representing all of the scouts and with dynamic filters
+        . Clubs: displays an overlay screen with tiles representing all of the clubs and with dynamic filters
+        . Ryze App: allows ceo to log in as any user (player, agent, scout, club) with full visibility and advanced permissions
+        . Ryze CRM: opens a completely new page to the RYZE CRM
+        . Ryze ERP: opens a completely new page to the RYZE ERP
+        . Ryze STUDIO: opens a completely new page to the RYZE STUDIO
+    - Backlog: displays an overlay of the backlog of feature request, each feature's development workflow status, each feature retirement wokflow status
+    - Footer:
+        FAQ
+        Investor Relations
+        Corporate Information
+
+        Legal Matters
+        Terms of Use
+        Contact Us
+
+        Referral/Partner Program
+        Social Media
+        Ryze Store

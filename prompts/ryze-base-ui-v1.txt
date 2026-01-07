@@ -1,0 +1,509 @@
+Ryze UI Architecture & Frontend Design
+1. Design System & Theming
+Color Palette (Inspired by Netflix NBA content)
+Primary Colors:
+
+Background: #141414 (Netflix dark)
+
+Primary Red: #E50914 (Netflix red)
+
+Secondary Blue: #0072CE (NBA blue accent)
+
+Court Orange: #FDB927 (Basketball court lines)
+
+White: #FFFFFF
+
+Gray Scale: #808080, #6D6D6D, #2F2F2F
+
+Typography
+Primary Font: Netflix Sans (Helvetica Neue alternative)
+
+Fallback Font Stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif
+
+Font Weights: Regular: 400, Medium: 500, Bold: 700
+
+Headings: Bold, uppercase with tracking for premium feel
+
+UI Components Library Structure
+text
+components/
+├── layout/
+│   ├── Header/
+│   │   ├── MenuHeader.jsx
+│   │   ├── AuthHeader.jsx
+│   │   └── RoleHeader.jsx
+│   ├── Footer/
+│   │   └── UniversalFooter.jsx
+│   └── Overlay/
+│       ├── ModalBase.jsx
+│       ├── SlidePanel.jsx
+│       └── TutorialOverlay.jsx
+├── carousels/
+│   ├── HeroVideoCarousel.jsx
+│   ├── NewsFeedCarousel.jsx
+│   └── HighlightTiles.jsx
+├── dashboard/
+│   ├── DashboardGrid.jsx
+│   ├── TileComponent.jsx
+│   └── FilterPanel.jsx
+└── navigation/
+    ├── ScrollLink.jsx
+    ├── SmoothScroll.jsx
+    └── RoleRouter.jsx
+2. Application Architecture
+Hybrid SPA Structure
+text
+src/
+├── pages/
+│   ├── public/
+│   │   ├── HomePage.jsx
+│   │   ├── LoginPage.jsx
+│   │   └── StorePage.jsx
+│   ├── authenticated/
+│   │   ├── PlayerHome.jsx
+│   │   ├── AgentHome.jsx
+│   │   ├── ScoutHome.jsx
+│   │   ├── ClubHome.jsx
+│   │   ├── CEOHome.jsx
+│   │   └── AdminHome.jsx
+│   └── overlays/
+│       ├── DashboardOverlays.jsx
+│       ├── SettingsPanel.jsx
+│       └── PerformanceModal.jsx
+├── hooks/
+│   ├── useAuth.js
+│   ├── useRole.js
+│   └── useNewsFeed.js
+├── context/
+│   ├── AuthContext.jsx
+│   ├── ThemeContext.jsx
+│   └── UIStateContext.jsx
+└── utils/
+    ├── roleConfig.js
+    └── animationUtils.js
+Core Layout Components
+1. Universal Header Component
+jsx
+const MenuHeader = ({ role, activeSection }) => {
+  // Dynamic menu based on role
+  const menuItems = roleConfig[role]?.menuItems || defaultMenu;
+
+  return (
+    <header className="ryze-header">
+      <div className="logo">RYZE</div>
+      <nav className="main-nav">
+        {menuItems.map(item => (
+          <ScrollLink
+            key={item.id}
+            to={item.section}
+            smooth={true}
+            duration={800}
+          >
+            {item.label}
+          </ScrollLink>
+        ))}
+      </nav>
+      <div className="user-actions">
+        {!role ? <LoginButton /> : <UserMenu />}
+      </div>
+    </header>
+  );
+};
+2. Hero Video Carousel
+jsx
+const HeroVideoCarousel = ({ role }) => {
+  const carouselConfig = {
+    player: ['Agents', 'Scouts', 'Clubs'],
+    scout: ['Players', 'Clubs'],
+    // ... other roles
+  };
+
+  return (
+    <div className="hero-carousel">
+      <div className="carousel-labels">
+        {carouselConfig[role]?.map(label => (
+          <Link
+            key={label}
+            to={`/dashboard#${label.toLowerCase()}`}
+            className="carousel-label"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+      <VideoSlider role={role} />
+    </div>
+  );
+};
+3. News Feed Component
+jsx
+const NewsFeedCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % newsItems.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="news-section">
+      <h2>Latest News</h2>
+      <div className="news-carousel">
+        {newsItems.map((item, index) => (
+          <div
+            key={item.id}
+            className={`news-item ${index === activeIndex ? 'active' : ''}`}
+            style={{
+              transform: `translateY(${(index - activeIndex) * 100}%)`,
+              transition: 'transform 1s ease'
+            }}
+          >
+            <img src={item.image} alt={item.title} />
+            <div className="news-caption">
+              <h3>{item.title}</h3>
+              <p>{item.excerpt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+4. Dashboard Grid System
+jsx
+const DashboardGrid = ({ modules, role }) => {
+  return (
+    <section className="dashboard-grid" id="dashboard">
+      <h2>Dashboard</h2>
+      <div className="tiles-container">
+        {modules.map(module => (
+          <DashboardTile
+            key={module.id}
+            module={module}
+            onClick={() => openOverlay(module.type)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+3. Role-Based Configuration
+javascript
+// utils/roleConfig.js
+export const roleConfig = {
+  player: {
+    menuItems: [
+      { id: 1, label: 'Home', section: 'home' },
+      { id: 2, label: 'News', section: 'news' },
+      { id: 3, label: 'Dashboard', section: 'dashboard' },
+      { id: 4, label: 'Store', section: 'store' }
+    ],
+    dashboardModules: [
+      { id: 'tutorial', label: 'Tutorial', icon: '🎬' },
+      { id: 'settings', label: 'Settings', icon: '⚙️' },
+      { id: 'personal', label: 'Personal Info', icon: '👤' },
+      { id: 'resume', label: 'Resume', icon: '📄' },
+      { id: 'medical', label: 'Medical', icon: '🏥' },
+      { id: 'training', label: 'Training', icon: '💪' },
+      { id: 'practice', label: 'Practice', icon: '🏀' },
+      { id: 'games', label: 'Games', icon: '📹' },
+      { id: 'performance', label: 'Performance', icon: '📊' },
+      { id: 'social', label: 'Social', icon: '📱' },
+      { id: 'agents', label: 'Agents', icon: '🤝' },
+      { id: 'scouts', label: 'Scouts', icon: '🔍' },
+      { id: 'clubs', label: 'Clubs', icon: '🏢' }
+    ],
+    heroLabels: ['Agents', 'Scouts', 'Clubs']
+  },
+  scout: {
+    // ... similar structure
+  },
+  ceo: {
+    menuItems: [
+      { id: 1, label: 'Home', section: 'home' },
+      { id: 2, label: 'News', section: 'news' },
+      { id: 3, label: 'Dashboard', section: 'dashboard' },
+      { id: 4, label: 'Store', section: 'store' }
+    ],
+    dashboardModules: [
+      // ... includes all modules plus:
+      { id: 'ryze-app', label: 'Ryze App', icon: '👑' },
+      { id: 'ryze-crm', label: 'Ryze CRM', icon: '📈' },
+      { id: 'ryze-erp', label: 'Ryze ERP', icon: '🏢' },
+      { id: 'ryze-studio', label: 'Ryze Studio', icon: '🎥' }
+    ]
+  },
+  admin: {
+    menuItems: [
+      { id: 1, label: 'Home', section: 'home' },
+      { id: 2, label: 'Logger', section: 'logger' },
+      { id: 3, label: 'Features', section: 'features' },
+      { id: 4, label: 'Dashboard', section: 'dashboard' }
+    ]
+  }
+};
+4. Overlay System Architecture
+jsx
+// Overlay Manager Component
+const OverlayManager = () => {
+  const { activeOverlay, closeOverlay } = useOverlay();
+
+  const renderOverlay = () => {
+    switch(activeOverlay.type) {
+      case 'tutorial':
+        return <TutorialOverlay videoUrl={activeOverlay.data} />;
+      case 'settings':
+        return <SettingsPanel />;
+      case 'performance':
+        return <PerformanceModal data={activeOverlay.data} />;
+      // ... other overlay types
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {activeOverlay && (
+        <motion.div
+          className="overlay-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeOverlay}
+        >
+          <motion.div
+            className="overlay-content"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={e => e.stopPropagation()}
+          >
+            {renderOverlay()}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+5. Responsive Design Implementation
+css
+/* Base CSS Variables */
+:root {
+  --netflix-black: #141414;
+  --netflix-red: #E50914;
+  --nba-blue: #0072CE;
+  --court-orange: #FDB927;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 32px;
+  --spacing-lg: 64px;
+  --border-radius: 4px;
+}
+
+/* Mobile-First Approach */
+.ryze-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-carousel {
+    height: 70vh;
+  }
+}
+
+/* Netflix-style Tile Hover Effects */
+.highlight-tile {
+  position: relative;
+  transition: transform 0.3s ease;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.highlight-tile:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.highlight-tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0.4) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.highlight-tile:hover::after {
+  opacity: 1;
+}
+6. Animation & Transitions
+javascript
+// utils/animationUtils.js
+export const pageTransitions = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: { duration: 0.3 }
+};
+
+export const carouselTransitions = {
+  slideUp: {
+    enter: { y: '100%', opacity: 0 },
+    center: { y: '0%', opacity: 1 },
+    exit: { y: '-100%', opacity: 0 }
+  }
+};
+
+// Framer Motion implementation for hero carousel
+const HeroCarousel = ({ videos }) => {
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  const paginate = (newDirection) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  return (
+    <AnimatePresence initial={false} custom={direction}>
+      <motion.video
+        key={page}
+        src={videos[page]}
+        custom={direction}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        variants={carouselVariants}
+        transition={{
+          x: { type: "spring", stiffness: 300, damping: 30 },
+          opacity: { duration: 0.2 }
+        }}
+        autoPlay
+        muted
+        loop
+      />
+    </AnimatePresence>
+  );
+};
+7. State Management Architecture
+javascript
+// Context Providers
+const AppProvider = ({ children }) => {
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <OverlayProvider>
+          <UIStateProvider>
+            {children}
+          </UIStateProvider>
+        </OverlayProvider>
+      </ThemeProvider>
+    </AuthProvider>
+  );
+};
+
+// Custom Hook for Role Management
+const useRole = () => {
+  const { user } = useAuth();
+  const [roleConfig, setRoleConfig] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      import(`../config/roles/${user.role}.js`)
+        .then(config => setRoleConfig(config.default));
+    }
+  }, [user]);
+
+  return { roleConfig, isAdmin: user?.role === 'admin' };
+};
+8. Implementation Roadmap
+Phase 1: Core Foundation (Week 1-2)
+Set up React/Next.js project with TypeScript
+
+Implement design system and theme provider
+
+Create base layout components (Header, Footer)
+
+Build public home page with hero carousel
+
+Phase 2: Authentication & Roles (Week 3-4)
+Implement auth system with role-based routing
+
+Create role-specific header components
+
+Build login system and user context
+
+Phase 3: Dashboard System (Week 5-6)
+Develop overlay manager and modal system
+
+Create dashboard grid with tile components
+
+Implement smooth scrolling and section linking
+
+Phase 4: Role-Specific Features (Week 7-8)
+Build player dashboard with all modules
+
+Implement scout/agent/club variations
+
+Create CEO and admin special features
+
+Phase 5: Polish & Performance (Week 9-10)
+Add animations and micro-interactions
+
+Optimize for mobile performance
+
+Implement lazy loading and code splitting
+
+Add PWA capabilities for hybrid app feel
+
+9. Technical Stack Recommendation
+Framework: Next.js (for hybrid SPA/SSR)
+
+Styling: Tailwind CSS with custom Netflix-inspired theme
+
+Animations: Framer Motion
+
+State Management: React Context + Custom Hooks
+
+Routing: Next.js Router with role-based guards
+
+Video Handling: Video.js for carousel
+
+Charts: Recharts for performance metrics
+
+Icons: Lucide React Icons
+
+Forms: React Hook Form
+
+Testing: Jest + React Testing Library
+
+This architecture provides a scalable, maintainable foundation for the Ryze platform that maintains the premium Netflix aesthetic while providing role-specific functionality for all user types.
