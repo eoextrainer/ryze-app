@@ -1,2 +1,20 @@
-{"hash":"d6324bfab675a6716e181a507f027244dcc0c57f","short":"d6324bf","message":"chore: snapshot commit log","date":"2026-01-07T07:46:12+01:00"}
-{"hash":"b4421d1b8e1ebdf3421e28ea5d05af640278ce18","short":"b4421d1","message":"feat: dynamic theming, hero videos, amazon store","date":"2026-01-07T07:45:44+01:00"}
+[
+  {
+    "hash": "88546e15d91d468b0be8291e9f6285e0bfa79d02",
+    "short": "88546e1",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T07:46:23+01:00"
+  },
+  {
+    "hash": "d6324bfab675a6716e181a507f027244dcc0c57f",
+    "short": "d6324bf",
+    "message": "chore: snapshot commit log",
+    "date": "2026-01-07T07:46:12+01:00"
+  },
+  {
+    "hash": "b4421d1b8e1ebdf3421e28ea5d05af640278ce18",
+    "short": "b4421d1",
+    "message": "feat: dynamic theming, hero videos, amazon store",
+    "date": "2026-01-07T07:45:44+01:00"
+  }
+]
