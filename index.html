@@ -8,9 +8,10 @@
   <style>
     :root {
       --netflix-black: #141414;
-      --netflix-red: #d85c1a;
+      --netflix-red: #c6a465;
       --nba-blue: #1d8ea6;
-      --court-orange: #f9a03f;
+      --court-orange: #c6a465;
+      --ryze-gold: #c6a465;
       --white: #ffffff;
       --gray-100: #f5f5f5;
       --gray-400: #6d6d6d;
@@ -162,19 +163,21 @@
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--netflix-red), #ff5f6d);
+      background: linear-gradient(135deg, var(--ryze-gold), #d8b97c);
+      color: #0c0c0c;
       box-shadow: var(--shadow);
     }
 
     .btn.secondary {
-      background: linear-gradient(135deg, var(--nba-blue), #41a9ff);
+      background: linear-gradient(135deg, #d8b97c, #c6a465);
+      color: #0c0c0c;
       box-shadow: var(--shadow);
     }
 
     .btn.ghost {
       background: transparent;
-      border-color: rgba(255, 255, 255, 0.16);
-      color: var(--gray-100);
+      border-color: color-mix(in srgb, var(--ryze-gold) 60%, #ffffff 10%);
+      color: var(--ryze-gold);
     }
 
     .btn:hover {
@@ -770,16 +773,16 @@
 
     .product-price {
       font-weight: 700;
-      color: #00c2ff;
+      color: var(--ryze-gold);
     }
 
     .product-cta {
       justify-self: start;
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: linear-gradient(135deg, #6ee7b7, #22c55e);
-      color: #0b140c;
+      border: 1px solid color-mix(in srgb, var(--ryze-gold) 60%, #ffffff 16%);
+      background: linear-gradient(135deg, #d8b97c, var(--ryze-gold));
+      color: #0c0c0c;
       font-weight: 700;
       cursor: pointer;
     }
