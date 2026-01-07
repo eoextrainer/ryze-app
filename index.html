@@ -98,7 +98,7 @@
       font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
       font-size: 28px;
       letter-spacing: 0.14em;
-      color: var(--netflix-red);
+      color: var(--court-orange);
     }
 
     .brand-sub {
@@ -940,7 +940,7 @@
     <header class="ryze-header" id="top">
       <div class="brand">
         <div class="brand-mark">RYZE</div>
-        <div class="brand-sub">Hybrid SPA · Role smart</div>
+        <div class="brand-sub">From Home to Hope</div>
       </div>
       <nav class="main-nav" id="main-nav"></nav>
       <div class="header-actions">
@@ -952,8 +952,8 @@
     <main>
       <section class="login-section" id="login">
         <div class="login-card">
-          <h3>Login to Ryze</h3>
-          <p style="margin:0; color: var(--text-muted);">Sign in to unlock the dashboard and store. Themes save per user.</p>
+          <h3>Sign In</h3>
+          <p style="margin:0; color: var(--text-muted);">Access your dashboard and store.</p>
           <form class="login-form" id="login-form">
             <div>
               <label for="username">Username</label>
@@ -984,13 +984,12 @@
       <section class="hero section" id="home">
         <div class="hero-grid">
           <div class="hero-copy">
-            <div class="eyebrow">Netflix-grade experience</div>
             <h1>Ryze Hybrid Frontend</h1>
             <p class="lead">Adaptive UI built for players, agents, scouts, clubs, CEOs, and admins. Role-aware menus, hero video surfaces, live news, and dashboard overlays ready for handoff to Next.js.</p>
-            <div class="hero-actions">
-              <button class="btn primary" id="cta-dashboard">Open dashboard</button>
-              <button class="btn secondary" id="cta-store">Visit store</button>
-            </div>
+        <div class="hero-actions">
+          <button class="btn primary" id="cta-dashboard">Open dashboard</button>
+          <button class="btn secondary" id="cta-store">Visit store</button>
+        </div>
             <div class="role-switch" id="role-switch"></div>
             <div class="stats">
               <div class="stat-card">
@@ -1017,7 +1016,6 @@
       <section class="section" id="news">
         <div class="section-header">
           <div class="section-title">
-            <span class="eyebrow">Signal pulse</span>
             <h2>Latest news</h2>
           </div>
           <div class="carousel-dots" id="news-dots"></div>
@@ -1081,16 +1079,15 @@
       <section class="section store" id="store">
         <div class="section-header">
           <div class="section-title">
-            <span class="eyebrow">Commerce ready</span>
-            <h2>Store & add-ons</h2>
+            <h2>Store</h2>
           </div>
-          <button class="btn ghost" id="cta-store-secondary">Open store</button>
+          <button class="btn ghost" id="cta-store-secondary">Shop</button>
         </div>
         <div class="store-hero">
           <div>
-            <h3>RYZE Store — Inspired by Amazon</h3>
-            <p>Browse curated gear across hoops, street fashion, tech gadgets, and jewelry. Built with an Amazon-style layout, category rails, and fast “prime” badges.</p>
-            <div class="prime-tag" style="margin-top:10px;">Prime Style</div>
+            <h3>RYZE Store</h3>
+            <p>Curated gear across hoops, street fashion, tech gadgets, and jewelry.</p>
+            <div class="prime-tag" style="margin-top:10px;">Featured</div>
           </div>
           <button class="btn primary" id="store-hero-btn">Shop now</button>
         </div>
@@ -1112,7 +1109,7 @@
     </div>
 
     <footer class="footer">
-      RYZE · Hybrid SPA frontend · Netflix-grade motion · Built for multi-role journeys
+      RYZE
     </footer>
   </div>
 
@@ -1634,7 +1631,7 @@
         card.innerHTML = `
           <div class="category-header">
             <h3>${category.name}</h3>
-            <span class="prime-tag">Amazon Style</span>
+            <span class="prime-tag">Featured</span>
           </div>
         `;
         const productsEl = document.createElement('div');
