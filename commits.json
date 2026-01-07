@@ -1,5 +1,17 @@
 [
   {
+    "hash": "d8eaa6387ebf4de2dd623a32930faa85d61889f2",
+    "short": "d8eaa63",
+    "message": "chore: expand store carousels to twelve items",
+    "date": "2026-01-07T21:51:51+01:00"
+  },
+  {
+    "hash": "da615fab25c00e4850be53a2e7147c7151d45a4e",
+    "short": "da615fa",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T21:48:19+01:00"
+  },
+  {
     "hash": "c022c75f6123db58306775479596825f18de83af",
     "short": "c022c75",
     "message": "chore: reduce store items to six",
@@ -46,17 +58,5 @@
     "short": "e910041",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:54:37+01:00"
-  },
-  {
-    "hash": "5c3faccd06ed7640f5c5c0c02b89a0a5edb12939",
-    "short": "5c3facc",
-    "message": "chore: polish store carousel and CTA styling",
-    "date": "2026-01-07T16:54:19+01:00"
-  },
-  {
-    "hash": "2689cedbb5e33b7021c6dec53d5bad86b604c6f4",
-    "short": "2689ced",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:49:58+01:00"
   }
 ]
