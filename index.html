@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RYZE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --netflix-black: #141414;
-      --netflix-red: #e50914;
-      --nba-blue: #0072ce;
-      --court-orange: #fdb927;
+      --netflix-red: #d85c1a;
+      --nba-blue: #1d8ea6;
+      --court-orange: #f9a03f;
       --white: #ffffff;
       --gray-100: #f5f5f5;
       --gray-400: #6d6d6d;
@@ -49,7 +49,7 @@
       background-size: 400% 400%;
       animation: gradientFlow 18s ease-in-out infinite;
       color: var(--text-strong);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       min-height: 100vh;
       line-height: 1.6;
       overflow-x: hidden;
@@ -108,6 +108,7 @@
       text-transform: uppercase;
       color: var(--gray-400);
       letter-spacing: 0.12em;
+      font-family: 'Oswald', 'Poppins', sans-serif;
     }
 
     nav.main-nav {
@@ -263,20 +264,28 @@
       font-size: 14px;
     }
 
-    .theme-selector {
-      display: grid;
-      gap: 12px;
+    .header-theme {
+      display: none;
+      align-items: center;
+      gap: 8px;
     }
 
-    .theme-select {
-      width: 100%;
-      padding: 12px;
+    .header-theme label {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .header-theme select {
+      padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text-strong);
       font-weight: 600;
       letter-spacing: 0.04em;
+      min-width: 150px;
+      cursor: pointer;
     }
 
     @keyframes gradientFlow {
@@ -1114,6 +1123,10 @@
       </div>
       <nav class="main-nav" id="main-nav"></nav>
       <div class="header-actions">
+        <div class="header-theme" id="header-theme">
+          <label for="theme-picker">Theme</label>
+          <select id="theme-picker" aria-label="Theme picker"></select>
+        </div>
         <span class="label-chip" id="user-pill" style="display:none;"></span>
         <div class="nav-separator">|</div>
         <button class="btn primary" id="auth-btn">Login</button>
@@ -1421,6 +1434,7 @@
     const appLog = [];
 
     const themes = [
+      { name: 'Dunes Signature', bg: '#11131a', primary: '#e6782c', secondary: '#1d8ea6', accent: '#f3c87a', text: '#f8fafc', muted: '#cbd5e1', tone: 0.22 },
       { name: 'Dawn Glow', bg: '#11131a', primary: '#ff6f61', secondary: '#7dd3fc', accent: '#ffe29f', text: '#f8fafc', muted: '#cbd5e1', tone: 0.15 },
       { name: 'Sunrise Slate', bg: '#1a1c24', primary: '#ff8f70', secondary: '#6dd5ed', accent: '#ffd166', text: '#f8fafc', muted: '#d1d5db', tone: 0.2 },
       { name: 'Morning Mist', bg: '#202530', primary: '#ff5f6d', secondary: '#00c2ff', accent: '#ffd26f', text: '#f8fafc', muted: '#cfd8e3', tone: 0.25 },
@@ -1630,12 +1644,14 @@
     const tileGridEl = document.getElementById('tile-grid');
     const storeSectionEl = document.getElementById('store-section');
     const storeRailEl = document.getElementById('store-rail');
-    const overlayEl = document.getElementById('overlay');
-    const overlayTitleEl = document.getElementById('overlay-title');
-    const overlaySubtitleEl = document.getElementById('overlay-subtitle');
-    const overlayBodyEl = document.getElementById('overlay-body');
-    const overlayPrimaryEl = document.getElementById('overlay-primary');
-    const overlaySecondaryEl = document.getElementById('overlay-secondary');
+    let overlayEl = document.getElementById('overlay');
+    let overlayTitleEl = document.getElementById('overlay-title');
+    let overlaySubtitleEl = document.getElementById('overlay-subtitle');
+    let overlayBodyEl = document.getElementById('overlay-body');
+    let overlayPrimaryEl = document.getElementById('overlay-primary');
+    let overlaySecondaryEl = document.getElementById('overlay-secondary');
+    let headerThemeEl = document.getElementById('header-theme');
+    let themePickerEl = document.getElementById('theme-picker');
     const adminAuditSection = document.getElementById('admin-audit');
     const auditBodyEl = document.getElementById('audit-body');
     const logStackEl = document.getElementById('log-stack');
@@ -1891,6 +1907,7 @@
         const cta = document.createElement('button');
         cta.className = 'btn primary';
         cta.textContent = 'Start Here';
+        cta.type = 'button';
         cta.style.marginTop = '6px';
         cta.addEventListener('click', () => openExperienceOverlay(exp));
         tile.appendChild(cta);
@@ -1921,6 +1938,27 @@
 
     function getThemeByName(name) {
       return themes.find((t) => t.name === name);
+    }
+
+    function renderThemePicker() {
+      if (!themePickerEl) themePickerEl = document.getElementById('theme-picker');
+      if (!headerThemeEl) headerThemeEl = document.getElementById('header-theme');
+      const shouldShow = isLoggedIn && currentRole !== 'admin';
+      if (headerThemeEl) headerThemeEl.style.display = shouldShow ? 'flex' : 'none';
+      if (!themePickerEl) return;
+      if (!themePickerEl.options.length) {
+        themes.forEach((t) => {
+          const opt = document.createElement('option');
+          opt.value = t.name;
+          opt.textContent = t.name;
+          themePickerEl.appendChild(opt);
+        });
+        themePickerEl.addEventListener('change', (e) => {
+          const picked = getThemeByName(e.target.value);
+          applyTheme(picked);
+        });
+      }
+      themePickerEl.value = activeThemeName;
     }
 
     function getTimeSlot() {
@@ -2095,6 +2133,7 @@
         renderDashboard();
         loadUserTheme();
         startThemeTimer();
+        renderThemePicker();
         logEvent('login', username);
         if (authBtn) authBtn.textContent = 'Logout';
         alert(`Signed in as ${username} (demo auth)`);
@@ -2109,11 +2148,13 @@
     }
 
     function openOverlay(module) {
+      const { overlayEl: ov, overlayTitleEl: ot, overlaySubtitleEl: os, overlayBodyEl: ob, overlayPrimaryEl: op, overlaySecondaryEl: os2 } = getOverlayRefs();
+      if (!ov || !ob || !ot || !os) return;
       const description = overlayDescriptions[module.id] || 'Module overlay ready to connect to real data.';
-      overlayTitleEl.textContent = module.label;
-      overlaySubtitleEl.textContent = `Module · ${module.id}`;
+      ot.textContent = module.label;
+      os.textContent = `Module · ${module.id}`;
       const details = moduleDetails[module.id] || ['Ready to wire', 'Visible to role'];
-      overlayBodyEl.innerHTML = `
+      ob.innerHTML = `
         <p>${description}</p>
         <ul style="padding-left:18px; margin:6px 0; color:#dce0e6; line-height:1.4;">
           ${details.map((d) => `<li>${d}</li>`).join('')}
@@ -2121,20 +2162,42 @@
         <p style="color: #9ca3af;">Hook this overlay to your data source, Framer Motion transitions, and role-based guards. Use it for tutorials, settings, performance, and more.</p>
       `;
       logEvent('overlay-open', module.id);
-      overlayPrimaryEl.onclick = () => alert(`${module.label} overlay opened.`);
-      overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${module.label}.`);
-      overlayEl.classList.add('active');
+      if (op) op.onclick = () => alert(`${module.label} overlay opened.`);
+      if (os2) os2.onclick = () => alert(`Scheduling inside ${module.label}.`);
+      ensureOverlayHealth();
+    }
+
+    function getOverlayRefs() {
+      overlayEl = overlayEl || document.getElementById('overlay');
+      overlayTitleEl = overlayTitleEl || document.getElementById('overlay-title');
+      overlaySubtitleEl = overlaySubtitleEl || document.getElementById('overlay-subtitle');
+      overlayBodyEl = overlayBodyEl || document.getElementById('overlay-body');
+      overlayPrimaryEl = overlayPrimaryEl || document.getElementById('overlay-primary');
+      overlaySecondaryEl = overlaySecondaryEl || document.getElementById('overlay-secondary');
+      return { overlayEl, overlayTitleEl, overlaySubtitleEl, overlayBodyEl, overlayPrimaryEl, overlaySecondaryEl };
+    }
+
+    function ensureOverlayHealth() {
+      const { overlayEl: ov } = getOverlayRefs();
+      if (!ov) return false;
+      ov.style.display = 'grid';
+      ov.classList.add('active');
+      return true;
     }
 
     function openExperienceOverlay(exp) {
-      if (!overlayEl || !overlayBodyEl || !overlayTitleEl || !overlaySubtitleEl) return;
-      overlayTitleEl.textContent = exp.title;
-      overlaySubtitleEl.textContent = `Dashboard · ${exp.id || exp.title}`;
+      const { overlayEl: ov, overlayTitleEl: ot, overlaySubtitleEl: os, overlayBodyEl: ob, overlayPrimaryEl: op, overlaySecondaryEl: os2 } = getOverlayRefs();
+      if (!ov || !ob || !ot || !os) {
+        console.warn('Overlay missing, rebuilding.');
+        return;
+      }
+      ot.textContent = exp.title;
+      os.textContent = `Dashboard · ${exp.id || exp.title}`;
       const detail = experienceDetails[exp.id] || {
         summary: overlayDescriptions[exp.id] || 'This module is ready for richer widgets and data.',
         bullets: ['Connect live data sources', 'Animate transitions', 'Secure per role']
       };
-      overlayBodyEl.innerHTML = `
+      ob.innerHTML = `
         <div class="tile" style="min-height:180px;">
           <div class="pill">${exp.title}</div>
           <p style="text-align:left; margin:16px 0 8px; line-height:1.6;">${exp.copy}</p>
@@ -2146,7 +2209,7 @@
         <p style="margin:10px 0 12px; color:#cfd3da;">Below are placeholder tiles you can replace with live modules.</p>
         <div id="overlay-tiles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;"></div>
       `;
-      const grid = overlayBodyEl.querySelector('#overlay-tiles');
+      const grid = ob.querySelector('#overlay-tiles');
       const placeholders = Array.from({ length: 8 }, (_, i) => `Placeholder ${i + 1}`);
       placeholders.forEach((label) => {
         const t = document.createElement('div');
@@ -2155,13 +2218,21 @@
         t.innerHTML = `<div class="pill">${label}</div><p style="text-align:left; margin:12px 0 6px; line-height:1.5;">Future content for ${exp.title}.</p>`;
         grid.appendChild(t);
       });
-      if (overlayPrimaryEl) overlayPrimaryEl.onclick = () => alert(`${exp.title} overlay opened.`);
-      if (overlaySecondaryEl) overlaySecondaryEl.onclick = () => alert(`Scheduling inside ${exp.title}.`);
-      overlayEl.classList.add('active');
+      if (op) op.onclick = () => alert(`${exp.title} overlay opened.`);
+      if (os2) os2.onclick = () => alert(`Scheduling inside ${exp.title}.`);
+      ensureOverlayHealth();
+      requestAnimationFrame(() => {
+        const visible = ov && window.getComputedStyle(ov).opacity !== '0';
+        if (!visible) {
+          ov.classList.add('active');
+          ov.style.display = 'grid';
+        }
+      });
     }
 
     function closeOverlay() {
-      overlayEl.classList.remove('active');
+      const { overlayEl: ov } = getOverlayRefs();
+      ov?.classList.remove('active');
     }
 
     function setRole(role) {
@@ -2171,6 +2242,7 @@
       renderHeroLabels();
       renderDashboard();
       toggleDashboardVisibility();
+      renderThemePicker();
       logEvent('role-switch', role);
       setFeaturedFooter();
     }
@@ -2285,6 +2357,7 @@
       toggleAdminPanel();
       applyTheme(getDefaultThemeForTime(), { persist: false });
       startThemeTimer();
+      renderThemePicker();
       applyDynamicGradient();
       gradientTimer = setInterval(applyDynamicGradient, 60000);
       logEvent('boot', 'ui-ready');
@@ -2296,14 +2369,15 @@
           currentUser = null;
           setRole('player');
           updateUserPill();
-          toggleDashboardVisibility();
-          renderDashboard();
-          renderStoreSection();
-          logEvent('logout', 'user');
-          authBtn.textContent = 'Login';
-          document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
+        toggleDashboardVisibility();
+        renderDashboard();
+        renderStoreSection();
+        renderThemePicker();
+        logEvent('logout', 'user');
+        authBtn.textContent = 'Login';
+        document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
         document.getElementById('login')?.scrollIntoView({ behavior: 'smooth' });
       });
       loginFormEl?.addEventListener('submit', handleLogin);
