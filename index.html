@@ -989,6 +989,16 @@
           <div class="hero-copy">
             <h1>RYZE</h1>
             <p class="lead">From Home to Hope: a journey lifting players from backyard hoops in the USA to the bright lights of the big league in France. Training, scouting, signing, and believing—the journey begins here.</p>
+            <div style="margin-top:12px; border-radius:14px; overflow:hidden; box-shadow: var(--shadow);">
+              <div style="position:relative; padding-top:56.25%; width:100%;">
+                <iframe
+                  src="https://www.youtube.com/embed/N4Ie61Buku0?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=N4Ie61Buku0"
+                  style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
             <div class="hero-actions">
               <div class="role-switch" id="role-switch"></div>
             </div>
@@ -1008,12 +1018,12 @@
           <div class="carousel-dots" id="news-dots"></div>
         </div>
         <div class="news-grid">
+          <div class="store-card">
+            <h3>Highlights</h3>
+            <div class="hero-carousel" id="news-video"></div>
+          </div>
           <div class="news-feed">
             <div class="news-track" id="news-track"></div>
-          </div>
-          <div class="store-card" id="news-video-card">
-            <h3>Latest highlight</h3>
-            <div class="hero-carousel" id="news-video"></div>
           </div>
         </div>
       </section>
@@ -1021,10 +1031,8 @@
       <section class="section dashboard" id="dashboard">
         <div class="section-header">
           <div class="section-title">
-            <span class="eyebrow">Interactive</span>
-            <h2>Dashboard grid</h2>
+            <h2>Experiences</h2>
           </div>
-          <div class="hero-labels" id="dashboard-tags"></div>
         </div>
         <div class="tile-grid" id="tile-grid"></div>
       </section>
@@ -1073,16 +1081,22 @@
     </div>
 
     <footer class="footer">
-      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
-        <span>FAQ</span>
-        <span>Investor Relations</span>
-        <span>Corporate Information</span>
-        <span>Legal Matters</span>
-        <span>Terms of Use</span>
-        <span>Contact Us</span>
-        <span>Referral Program</span>
-        <span>Social Media</span>
-        <span>RYZE Store</span>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; text-align:left;">
+        <div style="display:grid; gap:6px;">
+          <a>FAQ</a>
+          <a>Investor Relations</a>
+          <a>Corporate Information</a>
+        </div>
+        <div style="display:grid; gap:6px;">
+          <a>Legal Matters</a>
+          <a>Terms of Use</a>
+          <a>Contact Us</a>
+        </div>
+        <div style="display:grid; gap:6px;">
+          <a>Referral Program</a>
+          <a>Social Media</a>
+          <a>RYZE Store</a>
+        </div>
       </div>
     </footer>
   </div>
@@ -1363,7 +1377,6 @@
     const newsDotsEl = document.getElementById('news-dots');
     const newsVideoEl = document.getElementById('news-video');
     const tileGridEl = document.getElementById('tile-grid');
-    const dashTagsEl = document.getElementById('dashboard-tags');
     const overlayEl = document.getElementById('overlay');
     const overlayTitleEl = document.getElementById('overlay-title');
     const overlaySubtitleEl = document.getElementById('overlay-subtitle');
@@ -1374,7 +1387,6 @@
     const auditBodyEl = document.getElementById('audit-body');
     const logStackEl = document.getElementById('log-stack');
     const userPillEl = document.getElementById('user-pill');
-    const newsVideoEl = document.getElementById('news-video');
     const loginFormEl = document.getElementById('login-form');
     const loginErrorEl = document.getElementById('login-error');
     const authBtn = document.getElementById('auth-btn');
@@ -1530,37 +1542,24 @@
 
     function renderDashboard() {
       tileGridEl.innerHTML = '';
-      dashTagsEl.innerHTML = '';
       if (!isLoggedIn) {
-        tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to see your dashboard modules.</p>';
-        document.getElementById('stat-modules').textContent = 0;
-        document.getElementById('stat-roles').textContent = Object.keys(roleConfig).length;
+        tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to explore experiences.</p>';
         return;
       }
-      const modules = roleConfig[currentRole]?.dashboardModules || [];
-      document.getElementById('stat-modules').textContent = modules.length;
-      document.getElementById('stat-roles').textContent = Object.keys(roleConfig).length;
-
-      modules.slice(0, 3).forEach((m) => {
-        const chip = document.createElement('div');
-        chip.className = 'label-chip';
-        chip.textContent = m.label;
-        dashTagsEl.appendChild(chip);
-      });
-
-      modules.forEach((module) => {
-        const tile = document.createElement('button');
+      const experiences = [
+        { id: 'experience', title: 'Experiences', copy: 'Curated journeys that connect training, scouting, and signing into one seamless path.' },
+        { id: 'games', title: 'Games', copy: 'Cinematic highlights and film rooms to relive every clutch moment.' },
+        { id: 'practice', title: 'Practice', copy: 'Training blueprints with drills, feedback loops, and daily focus.' },
+        { id: 'community', title: 'Community', copy: 'Social hubs that keep players, agents, scouts, and clubs in constant sync.' }
+      ];
+      experiences.forEach((exp) => {
+        const tile = document.createElement('div');
         tile.className = 'tile';
-        tile.type = 'button';
-        tile.dataset.id = module.id;
         tile.innerHTML = `
-          <div class="pill">${module.id}</div>
-          <div class="icon">${module.icon}</div>
-          <h3>${module.label}</h3>
-          <p>${overlayDescriptions[module.id] || 'Launch overlay to explore this module.'}</p>
-          <p style="color:#fefefe; font-size:12px; letter-spacing:0.04em;">Status: Ready</p>
+          <div class="pill">${exp.title}</div>
+          <h3>${exp.title}</h3>
+          <p>${exp.copy}</p>
         `;
-        tile.addEventListener('click', () => openOverlay(module));
         tileGridEl.appendChild(tile);
       });
     }
@@ -1822,7 +1821,7 @@
 
     function restartNewsTimer() {
       clearInterval(newsTimer);
-      newsTimer = setInterval(cycleNews, 4000);
+      newsTimer = setInterval(cycleNews, 3000);
     }
 
     function wireCTAs() {
