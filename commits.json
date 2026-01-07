@@ -1,5 +1,17 @@
 [
   {
+    "hash": "76fc6afc9fdfdaea6867247721b022bf7f9e0dca",
+    "short": "76fc6af",
+    "message": "style: make experiences grid fully responsive",
+    "date": "2026-01-07T22:44:42+01:00"
+  },
+  {
+    "hash": "df79a11f108ffc3a48d2b5f8564dce448c2c6a67",
+    "short": "df79a11",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T22:41:41+01:00"
+  },
+  {
     "hash": "ad9b9dd0c7bd735735ae47d58369f270062b7051",
     "short": "ad9b9dd",
     "message": "style: let experiences grid span full width",
@@ -46,17 +58,5 @@
     "short": "8a2f2dd",
     "message": "chore: refresh commit log",
     "date": "2026-01-07T22:30:06+01:00"
-  },
-  {
-    "hash": "acac724d3c101c68c10c0e15e34ca318e5a62d85",
-    "short": "acac724",
-    "message": "style: enforce 4-column experiences grid",
-    "date": "2026-01-07T22:29:50+01:00"
-  },
-  {
-    "hash": "591d4bf9d4cbac7ed7e644ba5f5ac1a515616665",
-    "short": "591d4bf",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:28:25+01:00"
   }
 ]
