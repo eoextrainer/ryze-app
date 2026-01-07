@@ -1570,11 +1570,23 @@
         { id: 'practice', title: 'Practice', copy: 'Training blueprints with drills, feedback loops, and daily focus.' },
         { id: 'community', title: 'Community', copy: 'Social hubs that keep players, agents, scouts, and clubs in constant sync.' }
       ];
+      const ceoModules = [
+        { id: 'tutorial', title: 'TUTORIAL', copy: 'Orientation for overseeing the entire Ryze suite.' },
+        { id: 'settings', title: 'SETTINGS', copy: 'Executive preferences, alerts, and access.' },
+        { id: 'personal', title: 'PERSONAL INFO', copy: 'Maintain CEO profile and credentials.' },
+        { id: 'ryze-info', title: 'RYZE INFO', copy: 'Snapshot of platform health and stats.' },
+        { id: 'ryze-app', title: 'RYZE APP', copy: 'Control center for the core application.' },
+        { id: 'ryze-crm', title: 'RYZE CRM', copy: 'Oversee deal pipelines and renewals.' },
+        { id: 'ryze-erp', title: 'RYZE ERP', copy: 'Operations view across the organization.' },
+        { id: 'ryze-studio', title: 'RYZE STUDIO', copy: 'Media creation and content oversight.' },
+        { id: 'store', title: 'STORE', copy: 'Access platform resources and licensing.' }
+      ];
       let tiles = experiences;
       if (currentRole === 'player') tiles = playerModules;
       if (currentRole === 'scout') tiles = scoutModules;
       if (currentRole === 'agent') tiles = agentModules;
       if (currentRole === 'club') tiles = clubModules;
+      if (currentRole === 'ceo') tiles = ceoModules;
       tiles.forEach((exp) => {
         const tile = document.createElement('div');
         tile.className = 'tile';
