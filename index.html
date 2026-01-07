@@ -217,70 +217,50 @@
     }
 
     .login-section {
-      padding: var(--spacing-lg) var(--spacing-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--spacing-lg);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
       align-items: start;
     }
 
     .login-card {
-      background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: var(--spacing-sm);
       box-shadow: var(--shadow);
+      max-width: 360px;
     }
 
     .login-card h3 {
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      font-size: 18px;
     }
 
     .login-form {
       display: grid;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .login-form label {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
       letter-spacing: 0.04em;
     }
 
     .login-form input {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(0, 0, 0, 0.3);
       color: var(--text-strong);
-    }
-
-    .credentials-list {
-      margin-top: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 10px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .cred-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .cred-row strong {
-      color: var(--text-strong);
-      letter-spacing: 0.06em;
+      font-size: 14px;
     }
 
     .theme-selector {
@@ -957,9 +937,9 @@
         <div class="brand-sub">From Home to Hope</div>
       </div>
       <nav class="main-nav" id="main-nav"></nav>
-      <div class="nav-separator">|</div>
       <div class="header-actions">
         <span class="label-chip" id="user-pill" style="display:none;"></span>
+        <div class="nav-separator">|</div>
         <button class="btn primary" id="auth-btn">Login</button>
       </div>
     </header>
@@ -989,16 +969,6 @@
           <div class="hero-copy">
             <h1>RYZE</h1>
             <p class="lead">From Home to Hope: a journey lifting players from backyard hoops in the USA to the bright lights of the big league in France. Training, scouting, signing, and believing—the journey begins here.</p>
-            <div style="margin-top:12px; border-radius:14px; overflow:hidden; box-shadow: var(--shadow);">
-              <div style="position:relative; padding-top:56.25%; width:100%;">
-                <iframe
-                  src="https://www.youtube.com/embed/N4Ie61Buku0?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=N4Ie61Buku0"
-                  style="position:absolute; inset:0; width:100%; height:100%; border:0;"
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
             <div class="hero-actions">
               <div class="role-switch" id="role-switch"></div>
             </div>
