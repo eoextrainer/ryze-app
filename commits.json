@@ -1,5 +1,17 @@
 [
   {
+    "hash": "567670dc17faa58195cc2602b09fe648a9c3a241",
+    "short": "567670d",
+    "message": "feat: enrich experience overlay placeholders",
+    "date": "2026-01-07T16:42:26+01:00"
+  },
+  {
+    "hash": "9d6f09f9cb95d54d7069cb67e6d2c5bb8ed7d06a",
+    "short": "9d6f09f",
+    "message": "chore: update commit log",
+    "date": "2026-01-07T16:36:45+01:00"
+  },
+  {
     "hash": "9b0cd3b5a1c2596125c388af4f6e3ee559841196",
     "short": "9b0cd3b",
     "message": "feat: add start-here CTA and overlay placeholders",
@@ -46,17 +58,5 @@
     "short": "8ede5e3",
     "message": "chore: update commit log",
     "date": "2026-01-07T16:16:31+01:00"
-  },
-  {
-    "hash": "ab6776250ec0f198a3c837feea65b03838f17c69",
-    "short": "ab67762",
-    "message": "feat: admin and ceo tailored dashboards",
-    "date": "2026-01-07T16:16:14+01:00"
-  },
-  {
-    "hash": "4847d3e0a98c51611a4e7612aa14b587f1019fdf",
-    "short": "4847d3e",
-    "message": "chore: update commit log",
-    "date": "2026-01-07T16:10:35+01:00"
   }
 ]
