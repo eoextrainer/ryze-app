@@ -999,6 +999,48 @@
       color: #0f1111;
     }
 
+    .lazy-video {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0b0d13;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .lazy-video img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lazy-video .play-overlay {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .lazy-video:hover .play-overlay {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.55);
+    }
+
     .product-meta {
       font-size: 13px;
       color: #565959;
@@ -1784,6 +1826,34 @@
       });
     }
 
+    function buildLazyEmbed(id, title = 'Highlight') {
+      return `
+        <div class="lazy-video" data-id="${id}">
+          <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${title}" loading="lazy" />
+          <button class="play-overlay" aria-label="Play ${title}">▶</button>
+        </div>
+      `;
+    }
+
+    function wireLazyVideos(scope = document) {
+      scope.querySelectorAll('.lazy-video').forEach((el) => {
+        if (el.dataset.wired) return;
+        el.dataset.wired = '1';
+        el.addEventListener('click', () => {
+          const id = el.dataset.id;
+          if (!id) return;
+          el.innerHTML = `
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&controls=1&rel=0&playsinline=1&loop=1&playlist=${id}&modestbranding=1&enablejsapi=1"
+              style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          `;
+        });
+      });
+    }
+
     function renderHero() {
       heroCarouselEl.innerHTML = '';
       const video = heroVideos[heroIndex];
@@ -1792,23 +1862,17 @@
       slideEl.style.padding = '0';
       slideEl.style.minHeight = '420px';
       slideEl.innerHTML = `
-        <div style="position:relative; padding-top:56.25%; width:100%;">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}&modestbranding=1"
-            style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          ></iframe>
-        </div>
+        ${buildLazyEmbed(video.id, video.title)}
         <div class="meta" style="padding: var(--spacing-sm);">
           <div>
             <h3>${video.title}</h3>
-            <div class="label-chip">Auto · Mute</div>
+            <div class="label-chip">Click to play</div>
           </div>
           <button class="btn ghost" style="padding:10px 14px;" onclick="alert('Playing ${video.title}')">Details</button>
         </div>
       `;
       heroCarouselEl.appendChild(slideEl);
+      wireLazyVideos(slideEl);
       renderHeroLabels();
     }
 
@@ -1874,16 +1938,8 @@
     function updateNewsVideo() {
       if (!newsVideoEl) return;
       const video = newsVideos[newsIndex % newsVideos.length];
-      newsVideoEl.innerHTML = `
-        <div style="position:relative; padding-top:56.25%; width:100%;">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&loop=1&playlist=${video.id}&modestbranding=1"
-            style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:16px;"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          ></iframe>
-        </div>
-      `;
+      newsVideoEl.innerHTML = buildLazyEmbed(video.id, video.title);
+      wireLazyVideos(newsVideoEl);
     }
 
     function getExperienceModules(role) {
