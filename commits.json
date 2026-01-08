@@ -1,62 +1,62 @@
 [
   {
-    "hash": "ba76643f16ad74080a27ced60be38ab4ef6466e6",
-    "short": "ba76643",
+    "hash": "9a06d68d37c8a37a952ff15023c82a3e8003dff2",
+    "short": "9a06d68",
+    "message": "fix: lazy-load youtube embeds to avoid sign-in prompts",
+    "date": "2026-01-08T12:38:07+01:00"
+  },
+  {
+    "hash": "4437793f450cf61cf60007d5edfba0a1d5d19197",
+    "short": "4437793",
+    "message": "chore: refresh commit log",
+    "date": "2026-01-07T23:19:36+01:00"
+  },
+  {
+    "hash": "e378672b70e3bbdd27eb8abf75d5d11bbd3d3c0f",
+    "short": "e378672",
     "message": "docs: expand render deploy to backend and postgres",
-    "date": "2026-01-07T23:03:41+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "e9258d224d93a31c4bf873045f40911ce5a18c16",
-    "short": "e9258d2",
+    "hash": "d2dc0e104e30a744e9741841594c02533cfb02ee",
+    "short": "d2dc0e1",
     "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:52:14+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "c2a68fc1135511999024b7ee3faccac43d523875",
-    "short": "c2a68fc",
+    "hash": "7ccf72bd1d71f447049e84904f945e23a970a09d",
+    "short": "7ccf72b",
     "message": "docs: add render hosting guide and config",
-    "date": "2026-01-07T22:51:54+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "e000befa0bc07dc90e85d64e531dcea4383c1a48",
-    "short": "e000bef",
+    "hash": "2348a50261bb3bc327eb22fba753cd38e16c28cc",
+    "short": "2348a50",
     "message": "version v1.0.0-beta RYZE APP core",
-    "date": "2026-01-07T22:50:54+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "e6c6eb07f391974f93d783d089c810eb64bedb73",
-    "short": "e6c6eb0",
+    "hash": "ae476f30972dcc9e5fc422c11536d045bbdd4f8f",
+    "short": "ae476f3",
     "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:44:59+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "76fc6afc9fdfdaea6867247721b022bf7f9e0dca",
-    "short": "76fc6af",
+    "hash": "ef777b04cd1242c61c3f89129e449f849c3aa08b",
+    "short": "ef777b0",
     "message": "style: make experiences grid fully responsive",
-    "date": "2026-01-07T22:44:42+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "df79a11f108ffc3a48d2b5f8564dce448c2c6a67",
-    "short": "df79a11",
+    "hash": "423cf59bbbd07a2f043cb49a2a146945a98c5d7c",
+    "short": "423cf59",
     "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:41:41+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   },
   {
-    "hash": "ad9b9dd0c7bd735735ae47d58369f270062b7051",
-    "short": "ad9b9dd",
+    "hash": "2f12029e5b0d68604aa5b73b5c326737c5b093f8",
+    "short": "2f12029",
     "message": "style: let experiences grid span full width",
-    "date": "2026-01-07T22:41:23+01:00"
-  },
-  {
-    "hash": "c259d4664c76b78b600f7a1d9acea8793f9b4464",
-    "short": "c259d46",
-    "message": "chore: refresh commit log",
-    "date": "2026-01-07T22:39:02+01:00"
-  },
-  {
-    "hash": "fc194027f14a2c524ff7d5ccde10720b056b1440",
-    "short": "fc19402",
-    "message": "style: adjust experience card sizing for fuller rows",
-    "date": "2026-01-07T22:38:47+01:00"
+    "date": "2026-01-07T23:19:36+01:00"
   }
 ]
