@@ -1309,10 +1309,203 @@
       <section class="section dashboard" id="dashboard">
         <div class="section-header">
           <div class="section-title">
-            <h2>Experiences Dashboard</h2>
+            <h2>Agent Dashboard</h2>
           </div>
         </div>
         <div class="tile-grid" id="tile-grid"></div>
+      </section>
+
+      <section class="section" id="features-demo" style="display:none; background: linear-gradient(180deg, rgba(100, 50, 200, 0.1) 0%, rgba(50, 100, 200, 0.05) 100%);">
+        <div class="section-header">
+          <div class="section-title">
+            <h2>✨ NEW FEATURES</h2>
+          </div>
+        </div>
+        
+        <!-- Chat Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #ff6f61; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #ff6f61; margin-top: 0;">💬 Player-to-Player Chat System</h3>
+          <p>Real-time messaging with: Coach Mike • DeAndre W. (Teammate) • Agent Smith • Trainer Jay • Team Doc</p>
+          <button class="btn primary" onclick="openFeatureChat()">Open Chat</button>
+          <div id="chat-demo" style="display:none; margin-top: 16px; background: rgba(0,0,0,0.5); border-radius: 12px; padding: 16px; height: 300px; display: grid; grid-template-columns: 1fr 2fr;">
+            <div style="border-right: 1px solid rgba(255,255,255,0.1); padding-right: 12px; overflow-y: auto;">
+              <div onclick="selectChatUser(this, 'Coach Mike')" style="padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-size: 12px;">👨‍🏫 Coach Mike</div>
+              <div onclick="selectChatUser(this, 'DeAndre W.')" style="padding: 10px; border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-size: 12px;">🏀 DeAndre W.</div>
+              <div onclick="selectChatUser(this, 'Agent Smith')" style="padding: 10px; border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-size: 12px;">🤝 Agent Smith</div>
+              <div onclick="selectChatUser(this, 'Trainer Jay')" style="padding: 10px; border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-size: 12px;">💪 Trainer Jay</div>
+              <div onclick="selectChatUser(this, 'Team Doc')" style="padding: 10px; border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-size: 12px;">👨‍⚕️ Team Doc</div>
+            </div>
+            <div style="padding-left: 12px; display: flex; flex-direction: column;">
+              <div id="chat-messages-demo" style="flex: 1; overflow-y: auto; margin-bottom: 10px; font-size: 12px;">
+                <div style="color: #ff6f61; margin-bottom: 8px;">Hey! How's training going?</div>
+                <div style="color: #7dd3fc; margin-bottom: 8px;">Great! Made improvements with my shot.</div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" placeholder="Type message..." id="chat-input-demo" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff; font-size: 12px;" />
+                <button style="padding: 8px 14px; background: #ff6f61; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;" onclick="sendChatMessageDemo()">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #7dd3fc; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #7dd3fc; margin-top: 0;">🌍 Multi-Language Support</h3>
+          <p>Switch between English, Spanish, and French instantly</p>
+          <div style="display: flex; gap: 12px;">
+            <button class="btn primary" onclick="alert('Language set to English')">🇺🇸 English</button>
+            <button class="btn secondary" onclick="alert('Idioma establecido en Español')">🇪🇸 Spanish</button>
+            <button class="btn secondary" onclick="alert('Langue définie en Français')">🇫🇷 French</button>
+          </div>
+        </div>
+
+        <!-- Medical History Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #ff6b6b; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #ff6b6b; margin-top: 0;">🏥 Medical History Real-Time Display</h3>
+          <p>Track past injuries with status and recovery info</p>
+          <div style="display: grid; gap: 12px;">
+            <div style="background: rgba(255,107,107,0.1); border-left: 4px solid #ff6b6b; padding: 12px; border-radius: 8px;">
+              <div style="color: #ff6b6b; font-weight: 600; font-size: 13px;">Nov 15, 2025: Right Ankle Sprain</div>
+              <div style="color: #ddd; font-size: 12px; margin-top: 4px;">Status: Cleared for full activity</div>
+            </div>
+            <div style="background: rgba(255,107,107,0.1); border-left: 4px solid #ff6b6b; padding: 12px; border-radius: 8px;">
+              <div style="color: #ff6b6b; font-weight: 600; font-size: 13px;">Aug 22, 2025: Left Knee Contusion</div>
+              <div style="color: #ddd; font-size: 12px; margin-top: 4px;">Status: Recovery 95%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- References Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #f3c87a; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #f3c87a; margin-top: 0;">👥 Coach & Teammate References</h3>
+          <p>Testimonials from coaches and teammates</p>
+          <div style="display: grid; gap: 12px;">
+            <div style="background: rgba(243,200,122,0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #f3c87a;">
+              <div style="font-weight: 600; color: #fff;">Coach Mike</div>
+              <div style="color: #aaa; font-size: 12px;">High School Coach</div>
+              <div style="color: #ddd; font-size: 13px; margin-top: 8px; font-style: italic;">"Marcus has incredible work ethic and court vision. A natural leader."</div>
+            </div>
+            <div style="background: rgba(243,200,122,0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #f3c87a;">
+              <div style="font-weight: 600; color: #fff;">DeAndre Wilson</div>
+              <div style="color: #aaa; font-size: 12px;">AAU Teammate</div>
+              <div style="color: #ddd; font-size: 13px; margin-top: 8px; font-style: italic;">"Best point guard I've played with. Elite decision maker."</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Self Video Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #ffd166; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #ffd166; margin-top: 0;">🎬 Self-Video Presentation</h3>
+          <p>Player showcase video at the top of player profile</p>
+          <div style="position: relative; width: 100%; max-width: 400px; padding-top: 56.25%; background: #000; border-radius: 12px; overflow: hidden;">
+            <iframe style="position: absolute; inset: 0; width: 100%; height: 100%;" src="https://www.youtube-nocookie.com/embed/4zHG2jk87EI?autoplay=0&controls=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Personal Profile Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #5ac8fa; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #5ac8fa; margin-top: 0;">👤 Personal Profile Details</h3>
+          <p>Complete player information with stats, languages, interests, and hobbies</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+            <div style="background: rgba(90,200,250,0.1); padding: 12px; border-radius: 8px;">
+              <div style="color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Height</div>
+              <div style="color: #fff; font-weight: 600; margin-top: 4px;">6'2"</div>
+            </div>
+            <div style="background: rgba(90,200,250,0.1); padding: 12px; border-radius: 8px;">
+              <div style="color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Weight</div>
+              <div style="color: #fff; font-weight: 600; margin-top: 4px;">195 lbs</div>
+            </div>
+            <div style="background: rgba(90,200,250,0.1); padding: 12px; border-radius: 8px;">
+              <div style="color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Position</div>
+              <div style="color: #fff; font-weight: 600; margin-top: 4px;">Point Guard</div>
+            </div>
+            <div style="background: rgba(90,200,250,0.1); padding: 12px; border-radius: 8px;">
+              <div style="color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Languages</div>
+              <div style="color: #fff; font-weight: 600; margin-top: 4px;">EN, ES, FR</div>
+            </div>
+          </div>
+          <div style="margin-top: 12px;">
+            <div style="color: #aaa; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Interests & Hobbies:</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <span style="background: linear-gradient(135deg, #ff6f61, #ffa500); padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 600;">Basketball</span>
+              <span style="background: linear-gradient(135deg, #ff6f61, #ffa500); padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 600;">Gaming</span>
+              <span style="background: linear-gradient(135deg, #ff6f61, #ffa500); padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 600;">Streaming</span>
+              <span style="background: linear-gradient(135deg, #ff6f61, #ffa500); padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 600;">Mentoring</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Titles Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #e50914; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #e50914; margin-top: 0;">📊 Role-Based Dashboard Titles</h3>
+          <p>Dashboard title changes based on user role</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px;">
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>Player:</strong> Player Dashboard</div>
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>Agent:</strong> Agent Dashboard</div>
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>Scout:</strong> Scout Dashboard</div>
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>Club:</strong> Club Dashboard</div>
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>CEO:</strong> Executive Dashboard</div>
+            <div style="background: rgba(229,9,20,0.15); padding: 10px; border-radius: 8px; font-size: 12px;"><strong>Admin:</strong> Admin Dashboard</div>
+          </div>
+        </div>
+
+        <!-- Matches Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #00c2ff; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #00c2ff; margin-top: 0;">📋 Elegant Match List</h3>
+          <p>Game schedule with results and player stats</p>
+          <div style="display: grid; gap: 8px;">
+            <div style="display: grid; grid-template-columns: 80px 1fr 100px; gap: 12px; align-items: center; padding: 10px; background: rgba(0,194,255,0.1); border-radius: 8px; border-left: 4px solid #00c2ff;">
+              <div style="color: #00c2ff; font-weight: 600; font-size: 12px;">TODAY</div>
+              <div>
+                <div style="font-weight: 600;">vs Boston Celtics</div>
+                <div style="color: #aaa; font-size: 12px;">24 pts • 8 ast • 3 stl</div>
+              </div>
+              <div style="text-align: right; font-weight: 600; color: #00c2ff;">W 112-89</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 80px 1fr 100px; gap: 12px; align-items: center; padding: 10px; background: rgba(0,194,255,0.1); border-radius: 8px; border-left: 4px solid #00c2ff;">
+              <div style="color: #00c2ff; font-weight: 600; font-size: 12px;">TOMORROW</div>
+              <div>
+                <div style="font-weight: 600;">vs Miami Heat</div>
+                <div style="color: #aaa; font-size: 12px;">Scheduled</div>
+              </div>
+              <div style="text-align: right; font-weight: 600; color: #aaa;">–</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #fbbf24; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #fbbf24; margin-top: 0;">🏪 Store Accessible Everywhere</h3>
+          <p>Store link in header navigation + accessible from dashboard (requires login, hidden for admin)</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn primary">Basketball Merchandise</button>
+            <button class="btn primary">Fashion Apparel</button>
+            <button class="btn primary">Tech Gadgets</button>
+            <button class="btn primary">Jewelry</button>
+          </div>
+        </div>
+
+        <!-- Themes Feature -->
+        <div style="background: rgba(0,0,0,0.3); border: 2px solid #c6a465; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <h3 style="color: #c6a465; margin-top: 0;">🎨 25+ Creative App Themes</h3>
+          <p>Professional theme system with time-of-day auto-rotation and per-user persistence</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px;">
+            <div style="background: #11131a; border: 2px solid #e6782c; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Dunes Signature</div>
+            <div style="background: #11131a; border: 2px solid #ff6f61; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Dawn Glow</div>
+            <div style="background: #1a1c24; border: 2px solid #ff8f70; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Sunrise Slate</div>
+            <div style="background: #202530; border: 2px solid #ff5f6d; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Morning Mist</div>
+            <div style="background: #1c1f2a; border: 2px solid #ff3b30; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Noon Clear</div>
+            <div style="background: #161922; border: 2px solid #e50914; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Matinee</div>
+            <div style="background: #0f1118; border: 2px solid #0f9d58; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Play Store</div>
+            <div style="background: #0c0d12; border: 2px solid #ff2d55; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Apple Arcade</div>
+            <div style="background: #0b0d14; border: 2px solid #ff0055; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Vibrant Neon</div>
+            <div style="background: #0f1115; border: 2px solid #00a8e1; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Prime Pulse</div>
+            <div style="background: #0f1018; border: 2px solid #ffb703; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Court Lights</div>
+            <div style="background: #080a12; border: 2px solid #e50914; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600;">Twilight Grid</div>
+            <span style="grid-column: 1/-1; text-align: center; color: #aaa; font-size: 12px;">+ 13 More Themes (25 Total)</span>
+          </div>
+        </div>
+
       </section>
 
       <section class="store-section" id="store-section">
@@ -1390,7 +1583,8 @@
     const defaultMenu = [
       { id: 'home', label: 'Home', section: 'home' },
       { id: 'news', label: 'News', section: 'news' },
-      { id: 'dashboard', label: 'Dashboard', section: 'dashboard' }
+      { id: 'dashboard', label: 'Dashboard', section: 'dashboard' },
+      { id: 'store', label: 'Store', section: 'store' }
     ];
 
     const roleConfig = {
@@ -2023,6 +2217,19 @@
     }
 
     function renderDashboard() {
+      const dashboardTitleEl = document.querySelector('.dashboard .section-title h2');
+      if (dashboardTitleEl) {
+        const roleTitles = {
+          'player': 'Player Dashboard',
+          'agent': 'Agent Dashboard',
+          'scout': 'Scout Dashboard',
+          'club': 'Club Dashboard',
+          'ceo': 'Executive Dashboard',
+          'admin': 'Admin Dashboard'
+        };
+        dashboardTitleEl.textContent = roleTitles[currentRole] || 'Dashboard';
+      }
+
       tileGridEl.innerHTML = '';
       if (!isLoggedIn) {
         tileGridEl.innerHTML = '<p style="color:#c7c9cf;">Login to explore experiences.</p>';
@@ -2228,11 +2435,49 @@
       if (dashboardSection) {
         dashboardSection.style.display = isLoggedIn ? 'block' : 'none';
       }
+      const featuresSection = document.getElementById('features-demo');
+      if (featuresSection && isLoggedIn) {
+        featuresSection.style.display = 'block';
+      } else if (featuresSection) {
+        featuresSection.style.display = 'none';
+      }
       if (storeSectionEl) {
         const showStore = isLoggedIn && currentRole !== 'admin';
         storeSectionEl.style.display = showStore ? 'block' : 'none';
       }
       toggleAdminPanel();
+    }
+
+    function openFeatureChat() {
+      const chatDemo = document.getElementById('chat-demo');
+      if (chatDemo.style.display === 'none' || !chatDemo.style.display) {
+        chatDemo.style.display = 'grid';
+      } else {
+        chatDemo.style.display = 'none';
+      }
+    }
+
+    function selectChatUser(elem, userName) {
+      document.querySelectorAll('#chat-demo > div:first-child > div').forEach(el => {
+        el.style.background = 'rgba(255,255,255,0)';
+      });
+      elem.style.background = 'rgba(255,255,255,0.15)';
+      document.getElementById('chat-messages-demo').innerHTML = '<div style="color: #ff6f61; margin-bottom: 8px;">Hey ' + userName + '! How are you?</div><div style="color: #7dd3fc; margin-bottom: 8px;">Doing great! How about you?</div>';
+      document.getElementById('chat-input-demo').placeholder = 'Message ' + userName + '...';
+    }
+
+    function sendChatMessageDemo() {
+      const input = document.getElementById('chat-input-demo');
+      if (input.value.trim()) {
+        const messagesDiv = document.getElementById('chat-messages-demo');
+        const newMsg = document.createElement('div');
+        newMsg.style.color = '#ff6f61';
+        newMsg.style.marginBottom = '8px';
+        newMsg.textContent = input.value;
+        messagesDiv.appendChild(newMsg);
+        input.value = '';
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
     }
 
     function copyRollback(hash) {
